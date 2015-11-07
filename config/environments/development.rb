@@ -37,5 +37,12 @@ Rails.application.configure do
   config.assets.raise_runtime_errors = true
 
   # Raises error for missing translations
-  # config.action_view.raise_on_missing_translations = true
+  config.action_view.raise_on_missing_translations = true
+
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.default_url_options = {
+    host: ENV['SITE_HOST'],
+    protocol: ENV['SITE_PROTOCOL'],
+    port: ENV['SITE_PORT']
+  }
 end

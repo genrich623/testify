@@ -2,11 +2,23 @@
 <html>
 <head>
   <title>Testify</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<b>signed in:</b> <%= user_signed_in? %>  <br>
+<% if user_signed_in? %>
+  <b>email:</b> <%= current_user.email %>  <br>
+  <%= link_to destroy_user_session_path, method: :delete do %>
+    <b>logout</b>
+  <% end %>
+<% else %>
+  <%= link_to new_user_session_path do %>
+    <b>login</b>
+  <% end %>
+<% end %>
+<hr>
 
 <%= yield %>
 
