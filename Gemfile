@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.4'
 gem 'pg'
+gem 'puma'
 
 gem 'therubyracer', platform: :ruby, require: 'v8'
 
