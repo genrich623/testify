@@ -1,0 +1,41 @@
+.backend-case-studies,
+.backend-case-study {
+  .header {
+    .buttons {
+      @extend .pull-right;
+      margin-top: ($line-height-computed * 2);
+    }
+  }
+
+  .form-group.file {
+    .file-wrapper-row {
+      @extend .col-md-12;
+    }
+
+    .file-wrapper-col {
+      @include clearfix;
+      padding: 10px ($padding-base-horizontal - ceil($grid-gutter-width / 2));
+      border: 1px solid #ccc;
+      color: lighten($text-color, 35%)
+    }
+
+    label {
+      padding-top: 0;
+      font-weight: normal;
+      text-align: left;
+    }
+  }
+
+  .form-group.file.has-error {
+    .file-wrapper-col {
+      border-color: $brand-danger;
+    }
+  }
+
+  .image {
+    height: 400px;
+    background-size: cover;
+    background-position: 50% 50%;
+    margin-bottom: $line-height-computed;
+  }
+}

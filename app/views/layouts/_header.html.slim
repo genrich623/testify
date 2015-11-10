@@ -1,0 +1,49 @@
+nav.navbar.navbar-default.navbar-fixed-top
+  .container
+    .navbar-header
+      button.navbar-toggle.collapsed data-target="#navbar-collapse" data-toggle="collapse" type="button"
+        span.sr-only = t('views.layouts.header.toggle')
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      = link_to t('views.layouts.header.title'), root_path, class: 'navbar-brand'
+    #navbar-collapse.collapse.navbar-collapse
+      /ul.nav.navbar-nav
+        /li.active
+          a href="#"
+            | Link
+            span.sr-only (current)
+        /li
+          a href="#"  Link
+        /li.dropdown
+          a.dropdown-toggle aria-expanded="false" data-toggle="dropdown" href="#" role="button"
+            | Dropdown
+            span.caret
+          ul.dropdown-menu role="menu"
+            li
+              a href="#"  Action
+            li
+              a href="#"  Another action
+            li
+              a href="#"  Something else here
+            li.divider
+            li
+              a href="#"  Separated link
+            li.divider
+            li
+              a href="#"  One more separated link
+      /form.navbar-form.navbar-left role="search"
+        .form-group
+          input.form-control placeholder="Search" type="text" /
+        button.btn.btn-default type="submit"  Submit
+      ul.nav.navbar-nav.navbar-right
+        = li controller?(:'backend/case_studies') do
+          = link_to t('views.layouts.header.cabinet'), case_studies_path
+
+        - if user_signed_in?
+          li = link_to t('views.layouts.header.log_out'), destroy_user_session_path, method: :delete
+        - else
+          = li controller?(:'users/sessions') && action?(:new, :create) do
+            = link_to t('views.users.sessions.common.sign_in'), new_user_session_path
+          = li controller?(:'users/registrations') && action?(:new, :create) do
+            = link_to t('views.users.sessions.common.sign_up'), new_user_registration_path

@@ -27,6 +27,7 @@
 #  index_users_on_confirmation_token    (confirmation_token) UNIQUE
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#  index_users_on_url                   (url)
 #
 
 class User < ActiveRecord::Base
@@ -34,4 +35,12 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable
   devise :database_authenticatable, :registerable, :confirmable, :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2]
+
+  has_many :case_studies
+
+  class << self
+    def find_by_url!(url)
+      find_by!(url: url)
+    end
+  end
 end

@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.2.3'
+
 gem 'rails', '4.2.4'
 gem 'pg'
 gem 'puma'
@@ -16,11 +18,21 @@ gem 'slim-rails'
 
 gem 'jquery-rails'
 gem 'bootstrap-sass'
+gem 'font-awesome-rails', github: 'bokmann/font-awesome-rails'
+gem 'bootswatch-rails', github: 'maxim/bootswatch-rails'
 
 gem 'devise'
 gem 'omniauth-google-oauth2'
 
 gem 'simple_form', github: 'plataformatec/simple_form'
+gem 'inherited_resources', github: 'josevalim/inherited_resources'
+gem 'has_scope', github: 'plataformatec/has_scope'
+gem 'paperclip'
+
+gem 'draper'
+gem 'kaminari'
+gem 'kaminari-bootstrap'
+
 
 # For future
 # gem 'sidekiq'

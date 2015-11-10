@@ -10,6 +10,22 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
+ *= require font-awesome
  *= require_self
  */
+
+// Variables
+
+$brand-primary: #47c144;
+$brand-primary: #909090;
+
+@import "trumbowyg";
+
+@import "bootstrap-sprockets";
+@import "bootswatch/cosmo/variables";
+@import "bootstrap";
+body { padding-top: 60px; }
+@import "bootswatch/cosmo/bootswatch";
+
+@import "backend/**/*";
+

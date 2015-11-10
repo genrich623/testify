@@ -7,19 +7,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<b>signed in:</b> <%= user_signed_in? %>  <br>
-<% if user_signed_in? %>
-  <b>email:</b> <%= current_user.email %>  <br>
-  <%= link_to destroy_user_session_path, method: :delete do %>
-    <b>logout</b>
-  <% end %>
-<% else %>
-  <%= link_to new_user_session_path do %>
-    <b>login</b>
-  <% end %>
-<% end %>
-<hr>
-
+<%= render 'layouts/header' %>
+<%= render 'layouts/flash' %>
 <%= yield %>
 
 </body>

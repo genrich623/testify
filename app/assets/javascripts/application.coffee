@@ -12,4 +12,14 @@
 #
 #= require jquery
 #= require jquery_ujs
+#= require bootstrap
+#= require trumbowyg.min
 #= require_tree .
+
+
+$ ->
+  $('.flashes .alert').each ->
+    # 3 seconds
+    $(this).fadeTo(3000, 500).slideUp(500, => $(this).alert('close'))
+
+  $('.trumbowyg').trumbowyg()

@@ -1,0 +1,15 @@
+.container.backend-case-studies
+  .row
+    .col-xs-12.header
+      = link_to t('views.backend.case_studies.index.new_button'), new_case_study_path, class: 'btn btn-primary pull-right'
+      h1.page-header = t('views.backend.case_studies.index.title')
+
+  - _collection = collection.to_a
+  - _collection.each do |resource|
+    = render 'list_case_study', resource: resource
+
+    / Lines between elements
+    - unless collection[-1] == resource
+      hr
+
+  .text-center = paginate collection

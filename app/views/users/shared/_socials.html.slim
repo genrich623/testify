@@ -1,0 +1,8 @@
+.devise-wrapper
+  .row.socials
+    .col-md-9.col-md-offset-3
+      h3.title = t('views.users.sessions.new.social_login')
+
+      .links
+        = link_to user_omniauth_authorize_path(:google_oauth2) do
+          = fa_icon 'facebook-square 4x'
