@@ -31,16 +31,12 @@
 #
 
 class User < ActiveRecord::Base
+  include FindableByUrl
+
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable
   devise :database_authenticatable, :registerable, :confirmable, :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2]
 
   has_many :case_studies
-
-  class << self
-    def find_by_url!(url)
-      find_by!(url: url)
-    end
-  end
 end

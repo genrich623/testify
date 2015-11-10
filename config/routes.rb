@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :case_studies, controller: 'backend/case_studies'
 
-  get ':url' => 'frontend/case_studies#index', as: :public_case_studies
+  get ':user_url' => 'frontend/case_studies#index', as: :public_case_studies
   get ':user_url/:url' => 'frontend/case_studies#show', as: :public_case_study
 
   root 'pages#root'

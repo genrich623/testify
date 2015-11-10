@@ -2,5 +2,6 @@
   .col-xs-12
     = f.input :client, placeholder: t('activerecord.attributes.case_study.client')
     = f.input :title, placeholder: t('activerecord.attributes.case_study.title')
-    = f.input :image, wrapper: :horizontal_file_input, label_html: {class: 'col-md-2'}
+    = f.input :image, wrapper: :horizontal_file_input, label_html: {class: 'col-md-2'}, hint: t('views.backend.case_studies.form.image_hint')
     = f.input :body, placeholder: t('activerecord.attributes.case_study.body'), input_html: { class: 'trumbowyg' }
+    = f.input :template, placeholder: t('activerecord.attributes.case_study.template'), input_html: { class: 'ace-html' }

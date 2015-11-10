@@ -15,14 +15,19 @@
 #  body_short         :text
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
+#  template           :text
+#  template_id        :integer
 #
 # Indexes
 #
-#  index_case_studies_on_url      (url)
-#  index_case_studies_on_user_id  (user_id)
+#  index_case_studies_on_template_id  (template_id)
+#  index_case_studies_on_url          (url)
+#  index_case_studies_on_user_id      (user_id)
 #
 
 class CaseStudy < ActiveRecord::Base
+  include FindableByUrl
+
   paginates_per 10
 
   has_attached_file :image,
@@ -37,6 +42,12 @@ class CaseStudy < ActiveRecord::Base
   validates_uniqueness_of :url, scope: :user_id
 
   before_validation :prepare_url
+
+  class << self
+    def find_by_user_url!(url)
+      joins(:user).where(users: {url: url})
+    end
+  end
 
 private
   def prepare_url

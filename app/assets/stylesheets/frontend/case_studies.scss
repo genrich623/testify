@@ -1,0 +1,45 @@
+.frontend-case-study {
+  .image {
+    $height: 600px;
+    @extend .container-fluid;
+
+    height: $height;
+    background-size: cover;
+    background-position: 50% 50%;
+
+    text-align: center;
+    color: #FFFFFF;
+
+    &::after {
+      height: $height;
+      width: 100%;
+      margin: auto (-$grid-gutter-width / 2);
+      position: absolute;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 0;
+      top: $body-padding-top;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+
+      $height1: 96px;
+      $height2: 48px;
+
+      h1 {
+        font-size: $height1;
+        margin-top: ($height - $height1 - $height2 - $line-height-computed) / 2.5;
+      }
+
+      h2 {
+        font-size: $height2;
+        margin-top: $line-height-computed;
+      }
+    }
+  }
+
+  .no-image {
+
+  }
+}

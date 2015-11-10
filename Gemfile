@@ -32,6 +32,7 @@ gem 'paperclip'
 gem 'draper'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
+gem 'possessive'
 
 
 # For future

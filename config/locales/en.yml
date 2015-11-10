@@ -11,6 +11,7 @@ en:
         client: Client
         title: Title
         body: Body
+        template: Template
     models:
       case_study:
         one: Case study
@@ -47,3 +48,11 @@ en:
         index:
           title: Your case studies
           new_button: Create new
+        form:
+          image_hint: Chose a large image
+
+    frontend:
+      case_studies:
+        index:
+          title: "%{user} case studies"
+

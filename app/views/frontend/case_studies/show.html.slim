@@ -1,0 +1,14 @@
+.frontend-case-study
+  - resource.decorate.tap do |_resource|
+    - if _resource.image.present?
+      .image style="background-image: url(#{_resource.image.url(:huge)})"
+        .content
+          h1.client = _resource.client
+          h2.title = _resource.title
+    - else
+      .no-image
+        .content
+          h1.client = _resource.client
+          h2.title = _resource.title
+    .container
+      == _resource.rendered_template

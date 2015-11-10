@@ -14,6 +14,9 @@
 #= require jquery_ujs
 #= require bootstrap
 #= require trumbowyg.min
+#= require ace/ace
+#= require ace/mode-html
+#= require ace/theme-monokai
 #= require_tree .
 
 
@@ -23,3 +26,20 @@ $ ->
     $(this).fadeTo(3000, 500).slideUp(500, => $(this).alert('close'))
 
   $('.trumbowyg').trumbowyg()
+
+  JavaScriptMode = ace.require("ace/mode/javascript").Mode;
+  $('.ace-html').each ->
+    textarea = $(this).hide()
+
+    div = $('<div></div>').html(textarea.html(  )).insertAfter(textarea)
+
+    editor = ace.edit(div[0])
+    editor.setTheme(ace.require("ace/theme/monokai"))
+    editor.setOptions
+      maxLines: 15
+      minLines: 10
+      fontSize: "14pt"
+    editor.session.setMode(new JavaScriptMode())
+
+    textarea.closest('form').submit =>
+      textarea.val(editor.getSession().getValue())

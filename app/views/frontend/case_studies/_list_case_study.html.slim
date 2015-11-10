@@ -1,0 +1,10 @@
+.row.backend-list-case-study
+  - resource.decorate.tap do |_resource|
+    .col-xs-12.header
+      h2 = link_to _resource.to_s, public_case_study_path(resource.user.url, resource.url)
+
+    - if _resource.image.present?
+      .col-xs-12
+        .image style="background-image: url(#{_resource.image.url(:huge)})"
+    .col-xs-12.body
+      == _resource.truncated_body

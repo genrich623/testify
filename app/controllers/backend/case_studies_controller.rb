@@ -8,7 +8,7 @@ class Backend::CaseStudiesController < Backend::ApplicationController
   end
 
   def permitted_params
-    params.permit(case_study: [:image, :client, :title, :body])
+    params.permit(case_study: [:image, :client, :title, :body, :template, :template_id])
   end
 
   def resource_url

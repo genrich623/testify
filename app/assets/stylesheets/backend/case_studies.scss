@@ -1,11 +1,26 @@
-.backend-case-studies,
-.backend-case-study {
+.backend-case-studies {
   .header {
     .buttons {
       @extend .pull-right;
       margin-top: ($line-height-computed * 2);
     }
   }
+
+  .image {
+    height: 400px;
+    background-size: cover;
+    background-position: 50% 50%;
+    margin-bottom: $line-height-computed;
+  }
+}
+
+.backend-case-study {
+  @extend .backend-case-studies;
+}
+
+.backend-edit-case-study,
+.backend-new-case-study {
+  @extend .backend-case-studies;
 
   .form-group.file {
     .file-wrapper-row {
@@ -24,18 +39,15 @@
       font-weight: normal;
       text-align: left;
     }
+
+    p {
+      margin-bottom: 0;
+    }
   }
 
   .form-group.file.has-error {
     .file-wrapper-col {
       border-color: $brand-danger;
     }
-  }
-
-  .image {
-    height: 400px;
-    background-size: cover;
-    background-position: 50% 50%;
-    margin-bottom: $line-height-computed;
   }
 }

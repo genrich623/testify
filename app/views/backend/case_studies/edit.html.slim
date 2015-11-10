@@ -1,9 +1,10 @@
 - resource.decorate.tap do |_resource|
-  .container.backend-case-studies
+  .container.backend-edit-case-study
     = simple_form_for resource, wrapper: :horizontal_form_without_labels, html: { class: 'form-horizontal' } do |f|
       .row
         .col-xs-12.header
-          = f.submit t('views.common.save'), class: 'btn btn-primary pull-right'
+          .buttons
+            = f.submit t('views.common.save'), class: 'btn btn-primary'
           h1.page-header = I18n.t('views.common.edit_object', obj: _resource.to_s)
 
       = render 'form', f: f
