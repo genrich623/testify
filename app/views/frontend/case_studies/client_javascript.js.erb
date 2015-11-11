@@ -1,0 +1,17 @@
+(function () {
+  var draw_preview = function (obj) {
+    document.write(obj.title + "<br>" + obj.body + "<hr><hr>");
+  };
+
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "<%= @url %>");
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4) {
+      var collection = JSON.parse(xhr.responseText);
+      for (var i = 0, l = collection.length; i < l; i++) {
+        draw_preview(collection[i]);
+      }
+    }
+  };
+  xhr.send(null);
+}).call(this);

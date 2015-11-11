@@ -4,6 +4,10 @@
       @extend .pull-right;
       margin-top: ($line-height-computed * 2);
     }
+    .buttons-sm {
+      @extend .pull-right;
+      margin-top: 23px;
+    }
   }
 
   .image {
@@ -16,6 +20,10 @@
 
 .backend-case-study {
   @extend .backend-case-studies;
+
+  .code {
+
+  }
 }
 
 .backend-edit-case-study,

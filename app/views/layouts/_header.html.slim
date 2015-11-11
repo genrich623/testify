@@ -37,10 +37,12 @@ nav.navbar.navbar-default.navbar-fixed-top
           input.form-control placeholder="Search" type="text" /
         button.btn.btn-default type="submit"  Submit
       ul.nav.navbar-nav.navbar-right
-        = li controller?(:'backend/case_studies') do
-          = link_to t('views.layouts.header.cabinet'), case_studies_path
-
         - if user_signed_in?
+          = li controller?(:'backend/case_studies') do
+            = link_to t('views.layouts.header.case_studies'), case_studies_path
+          = li controller?(:'users/registrations') do
+            = link_to t('views.layouts.header.cabinet'), edit_user_registration_path
+
           li = link_to t('views.layouts.header.log_out'), destroy_user_session_path, method: :delete
         - else
           = li controller?(:'users/sessions') && action?(:new, :create) do

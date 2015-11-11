@@ -7,6 +7,7 @@ en:
         name: "Name"
         url: "Personal URL"
         password_confirmation: "Password confirmation"
+        current_password: "Current password"
       case_study:
         client: Client
         title: Title
@@ -27,6 +28,7 @@ en:
       edit: "Edit"
       preview: "Preview"
       actions: Actions
+      delete: Delete
 
     layouts:
       header:
@@ -34,6 +36,7 @@ en:
         toggle: Toogle navigation
         log_out: Log out
         cabinet: Cabinet
+        case_studies: Case studies
 
     users:
       sessions:
@@ -42,6 +45,9 @@ en:
           sign_up: Sign up
           forgot_password: Forgot password?
           or: OR
+      registrations:
+        edit: Edit profile
+        code: Code
 
     backend:
       case_studies:
@@ -50,6 +56,8 @@ en:
           new_button: Create new
         form:
           image_hint: Chose a large image
+        show:
+          generate_code: Generate code
 
     frontend:
       case_studies:

@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   get ':user_url' => 'frontend/case_studies#index', as: :public_case_studies
   get ':user_url/:url' => 'frontend/case_studies#show', as: :public_case_study
 
-  root 'pages#root'
+  root 'frontend/pages#root'
 end
