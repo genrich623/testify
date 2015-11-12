@@ -1,16 +1,32 @@
 (function () {
+  var replaces = {
+    title: 'title',
+    image: 'image',
+    description: 'description',
+    hover_text: 'hover_text'
+  };
+
   var draw_preview = function (obj) {
-    document.write(obj.title + "<br>" + obj.body + "<hr><hr>");
+    var key, value, s = <%== render('frontend/case_studies/case_study_preview').to_json %>;
+    for (var i = 0, keys = Object.keys(replaces), l = keys.length; i < l; i++) {
+      key = keys[i];
+      value = obj[replaces[key]];
+      s = s.replace(new RegExp("\{\{" + key +  "}}", 'g'), value)
+    }
+    return s;
   };
 
   var xhr = new XMLHttpRequest();
   xhr.open("GET", "<%= @url %>");
   xhr.onreadystatechange = function () {
     if (xhr.readyState == 4) {
-      var collection = JSON.parse(xhr.responseText);
+      var wrapper = <%== render('frontend/case_studies/case_study_preview_wrapper').to_json %>,
+          elements = [],
+          collection = JSON.parse(xhr.responseText);
       for (var i = 0, l = collection.length; i < l; i++) {
-        draw_preview(collection[i]);
+        elements.push(draw_preview(collection[i]));
       }
+      document.write(wrapper.replace(/\{\{content}}/g, elements.join("")))
     }
   };
   xhr.send(null);
