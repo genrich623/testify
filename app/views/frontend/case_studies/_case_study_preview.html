@@ -1,11 +1,12 @@
-<li class="items-list__item col-md-4 col-sm-6 col-xs-8" style="display: block; float: left;">
-  <div class="content col-xs-12" style="background: #cccccc; margin: 15px; min-height: 340px;">
+<li class="items-list__item col-sm-4" style="display: block; float: left; width: 33.33333333%;
+    position: relative; min-height: 1px; padding-left: 15px; padding-right: 15px;">
+  <div class="content col-xs-12" style="background: #cccccc; margin: 15px; min-height: 340px; position: relative">
     <div class="row">
 
-      <div class="link__content link-info col-xs-12" style="position: absolute; top: 0;">
+      <div class="link__content link-info col-xs-12" style="position: absolute; top: 0; width: 100%;">
         <div class="row">
           <div class="link-info__img" style="max-height: 240px; overflow: hidden;">
-            <img src="{{image}}" class="link-info__image" alt="" style="height: 100%; width: 100%;"></div>
+            <img src="{{image_url}}" class="link-info__image" alt="" style="height: 100%; width: 100%;"></div>
           <div class="link-info-text" style="max-height: 100px;">
 
             <h4 class="link-info-text__title"
@@ -14,51 +15,20 @@
 
             <p class="link-info-text__text"
                style="max-height: 75px; overflow: hidden; padding: 5px 10px 0 10px; text-overflow: ellipsis; white-space: nowrap;">
-              {{description}}</p>
+              {{body}}</p>
           </div>
         </div>
       </div>
-      <div class="link__up-block link-hover"
+      <div class="link__up-block link-hover" onmouseover="this.style.opacity=0.9" onmouseout="this.style.opacity = 0"
            style="background: #2b6a80; opacity: 0; position: relative; transition: all 0.5s;">
         <a href="" class="link-hover-text"
            style="display: block; min-height: 340px; text-decoration: none; width: 100%;">
           <h1 class="link-hover-text__text"
               style="bottom: 0; color: white; display: block; left: 0; margin: 0 auto; position: absolute; right: 0; text-align: center; text-decoration: none; top: 0;">
-            {{hover_text}}
+            {{body_short}}
           </h1>
         </a>
       </div>
     </div>
   </div>
 </li>
-
-      <li class="items-list__item col-md-4 col-sm-6 col-xs-8">
-        <div class="content col-xs-12">
-          <div class="row">
-
-            <div class="link__content link-info col-xs-12">
-              <div class="row">
-                <div class="link-info__img">
-                  <img src="3.jpg" class="link-info__image" alt=""></div>
-                <div class="link-info-text">
-
-                  <h4 class="link-info-text__title">Item name</h4>
-
-                  <p class="link-info-text__text">esdv sg g rd grd gdrhtfh fth fthf ht fh fhf
-                    esdv sg g rd grd gdrhtfh fth fthf
-                    esdv sg g rd grd gdrhtfh fth fthfesdv sg g rd grd gdrhtfh fth fthfesdv sg g rd grd gdrhtfh fth
-                    fthfesdv sg g rd grd gdrhtfh fth fthfesdv sg g rd grd gdrhtfh fth fthfesdv sg g rd grd gdrhtfh fth
-                    fthfesdv sg g rd grd gdrhtfh fth fthfesdv sg g rd grd gdrhtfh fth fthf</p>
-                </div>
-              </div>
-            </div>
-            <div class="link__up-block link-hover">
-              <a href="" class="link-hover-text">
-                <h1 class="link-hover-text__text">
-                  ÃÂºÃÂ¿ÃÂ²ÃÂµÃ‘Â€ÃÂ²Ã‘Â€ÃÂµÃ‘Â€ÃÂµÃ‘Â€
-                </h1>
-              </a>
-            </div>
-          </div>
-        </div>
-      </li>

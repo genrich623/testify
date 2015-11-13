@@ -1,9 +1,9 @@
 (function () {
   var replaces = {
     title: 'title',
-    image: 'image',
-    description: 'description',
-    hover_text: 'hover_text'
+    image_url: 'image_url',
+    body: 'body',
+    body_short: 'title'
   };
 
   var draw_preview = function (obj) {
@@ -26,7 +26,8 @@
       for (var i = 0, l = collection.length; i < l; i++) {
         elements.push(draw_preview(collection[i]));
       }
-      document.write(wrapper.replace(/\{\{content}}/g, elements.join("")))
+      var testifyBlock = document.getElementById('testify-block');
+      testifyBlock.innerHTML += wrapper.replace(/\{\{content}}/g, elements.join(""));
     }
   };
   xhr.send(null);

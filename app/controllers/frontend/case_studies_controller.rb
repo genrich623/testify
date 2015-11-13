@@ -13,6 +13,11 @@ class Frontend::CaseStudiesController < Frontend::ApplicationController
     response.headers['Access-Control-Allow-Origin'] = URI.join(request.referer, '/').to_s[0..-2] if validate_request
   end
 
+  def index
+    cases = User.find_by(url: params[:user_url]).case_studies
+    render json: cases.to_json(:only => [:body, :body_short, :client, :id, :title, :url, :user_id, :template, :template_id], :methods => [:image_url])
+  end
+
   protected def resource
     get_resource_ivar || set_resource_ivar(end_of_association_chain.send(method_for_find, params[:url]))
   end

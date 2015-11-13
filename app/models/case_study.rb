@@ -27,6 +27,7 @@
 
 class CaseStudy < ActiveRecord::Base
   include FindableByUrl
+  SITE_URL = "#{ENV['SITE_PROTOCOL']}://#{ENV['SITE_HOST']}#{':' + ENV['SITE_PORT'] if ENV['SITE_PORT']}"
 
   paginates_per 10
 
@@ -42,6 +43,30 @@ class CaseStudy < ActiveRecord::Base
   validates_uniqueness_of :url, scope: :user_id
 
   before_validation :prepare_url
+
+  after_initialize { self.body ||= "<div class='container'>
+    <div class='row'>
+        <div class='sidebar col-md-4 col-md-push-8'>
+            <h3 class='sidebar__title'>New Study case </h3>
+            <ul class='sidebar__list list'>
+                <li class='list__element'><a href='' class='list__link'>Celebrating a New</a></li>
+                <li class='list__element'>Celebrating a New</li>
+            </ul>
+        </div>
+        <div class='content col-md-8 col-md-pull-4'>
+            <h3 class='content__title'>New Study case</h3>
+            <p class='content__text'>Simple text.</p>
+            <blockquote>
+                Simple quote
+            </blockquote>
+        </div>
+    </div>"
+  }
+
+
+  def image_url
+    SITE_URL + image.url(:tile)
+  end
 
   class << self
     def find_by_user_url!(url)

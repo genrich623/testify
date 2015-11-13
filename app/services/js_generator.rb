@@ -19,6 +19,7 @@ class JsGenerator
   private
   def html(js)
     <<-HTML
+<div id="testify-block"></div>
 <script type="text/javascript" charset="utf-8">#{js}</script>
     HTML
   end
