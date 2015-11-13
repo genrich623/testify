@@ -14,8 +14,8 @@ class Frontend::CaseStudiesController < Frontend::ApplicationController
   end
 
   def index
-    cases = User.find_by(url: params[:user_url]).case_studies
-    render json: cases.to_json(:only => [:body, :body_short, :client, :id, :title, :url, :user_id, :template, :template_id], :methods => [:image_url])
+    @cases = User.find_by(url: params[:user_url]).case_studies
+    render :index
   end
 
   protected def resource
