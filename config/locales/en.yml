@@ -8,11 +8,12 @@ en:
         url: "Personal URL"
         password_confirmation: "Password confirmation"
         current_password: "Current password"
+        domain: "Site domain"
       case_study:
         client: Client
         title: Title
-        body: Body
-        template: Template
+        template_content: Body
+        tile_template_content: Tile
     models:
       case_study:
         one: Case study
@@ -30,37 +31,44 @@ en:
       actions: Actions
       delete: Delete
 
-    layouts:
-      header:
-        title: Testify
-        toggle: Toogle navigation
-        log_out: Log out
-        cabinet: Cabinet
-        case_studies: Case studies
+  layouts:
+    header:
+      title: Testify
+      toggle: Toogle navigation
+      log_out: Log out
+      cabinet: Cabinet
+      case_studies: Case studies
 
-    users:
-      sessions:
-        common:
-          sign_in: Sign in
-          sign_up: Sign up
-          forgot_password: Forgot password?
-          or: OR
-      registrations:
-        edit: Edit profile
-        code: Code
+  users:
+    sessions:
+      common:
+        sign_in: Sign in
+        sign_up: Sign up
+        forgot_password: Forgot password?
+        or: OR
+    registrations:
+      edit: Edit profile
+      code: Code
 
-    backend:
-      case_studies:
-        index:
-          title: Your case studies
-          new_button: Create new
-        form:
-          image_hint: Chose a large image
-        show:
-          generate_code: Generate code
+  frontend:
+    case_studies:
+      index:
+        title: "%{user} case studies"
 
-    frontend:
-      case_studies:
-        index:
-          title: "%{user} case studies"
 
+  backend:
+    case_studies:
+      index:
+        title: Your case studies
+        new_button: Create new
+      form:
+        image_hint: Chose a large image
+        case_study_template: Case study template
+        reset: "Changing template resets all your changes"
+        tile_template: "Tile template"
+        customize: "Customize"
+      template_preview:
+        choose: "Choose"
+
+  js:
+    confirm: Are you sure? Your customization will be lost.

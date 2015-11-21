@@ -1,8 +1,39 @@
 .row
   .col-xs-12
-    = f.input :client, placeholder: t('activerecord.attributes.case_study.client')
-    = f.input :title, placeholder: t('activerecord.attributes.case_study.title')
-    = f.input :image, wrapper: :horizontal_file_input, label_html: { class: 'col-md-2' },
-              hint: t('views.backend.case_studies.form.image_hint'), required: false
-    = f.input :body, placeholder: t('activerecord.attributes.case_study.body'), input_html: { class: 'trumbowyg' }
-    /= f.input :template, placeholder: t('activerecord.attributes.case_study.template'), input_html: { class: 'ace-html' }
+    #accordion.panel-group
+      .panel.panel-default
+        .panel-heading
+          h4.panel-title
+            a data-parent="#accordion" data-toggle="collapse" href="#caseStudyTemplate" = t('.case_study_template')
+        #caseStudyTemplate.panel-collapse.collapse(class="#{'in' if resource.template_content.blank?}")
+          .panel-body
+            .row
+              - CaseStudyTemplate.all.each do |t|
+                = render 'template_preview', t: t, editor: '#case_study_template_content', target: '#tileTemplate'
+            .clearfix
+            .reset-info = t('.reset')
+      .panel.panel-default
+        .panel-heading
+          h4.panel-title
+            a.collapsed data-parent="#accordion" data-toggle="collapse" href="#tileTemplate" = t('.tile_template')
+        #tileTemplate.panel-collapse.collapse(class="#{'in' if resource.template_content.present? && resource.tile_template_content.blank?}")
+          .panel-body
+            .row
+              - TileTemplate.all.each do |t|
+                = render 'template_preview', t: t, editor: '#case_study_tile_template_content', target: '#form'
+            .clearfix
+            .reset-info = t('.reset')
+      .panel.panel-default
+        .panel-heading
+          h4.panel-title
+            a.collapsed data-parent="#accordion" data-toggle="collapse" href="#form" = t('.customize')
+        #form.panel-collapse.collapse(class="#{'in' if resource.template_content.present? && resource.tile_template_content.present?}")
+          .panel-body
+            = f.input :client, placeholder: t('activerecord.attributes.case_study.client')
+            = f.input :title, placeholder: t('activerecord.attributes.case_study.title')
+            = f.input :image, wrapper: :horizontal_file_input, label_html: { class: 'col-md-2' },
+                      hint: t('.image_hint'), required: false
+            = f.input :template_content, placeholder: t('activerecord.attributes.case_study.template_content'),
+                      input_html: { class: 'trumbowyg' }
+            = f.input :tile_template_content, placeholder: t('activerecord.attributes.case_study.tile_template_content'),
+                      input_html: { class: 'trumbowyg' }

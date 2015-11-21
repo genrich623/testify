@@ -19,5 +19,5 @@
 #  index_templates_on_type  (type)
 #
 
-class CaseStudyTemplate < Template
+class TileTemplate < Template
 end

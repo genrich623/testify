@@ -2,11 +2,11 @@ nav.navbar.navbar-default.navbar-fixed-top
   .container
     .navbar-header
       button.navbar-toggle.collapsed data-target="#navbar-collapse" data-toggle="collapse" type="button"
-        span.sr-only = t('views.layouts.header.toggle')
+        span.sr-only = t('.toggle')
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      = link_to t('views.layouts.header.title'), root_path, class: 'navbar-brand'
+      = link_to t('.title'), root_path, class: 'navbar-brand'
     #navbar-collapse.collapse.navbar-collapse
       /ul.nav.navbar-nav
         /li.active
@@ -39,13 +39,13 @@ nav.navbar.navbar-default.navbar-fixed-top
       ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           = li controller?(:'backend/case_studies') do
-            = link_to t('views.layouts.header.case_studies'), case_studies_path
+            = link_to t('.case_studies'), case_studies_path
           = li controller?(:'users/registrations') do
-            = link_to t('views.layouts.header.cabinet'), edit_user_registration_path
+            = link_to t('.cabinet'), edit_user_registration_path
 
-          li = link_to t('views.layouts.header.log_out'), destroy_user_session_path, method: :delete
+          li = link_to t('.log_out'), destroy_user_session_path, method: :delete
         - else
           = li controller?(:'users/sessions') && action?(:new, :create) do
-            = link_to t('views.users.sessions.common.sign_in'), new_user_session_path
+            = link_to t('users.sessions.common.sign_in'), new_user_session_path
           = li controller?(:'users/registrations') && action?(:new, :create) do
-            = link_to t('views.users.sessions.common.sign_up'), new_user_registration_path
+            = link_to t('users.sessions.common.sign_up'), new_user_registration_path

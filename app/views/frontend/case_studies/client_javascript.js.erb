@@ -1,36 +1,9 @@
 (function () {
-  var replaces = {
-    title: 'title',
-    image_url: 'image_url',
-    body: 'body',
-    body_short: 'title',
-    user: 'user',
-    url: 'url',
-    domain: 'domain'
-  };
-
-  var draw_preview = function (obj) {
-    var key, value, s = <%== render('frontend/case_studies/case_study_preview').to_json %>;
-    for (var i = 0, keys = Object.keys(replaces), l = keys.length; i < l; i++) {
-      key = keys[i];
-      value = obj[replaces[key]];
-      s = s.replace(new RegExp("\{\{" + key +  "}}", 'g'), value)
-    }
-    return s;
-  };
-
   var xhr = new XMLHttpRequest();
   xhr.open("GET", "<%= @url %>");
   xhr.onreadystatechange = function () {
     if (xhr.readyState == 4) {
-      var wrapper = <%== render('frontend/case_studies/case_study_preview_wrapper').to_json %>,
-          elements = [],
-          collection = JSON.parse(xhr.responseText);
-      for (var i = 0, l = collection.length; i < l; i++) {
-        elements.push(draw_preview(collection[i]));
-      }
-      var testifyBlock = document.getElementById('testify-block');
-      testifyBlock.innerHTML += wrapper.replace(/\{\{content}}/g, elements.join(""));
+      document.getElementById('testify-tiles').innerHTML = xhr.responseText;
     }
   };
   xhr.send(null);

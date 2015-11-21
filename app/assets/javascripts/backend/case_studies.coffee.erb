@@ -1,0 +1,23 @@
+$ ->
+  code_shown = false
+  btn = $('#generate-code')
+  code = $('#code').hide()
+  btn.click (e) ->
+    slide = if code_shown then 'slideUp' else 'slideDown'
+    code[slide]()
+    code_shown = !code_shown
+    e.preventDefault()
+
+  $('.choose-template').on 'click', (e) ->
+    self = $(this)
+    editor = $(self.data('editor'))
+
+    if editor.trumbowyg('html').length
+      return unless confirm("<%= I18n.t('js.confirm') %>")
+
+    $.ajax
+      url: self.data('url')
+      success: (response) ->
+        editor.trumbowyg('html', response.template)
+
+    e.preventDefault()

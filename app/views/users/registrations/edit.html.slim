@@ -2,11 +2,13 @@
   .row
     .col-md-6.col-sm-6.col-xs-12
 
-      h3.text-center = t('views.users.registrations.edit')
+      h3.text-center = t('users.registrations.edit')
 
       = simple_form_for(resource, as: :user, url: user_registration_path, wrapper: :horizontal_form_without_labels,
                         html: { class: 'form-horizontal', method: :put }) do |f|
         = f.input :name, autofocus: true, placeholder: I18n.t('activerecord.attributes.user.name')
+        = f.input :url, placeholder: I18n.t('activerecord.attributes.user.url')
+        = f.input :domain, placeholder: I18n.t('activerecord.attributes.user.domain')
         = f.input :email, placeholder: I18n.t('activerecord.attributes.user.email')
         = f.input :password, placeholder: I18n.t('activerecord.attributes.user.password')
         = f.input :password_confirmation, placeholder: I18n.t('activerecord.attributes.user.password_confirmation')
@@ -17,8 +19,8 @@
             = f.button :submit, t('views.common.save'), class: 'btn btn-primary btn-block'
 
     .col-md-6.col-sm-6.col-xs-12
-      h3.text-center = t('views.users.registrations.code')
-      pre = resource.decorate.code
+      h3.text-center = t('users.registrations.code')
+      pre.user-code = resource.decorate.code
 
 
 /<h2>Edit <%= resource_name.to_s.humanize %></h2>

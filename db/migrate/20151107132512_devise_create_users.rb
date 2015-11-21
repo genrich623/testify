@@ -4,6 +4,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       ## User fields
       t.string :name
       t.string :url, index: true
+      t.string :domain
 
       ## Database authenticatable
       t.string :email,              null: false, default: ''

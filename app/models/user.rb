@@ -5,6 +5,7 @@
 #  id                     :integer          not null, primary key
 #  name                   :string
 #  url                    :string
+#  domain                 :string
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  reset_password_token   :string
@@ -39,4 +40,6 @@ class User < ActiveRecord::Base
          :omniauthable, omniauth_providers: [:google_oauth2]
 
   has_many :case_studies
+
+  validates_presence_of :name, :domain, :url
 end

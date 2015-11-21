@@ -58,4 +58,9 @@
       border-color: $brand-danger;
     }
   }
+
+  .reset-info {
+    @extend .text-muted;
+    margin-top: ceil($grid-gutter-width / 2);
+  }
 }

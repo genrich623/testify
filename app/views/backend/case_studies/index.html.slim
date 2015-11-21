@@ -2,8 +2,8 @@
   .row
     .col-xs-12.header
       .buttons
-        = link_to t('views.backend.case_studies.index.new_button'), new_case_study_path, class: 'btn btn-primary'
-      h1.page-header = t('views.backend.case_studies.index.title')
+        = link_to t('.new_button'), new_case_study_path, class: 'btn btn-primary'
+      h1.page-header = t('.title')
 
   - _collection = collection.to_a
   - _collection.each do |resource|

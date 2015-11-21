@@ -2,9 +2,9 @@ class JsGenerator
   FILE = Rails.root.join('app/views/frontend/case_studies/client_javascript.js.erb')
   SITE_URL = "#{ENV['SITE_PROTOCOL']}://#{ENV['SITE_HOST']}#{':' + ENV['SITE_PORT'] if ENV['SITE_PORT']}"
 
-  def initialize(code)
-    @code = code
-    @url = full_url(code)
+  def initialize(user)
+    @user = user
+    @url = full_url
   end
 
   def code
@@ -18,9 +18,9 @@ class JsGenerator
 
   private
   def html(js)
-    <<-HTML
-<div id="testify-block"></div>
-<script type="text/javascript" charset="utf-8">#{js}</script>
+    <<-HTML.strip_heredoc
+      <div id="testify-tiles"></div>
+      <script type="text/javascript" charset="utf-8">#{js}</script>
     HTML
   end
 
@@ -28,7 +28,9 @@ class JsGenerator
     Uglifier.compile js
   end
 
-  def full_url(url)
-    "#{SITE_URL}#{Rails.application.routes.url_helpers.public_case_studies_path(url, :json)}"
+  def full_url
+    url = @user.url
+    domain = @user.domain
+    "#{SITE_URL}#{Rails.application.routes.url_helpers.code_case_studies_path(url, sign: SignUtils.sign(domain))}"
   end
 end

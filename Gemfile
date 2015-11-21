@@ -34,6 +34,9 @@ gem 'kaminari'
 gem 'kaminari-bootstrap'
 gem 'possessive'
 
+gem 'premailer-rails'
+gem 'sanitize'
+gem 'liquid'
 
 # For future
 # gem 'sidekiq'

@@ -33,3 +33,7 @@ body { padding-top: $body-padding-top; }
 .flashes {
   margin-top: $grid-gutter-width / 2;
 }
+
+.user-code {
+  max-height: 334px;
+}
