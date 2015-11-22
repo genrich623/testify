@@ -47,11 +47,12 @@ group :doc do
   gem 'sdoc', '~> 0.4.0'
 end
 
+gem 'annotate'
+
 group :development do
   gem 'binding_of_caller'
   gem 'better_errors'
   gem 'letter_opener'
-  gem 'annotate'
   gem 'quiet_assets'
 end
 
