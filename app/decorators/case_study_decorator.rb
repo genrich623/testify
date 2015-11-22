@@ -16,13 +16,6 @@ class CaseStudyDecorator < Draper::Decorator
   end
 
   def truncated_body
-    body
-  end
-
-  def rendered_template
-    # template = self.template.dup
-    # REPLACES.each { |k, v| template.gsub!("{{#{k}}}", object.send(v)) }
-    # template
-    body
+    raise 'TODO'
   end
 end

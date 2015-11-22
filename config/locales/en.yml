@@ -72,3 +72,7 @@ en:
 
   js:
     confirm: Are you sure? Your customization will be lost.
+
+  errors:
+    messages:
+      already_exists: Such %{attr} already exist

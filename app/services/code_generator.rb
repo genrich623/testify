@@ -1,4 +1,4 @@
-class JsGenerator
+class CodeGenerator
   FILE = Rails.root.join('app/views/frontend/case_studies/client_javascript.js.erb')
   SITE_URL = "#{ENV['SITE_PROTOCOL']}://#{ENV['SITE_HOST']}#{':' + ENV['SITE_PORT'] if ENV['SITE_PORT']}"
 

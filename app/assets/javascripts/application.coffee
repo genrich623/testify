@@ -31,9 +31,10 @@ $ ->
   $('.ace-html').each ->
     textarea = $(this).hide()
 
-    div = $('<div></div>').html(textarea.html(  )).insertAfter(textarea)
+    div = $('<div></div>').html(textarea.html()).insertAfter(textarea)
 
     editor = ace.edit(div[0])
+    textarea.data('ace-editor', editor)
     editor.setTheme(ace.require("ace/theme/monokai"))
     editor.setOptions
       maxLines: 15

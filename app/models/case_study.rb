@@ -38,30 +38,12 @@ class CaseStudy < ActiveRecord::Base
 
   belongs_to :user
 
-  validates_presence_of :client, :title, :image, :template_content, :template_compiled
+  validates_presence_of :client, :title, :image, :template_content, :tile_template_content
   validates_uniqueness_of :url, scope: :user_id
 
   before_validation :prepare_url
-
-  # after_initialize { self.body ||= "<div class='container'>
-  #   <div class='row'>
-  #       <div class='sidebar col-md-4 col-md-push-8'>
-  #           <h3 class='sidebar__title'>New Study case </h3>
-  #           <ul class='sidebar__list list'>
-  #               <li class='list__element'><a href='' class='list__link'>Celebrating a New</a></li>
-  #               <li class='list__element'>Celebrating a New</li>
-  #           </ul>
-  #       </div>
-  #       <div class='content col-md-8 col-md-pull-4'>
-  #           <h3 class='content__title'>New Study case</h3>
-  #           <p class='content__text'>Simple text.</p>
-  #           <blockquote>
-  #               Simple quote
-  #           </blockquote>
-  #       </div>
-  #   </div>"
-  # }
-
+  after_validation :prepare_url_errors
+  before_save :prepare_templates
 
   def image_url
     SITE_URL + image.url(:tile)
@@ -76,5 +58,26 @@ class CaseStudy < ActiveRecord::Base
 private
   def prepare_url
     self.url = "#{client} #{title}".parameterize
+  end
+
+  def prepare_url_errors
+    errors[:client] = I18n.t('errors.messages.already_exists', attr: 'Title and Client') if errors[:url].try(:any?)
+  end
+
+  def prepare_templates
+    %i[template tile_template].each(&method(:compile_template)).each(&method(:minify_template))
+  end
+
+  def compile_template(name)
+    send "#{name}_compiled=", Liquid::Template.parse(send "#{name}_content").render(attributes_for_templates)
+  end
+
+  def minify_template(name)
+    premailer = Premailer.new(send("#{name}_compiled"), warn_level: Premailer::Warnings::NONE, with_html_string: true)
+    send "#{name}_compiled=", Nokogiri::HTML(premailer.to_inline_css).css('body').inner_html
+  end
+
+  def attributes_for_templates
+    attributes.slice(:url, :client, :title).merge(image: CodeGenerator::SITE_URL + image.url(:tile)).stringify_keys
   end
 end
