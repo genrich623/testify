@@ -47,7 +47,7 @@ group :doc do
   gem 'sdoc', '~> 0.4.0'
 end
 
-gem 'annotate'
+# gem 'annotate'
 
 group :development do
   gem 'binding_of_caller'
