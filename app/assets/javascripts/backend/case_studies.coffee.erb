@@ -1,4 +1,5 @@
 $ ->
+  $('.froala').froalaEditor()
   code_shown = false
   btn = $('#generate-code')
   code = $('#code').hide()
@@ -23,17 +24,20 @@ $ ->
 #
 #    e.preventDefault()
 
+
+
   # For Ace Editor
   $('.choose-template').on 'click', (e) ->
     self = $(this)
-    editor = $(self.data('editor')).data('ace-editor')
+    #editor = $(self.data('editor')).data('ace-editor')
+    editor = $(self.data('editor'))
 
-    if editor.getValue().length
+    if editor.froalaEditor('html.get', true).length
       return unless confirm("<%= I18n.t('js.confirm') %>")
 
     $.ajax
       url: self.data('url')
       success: (response) ->
-        editor.setValue(response.template)
+        editor.froalaEditor 'html.set', response.template, true
 
     e.preventDefault()

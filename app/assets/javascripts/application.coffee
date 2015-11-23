@@ -17,6 +17,7 @@
 #= require ace/ace
 #= require ace/mode-html
 #= require ace/theme-monokai
+#= require froala_editor.min.js
 #= require_tree .
 
 

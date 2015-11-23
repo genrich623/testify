@@ -16,6 +16,8 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jbuilder', '~> 2.0'
 gem 'slim-rails'
 
+gem 'wysiwyg-rails'
+
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails', github: 'bokmann/font-awesome-rails'
