@@ -9,27 +9,9 @@ $ ->
     code_shown = !code_shown
     e.preventDefault()
 
-#  # For trumbowyg
-#  $('.choose-template').on 'click', (e) ->
-#    self = $(this)
-#    editor = $(self.data('editor'))
-#
-#    if editor.trumbowyg('html').length
-#      return unless confirm("<%= I18n.t('js.confirm') %>")
-#
-#    $.ajax
-#      url: self.data('url')
-#      success: (response) ->
-#        editor.trumbowyg('html', response.template)
-#
-#    e.preventDefault()
-
-
-
-  # For Ace Editor
+  # Editor
   $('.choose-template').on 'click', (e) ->
     self = $(this)
-    #editor = $(self.data('editor')).data('ace-editor')
     editor = $(self.data('editor'))
 
     if editor.froalaEditor('html.get', true).length
