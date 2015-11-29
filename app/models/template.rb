@@ -21,9 +21,10 @@
 
 class Template < ActiveRecord::Base
   has_attached_file :preview,
-                    styles: { tile: '320x240#' },
-                    url: '/system/:class/:attachment/:hash.:extension',
-                    hash_secret: ENV['PAPERCLIP_HASH_SECRET']
+                    styles: { tile: '320x240#' }
+                    # we will not use hashes for now, later will plane file structure
+                    #url: '/system/:class/:attachment/:hash.:extension',
+                    #hash_secret: ENV['PAPERCLIP_HASH_SECRET']
   validates_attachment_content_type :preview, content_type: /\Aimage\/.*\Z/
 
   validates_presence_of :title, :template, :preview

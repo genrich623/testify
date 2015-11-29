@@ -7,6 +7,16 @@ class Frontend::CaseStudiesController < Frontend::ApplicationController
   respond_to :html, :json
 
   before_filter :check_referer, only: [:code]
+  skip_before_filter :verify_authenticity_token, only: [:tile]
+
+  def tile
+    @case_study = CaseStudy.find(params[:id])
+
+    respond_to do |format|
+      #format.html { render plain: @case_study.tile_code(request.base_url) }
+      format.json { render json: { html: @case_study.tile_template_compiled.html_safe } }
+    end
+  end
 
   def code
     html = collection.per(3).pluck(:tile_template_compiled).join

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :case_studies, controller: 'backend/case_studies'
   resources :templates, controller: 'backend/templates'
 
-
+  match '/render_tile/:id' => 'frontend/case_studies#tile', via: [:get, :options]
   get ':user_url' => 'frontend/case_studies#index', as: :public_case_studies
   get ':user_url/code' => 'frontend/case_studies#code', as: :code_case_studies
   get ':user_url/:url' => 'frontend/case_studies#show', as: :public_case_study

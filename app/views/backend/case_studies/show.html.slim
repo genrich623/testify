@@ -7,8 +7,11 @@
           = link_to t('views.common.edit'), edit_case_study_path(resource), class: 'btn btn-primary'
         h1.page-header = _resource.to_s
 
-      - if _resource.image.present?
-        .col-xs-12
-          .image style="background-image: url(#{_resource.image.url(:huge)})"
-      .col-xs-12.body
-        == _resource.template_compiled
+  .row
+    .col-xs-6
+      | Case study code
+    .col-xs-6
+      | Tile code
+      .tile-code
+        = text_area_tag :tile_code, resource.tile_code(request.base_url)
+        = link_to 'Copy to clipboard', '#', class: 'btn btn-primary'

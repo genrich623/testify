@@ -31,9 +31,10 @@ class CaseStudy < ActiveRecord::Base
   paginates_per 10
 
   has_attached_file :image,
-                    styles: { tile: '320x240#', huge: '1920x1080#' },
-                    url: '/system/:class/:attachment/:hash.:extension',
-                    hash_secret: ENV['PAPERCLIP_HASH_SECRET']
+                    styles: { tile: '320x240#', huge: '1920x1080#' }
+                    # we will not use hashes for now, later will plane file structure
+                    #url: '/system/:class/:attachment/:hash.:extension',
+                    #hash_secret: ENV['PAPERCLIP_HASH_SECRET']
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   belongs_to :user
@@ -53,6 +54,14 @@ class CaseStudy < ActiveRecord::Base
     def find_by_user_url!(url)
       joins(:user).where(users: {url: url})
     end
+  end
+
+  # makes code for embeding tile
+  def tile_code(base_url)
+    "<script src=\"#{base_url}/embed.js\" type=\"text/javascript\">"\
+    '</script><script type="text/javascript" charset="utf-8">testify(document).ready'\
+    "(function() {testify_embed_tile(#{id});});"\
+    '</script><div id="testify_embed_hook"></div>'
   end
 
 private
@@ -80,4 +89,5 @@ private
   def attributes_for_templates
     attributes.slice(:url, :client, :title).merge(image: CodeGenerator::SITE_URL + image.url(:tile)).stringify_keys
   end
+
 end

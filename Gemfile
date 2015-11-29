@@ -40,6 +40,9 @@ gem 'premailer-rails'
 gem 'sanitize'
 gem 'liquid'
 
+# serving cross domain ajax requests
+gem 'rack-cors', :require => 'rack/cors'
+
 # For future
 # gem 'sidekiq'
 # gem 'sinatra'
