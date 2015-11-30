@@ -1,5 +1,5 @@
 1.upto(3) do |i|
-  txt = "#{i}-column layout"
+  txt = "Template #{i}"
   CaseStudyTemplate.create(
      title: txt,
      preview: URI("http://placeholdit.imgix.net/~text?txtsize=30&txt=#{txt}&w=320&h=240"),

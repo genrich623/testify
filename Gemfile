@@ -29,7 +29,10 @@ gem 'omniauth-google-oauth2'
 gem 'simple_form', github: 'plataformatec/simple_form'
 gem 'inherited_resources', github: 'josevalim/inherited_resources'
 gem 'has_scope', github: 'plataformatec/has_scope'
+
+# serving attaches
 gem 'paperclip'
+gem 'aws-sdk'
 
 gem 'draper'
 gem 'kaminari'
