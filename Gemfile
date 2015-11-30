@@ -32,7 +32,7 @@ gem 'has_scope', github: 'plataformatec/has_scope'
 
 # serving attaches
 gem 'paperclip'
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 
 gem 'draper'
 gem 'kaminari'
