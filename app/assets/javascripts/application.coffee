@@ -13,10 +13,6 @@
 #= require jquery
 #= require jquery_ujs
 #= require bootstrap
-#= require trumbowyg.min
-#= require ace/ace
-#= require ace/mode-html
-#= require ace/theme-monokai
 #= require froala_editor.min.js
 
 # Include other plugins.
@@ -25,7 +21,6 @@
 #= require plugins/code_beautifier.min.js
 #= require plugins/colors.min.js
 #= require plugins/entities.min.js
-#= require plugins/file.min.js
 #= require plugins/font_family.min.js
 #= require plugins/font_size.min.js
 #= require plugins/fullscreen.min.js

@@ -1,5 +1,7 @@
 $ ->
-  $('.froala').froalaEditor()
+  $('.froala').froalaEditor({
+      toolbarStickyOffset: 50
+  })
   code_shown = false
   btn = $('#generate-code')
   code = $('#code').hide()
