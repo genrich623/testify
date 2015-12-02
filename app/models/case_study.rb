@@ -44,7 +44,7 @@ class CaseStudy < ActiveRecord::Base
 
   before_validation :prepare_url
   after_validation :prepare_url_errors
-  before_save :prepare_templates
+  before_save :prepare_templates, :add_link_to_tile
 
   def image_url
     SITE_URL + image.url(:tile)
@@ -88,6 +88,16 @@ private
 
   def attributes_for_templates
     attributes.slice(:url, :client, :title).merge(image: CodeGenerator::SITE_URL + image.url(:tile)).stringify_keys
+  end
+
+  def add_link_to_tile
+    # TODO refactor this!!!
+    #url_compiled = "http://localhost:3000/#{user.url}/#{url}"
+    url_compiled = "http://#{user.domain}.testify-test.herokuapp.com/#{url}"
+    tile_link = "<a style=\"position: absolute; top: 0; left: 0; width: 100%; height: 100%;"\
+     " text-indent: -9999px; overflow: hidden;\" href=\"#{url_compiled}\"></a></div>"
+    template = tile_template_compiled.chomp('</div>') + tile_link
+    self.tile_template_compiled = template
   end
 
 end

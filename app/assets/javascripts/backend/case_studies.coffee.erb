@@ -23,7 +23,15 @@ $ ->
       url: self.data('url')
       success: (response) ->
         editor.froalaEditor 'html.set', response.template, true
+        $('#tile-client').html $('#case_study_client').val() + '<br/>'
+        $('#tile-title').html $('#case_study_title').val()
 
     e.preventDefault()
 
     # Copy to clipboard behaviour
+
+  # Accordion scripting
+  $('#infoNext').click ->
+    if $(this).prop('disabled') != true
+      $('#caseStudyInfo').collapse('hide')
+      $('#caseStudyTemplate').collapse('show')
