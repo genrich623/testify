@@ -7,10 +7,11 @@ Rails.application.routes.draw do
                      unlocks: 'users/unlocks',
                      omniauth_callbacks: 'users/omniauth_callbacks'
                    }
-  constraints(subdomain: /.+/) do
-    get '/:url', to: 'frontend/case_studies#show', by_domain: true
-    get '*path' => redirect('/')
-  end
+  # Subdomains are currently not available on heroku
+  #constraints(subdomain: /.+/) do
+    #get '/:url', to: 'frontend/case_studies#show', by_domain: true
+    #get '*path' => redirect('/')
+  #end
 
   # For redirect after sign in
   get 'case_studies' => 'backend/case_studies#index', as: :user_root

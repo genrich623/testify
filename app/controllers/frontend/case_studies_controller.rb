@@ -2,13 +2,14 @@ class Frontend::CaseStudiesController < Frontend::ApplicationController
   inherit_resources
   actions :index, :show
   resources_configuration[:self][:finder] = :find_by_url!
-  #belongs_to :user, finder: :find_by_url!, param: :user_url
+  belongs_to :user, finder: :find_by_url!, param: :user_url
   has_scope :page, default: 1
   respond_to :html, :json
 
   before_filter :check_referer, only: [:code]
   skip_before_filter :verify_authenticity_token, only: [:tile]
 
+=begin
   def show
     @user = if params[:by_domain]
               User.find_by_domain(request.subdomain)
@@ -17,6 +18,7 @@ class Frontend::CaseStudiesController < Frontend::ApplicationController
             end
     @case_study = @user.case_studies.find_by_url(params[:url])
   end
+=end
 
   def tile
     @case_study = CaseStudy.find(params[:id])
