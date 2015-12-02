@@ -95,7 +95,7 @@ private
     url_compiled = "http://testify-test.herokuapp.com/#{user.url}/#{url}"
     #url_compiled = "http://#{user.domain}.testify-test.herokuapp.com/#{url}"
     tile_link = "<a style=\"position: absolute; top: 0; left: 0; width: 100%; height: 100%;"\
-     " text-indent: -9999px; overflow: hidden;\" href=\"#{url_compiled}\"></a></div>"
+     " text-indent: -9999px; overflow: hidden;\" href=\"#{url_compiled}\" target=\"_blank\"></a></div>"
     template = tile_template_compiled.chomp('</div>') + tile_link
     self.tile_template_compiled = template
   end
