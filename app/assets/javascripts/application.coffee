@@ -13,6 +13,9 @@
 #= require jquery
 #= require jquery_ujs
 #= require bootstrap
+#= require summernote
+#= require ckeditor/init
+
 #= require froala_editor.min.js
 
 # Include other plugins.

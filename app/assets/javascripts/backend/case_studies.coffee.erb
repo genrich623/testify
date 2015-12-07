@@ -1,7 +1,9 @@
 $ ->
-  $('.froala').froalaEditor({
-      toolbarStickyOffset: 50
-  })
+  $('[data-provider="summernote"]').each ->
+    $(this).summernote()
+  #$('.froala').froalaEditor({
+  #    toolbarStickyOffset: 50
+  #})
   code_shown = false
   btn = $('#generate-code')
   code = $('#code').hide()
@@ -14,24 +16,29 @@ $ ->
   # Editor
   $('.choose-template').on 'click', (e) ->
     self = $(this)
-    editor = $(self.data('editor'))
+    #editor_name = self.data('editor')
+    #editor = $(self.data('editor'))
+    editor = CKEDITOR.instances[self.data('editor')]
 
-    if editor.froalaEditor('html.get', true).length
-      return unless confirm("<%= I18n.t('js.confirm') %>")
+    #if editor.froalaEditor('html.get', true).length
+    #if editor.val().length
+    if editor.getData().length
+        return unless confirm("<%= I18n.t('js.confirm') %>")
+
 
     $.ajax
       url: self.data('url')
       success: (response) ->
-        editor.froalaEditor 'html.set', response.template, true
-        $('#tile-client').html $('#case_study_client').val() + '<br/>'
-        $('#tile-title').html $('#case_study_title').val()
+        template = response.template.replace( /\{client}/g, $('#case_study_client').val()).replace( /\{title}/g, $('#case_study_title').val())
+        template = '<div style="background-image:url(/system/case_studies/images/000/000/001/huge/10436957_mini.jpg?1449498163);height:600px;background-size:cover;background-position:50% 50%;text-align:center;color:#fff;margin-right:auto;margin-left:auto;padding-left:15px;padding-right:15px;margin-top:0;">
+  <div style="position:relative;z-index:1"><h1 style="font-size:96px;position:absolute;left:0;right:0;top:174px">{client}</h1><h2 style="font-size:48px;position:absolute;left:0;right:0;top:300px">{title}
+</h2></div></div>'.replace( /\{client}/g, $('#case_study_client').val()).replace( /\{title}/g, $('#case_study_title').val()) + template
+        template = '<div>' + template + '</div>'
+        editor.setData '',
+          callback: ->
+            editor.insertElement(CKEDITOR.dom.element.createFromHtml(template))
 
     e.preventDefault()
 
     # Copy to clipboard behaviour
 
-  # Accordion scripting
-  $('#infoNext').click ->
-    if $(this).prop('disabled') != true
-      $('#caseStudyInfo').collapse('hide')
-      $('#caseStudyTemplate').collapse('show')

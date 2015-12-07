@@ -97,6 +97,9 @@ GEM
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
     builder (3.2.2)
+    ckeditor (4.1.0)
+      mime-types
+      orm_adapter (~> 0.5.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.8)
@@ -273,6 +276,8 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
+    summernote-rails (0.7.0.0)
+      railties (>= 3.1)
     temple (0.7.6)
     therubyracer (0.12.2)
       libv8 (~> 3.16.14.0)
@@ -300,6 +305,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass
   bootswatch-rails!
+  ckeditor
   coffee-rails (~> 4.1.0)
   devise
   dotenv-rails
@@ -327,6 +333,7 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   simple_form!
   slim-rails
+  summernote-rails
   therubyracer
   uglifier (>= 1.3.0)
   wysiwyg-rails

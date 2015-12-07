@@ -32,13 +32,12 @@ $brand-primary: #47c144;
 $brand-primary: #909090;
 $body-padding-top: 50px;
 
-@import "trumbowyg/trumbowyg";
-
 @import "bootstrap-sprockets";
 @import "bootswatch/cosmo/variables";
 @import "bootstrap";
 body { padding-top: $body-padding-top; }
 @import "bootswatch/cosmo/bootswatch";
+@import "summernote";
 
 @import "./**/*";
 
