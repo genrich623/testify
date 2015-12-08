@@ -1,0 +1,8 @@
+.hidden
+  = text_field_tag 'image_path'
+  = form_tag add_image_case_studies_path, multipart: true, remote: true,
+             id: 'image_form' do
+    = file_field_tag :image
+  = form_tag add_template_case_studies_path, multipart: true, remote: true,
+             id: 'template_form' do
+    = file_field_tag :template

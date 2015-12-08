@@ -10,8 +10,12 @@
             .row
               = f.input :client, placeholder: t('activerecord.attributes.case_study.client')
               = f.input :title, placeholder: t('activerecord.attributes.case_study.title')
-              = f.input :image, wrapper: :horizontal_file_input, label_html: {class: 'col-md-2'},
-                        hint: t('.image_hint'), required: false
+              .form-group
+                .btn.btn-primary#add_image
+                  | Add image
+              .hidden
+                = f.input :image, wrapper: :horizontal_file_input, label_html: {class: 'col-md-2'},
+                          hint: t('.image_hint'), required: false
             .clearfix
               a.btn.btn-primary.btn-block#infoNext(
                 data-parent="#accordion"
@@ -28,6 +32,13 @@
             .row
               - CaseStudyTemplate.all.each do |t|
                 = render 'template_preview', t: t, editor: 'case_study_template_content', target: '#form'
+              .pull-right
+                a.btn.btn-primary.btn-block#add_case_study_template(
+                  href="#form"
+                  data-toggle="collapse"
+                  data-parent="#accordion"
+                  data-target="#form")
+                  | Add custom template
             .clearfix
             .reset-info = t('.reset')
       .panel.panel-default
@@ -66,7 +77,7 @@
         #form-tile.panel-collapse.collapse(class="#{'in' if resource.template_content.present? && resource.tile_template_content.present?}")
           .panel-body
             = f.input :tile_template_content, placeholder: t('activerecord.attributes.case_study.tile_template_content'),
-                      as: :ckeditor, input_html: {ckeditor: {toolbar: 'Full'}}
+                      as: :summernote
             //= f.input :tile_template_content, placeholder: t('activerecord.attributes.case_study.tile_template_content'),
             //          input_html: {class: 'froala'}
             = f.submit t('views.common.save'), class: 'btn btn-primary btn-block'

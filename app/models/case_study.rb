@@ -39,7 +39,7 @@ class CaseStudy < ActiveRecord::Base
 
   belongs_to :user
 
-  validates_presence_of :client, :title, :image, :template_content, :tile_template_content
+  validates_presence_of :client, :title, :template_content, :tile_template_content
   validates_uniqueness_of :url, scope: :user_id
 
   before_validation :prepare_url

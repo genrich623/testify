@@ -2,6 +2,18 @@ class Backend::CaseStudiesController < Backend::ApplicationController
   inherit_resources
   has_scope :page, default: 1
 
+  def add_image # refactor it!
+    image = Image.new(image: params[:image])
+    image.save
+    @image = image.image
+    respond_to :js
+  end
+
+  def add_template
+    @template = params[:template].read
+    respond_to :js
+  end
+
   protected
   def begin_of_association_chain
     current_user

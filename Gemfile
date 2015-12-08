@@ -15,10 +15,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jbuilder', '~> 2.0'
 gem 'slim-rails'
+gem 'remotipart'
 
 # templates editor
-gem 'wysiwyg-rails'
-gem 'ckeditor'
 gem 'summernote-rails'
 
 gem 'jquery-rails'

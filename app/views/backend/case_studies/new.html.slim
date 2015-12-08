@@ -1,7 +1,9 @@
+= render 'remotipart_forms'
 - resource.decorate.tap do |_resource|
 
   .container.backend-new-case-study
-    = simple_form_for resource, wrapper: :horizontal_form_without_labels, html: { class: 'form-horizontal' } do |f|
+    = simple_form_for resource, wrapper: :horizontal_form_without_labels,
+                      html: { class: 'form-horizontal case-study-form' } do |f|
       .row
         .col-xs-12.header
           .buttons

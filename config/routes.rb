@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  mount Ckeditor::Engine => '/ckeditor'
   devise_for :users, controllers: {
                      sessions: 'users/sessions',
                      registrations: 'users/registrations',
@@ -17,7 +16,11 @@ Rails.application.routes.draw do
   # For redirect after sign in
   get 'case_studies' => 'backend/case_studies#index', as: :user_root
 
-  resources :case_studies, controller: 'backend/case_studies'
+  resources :case_studies, controller: 'backend/case_studies' do
+    collection do
+      post :add_image, :add_template
+    end
+  end
   resources :templates, controller: 'backend/templates'
 
   match '/render_tile/:id' => 'frontend/case_studies#tile', via: [:get, :options]
