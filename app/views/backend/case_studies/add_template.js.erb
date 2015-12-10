@@ -11,14 +11,14 @@ var loadTemplate = function(editor) {
 
 
 // enable button
-$('#add_template').attr('disabled', true);
+$('.add_template').attr('disabled', false);
 
 // recreate form event handler
-$('#template_form input').change(function() {
+$('#template_form input[type="file"]').change(function() {
     if (/^text\/.*$/.test(this.files[0].type)) {
         $(this).closest('form').submit();
-        $('#add_template').html('Uploading...');
-        $('#add_template').attr('disabled', true);
+        $('.add_template').html('Uploading...');
+        $('.add_template').attr('disabled', true);
     } else {
         alert('Please choose html template!');
     }
@@ -27,7 +27,7 @@ $('#template_form input').change(function() {
 
 // init editors
 var $editors = $('[data-provider="summernote"]');
-var editor = $editors.eq(0);
+var editor = $editors.eq(<%= @editor_index %>);
 
 if (!editor.summernote('isEmpty')) {
     if (confirm("<%= I18n.t('js.confirm') %>")) {

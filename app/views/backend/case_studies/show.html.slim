@@ -9,9 +9,15 @@
 
   .row
     .col-xs-6
-      | Case study code
+      .row
+        h2
+          | Tile preview
+        .tile-preview
+          == resource.tile_template_compiled
     .col-xs-6
-      | Tile code
-      .tile-code
-        = text_area_tag :tile_code, resource.tile_code(request.base_url)
-        = link_to 'Copy to clipboard', '#', class: 'btn btn-primary'
+      .row
+        h2
+          | Tile code
+        .tile-code
+          = text_area_tag :tile_code, resource.tile_code(request.base_url)
+          = link_to 'Copy to clipboard', '#', class: 'btn btn-primary', id: 'tileToClipboard'

@@ -71,4 +71,8 @@
     @extend .text-muted;
     margin-top: ceil($grid-gutter-width / 2);
   }
+
+  .form-buttons {
+    margin-bottom: 15px;
+  }
 }

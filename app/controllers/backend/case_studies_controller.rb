@@ -3,8 +3,7 @@ class Backend::CaseStudiesController < Backend::ApplicationController
   has_scope :page, default: 1
 
   def add_image # refactor it!
-    image = Image.create(image: params[:image])
-    @image = image.image
+    @image = Image.create(image: params[:image])
     respond_to :js
   end
 
@@ -12,6 +11,8 @@ class Backend::CaseStudiesController < Backend::ApplicationController
     template = Nokogiri::HTML(params[:template].read)
     template.css('style,script,iframe').remove
     @template = template.to_s
+    #@editor_index = (params[:type] == 'case_study') ? 0 : 1
+    @editor_index =  %w(case_study tile).find_index(params[:type])
     respond_to :js
   end
 

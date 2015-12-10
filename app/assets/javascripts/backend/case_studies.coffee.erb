@@ -30,8 +30,8 @@ $ ->
 
   # image upload
   $('#add_image').click () ->
-    $('#image_form input').click()
-  $('#image_form input').change () ->
+    $('#image_form input[type="file"]').click()
+  $('#image_form input[type="file"]').change () ->
     if /^image\/.*$/.test(this.files[0].type)
       $(this).closest('form').submit()
       $('#add_image').html('Uploading...')
@@ -39,15 +39,22 @@ $ ->
     else
       alert('Please choose image!')
 
-    # template upload
+  # template upload
   $('#add_case_study_template').click () ->
-    $('#template_form input').click()
-  $('#template_form input').change () ->
+    $('#template_form input[name="type"]').val('case_study')
+    $('#template_form input[type="file"]').click()
+
+  $('#add_tile_template').click () ->
+    $('#template_form input[name="type"]').val('tile')
+    $('#template_form input[type="file"]').click()
+
+  $('#template_form input[type="file"]').change () ->
     if /^text\/.*$/.test(this.files[0].type)
       $(this).closest('form').submit()
-      $('#add_template').html('Uploading...')
-      $('#add_template').attr('disabled', true)
+      $('.add_template').html('Uploading...')
+      $('.add_template').attr('disabled', true)
     else
+      # TODO reopen due accordion
       alert('Please choose html template!')
 
   # Editor
@@ -82,5 +89,22 @@ $ ->
 
     e.preventDefault()
 
-    # Copy to clipboard behaviour
-
+  # Copy to clipboard behaviour
+  $('#tileToClipboard').click () ->
+    $('#tile_code').select()
+    # copy
+    try
+      successful = document.execCommand('copy')
+      msg = if successful then 'successful' else 'unsuccessful'
+      console.log 'Copying text command was ' + msg
+    catch err
+      console.log 'Oops, unable to copy'
+    # clear selection
+    if window.getSelection
+      if window.getSelection().empty
+        # Chrome
+        window.getSelection().empty()
+      else if window.getSelection().removeAllRanges
+        # Firefox
+        window.getSelection().removeAllRanges()
+      document.selection.empty()
