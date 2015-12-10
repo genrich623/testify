@@ -17,6 +17,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'slim-rails'
 gem 'remotipart'
 
+gem 'nokogiri'
+
 # templates editor
 gem 'summernote-rails'
 

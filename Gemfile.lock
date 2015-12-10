@@ -313,6 +313,7 @@ DEPENDENCIES
   kaminari-bootstrap
   letter_opener
   liquid
+  nokogiri
   omniauth-google-oauth2
   paperclip
   pg

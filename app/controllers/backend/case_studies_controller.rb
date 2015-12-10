@@ -3,14 +3,15 @@ class Backend::CaseStudiesController < Backend::ApplicationController
   has_scope :page, default: 1
 
   def add_image # refactor it!
-    image = Image.new(image: params[:image])
-    image.save
+    image = Image.create(image: params[:image])
     @image = image.image
     respond_to :js
   end
 
   def add_template
-    @template = params[:template].read
+    template = Nokogiri::HTML(params[:template].read)
+    template.css('style,script,iframe').remove
+    @template = template.to_s
     respond_to :js
   end
 

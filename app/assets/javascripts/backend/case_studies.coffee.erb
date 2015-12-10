@@ -32,13 +32,23 @@ $ ->
   $('#add_image').click () ->
     $('#image_form input').click()
   $('#image_form input').change () ->
-    $('#image_form').submit();
+    if /^image\/.*$/.test(this.files[0].type)
+      $(this).closest('form').submit()
+      $('#add_image').html('Uploading...')
+      $('#add_image').attr('disabled', true)
+    else
+      alert('Please choose image!')
 
-  # image upload
+    # template upload
   $('#add_case_study_template').click () ->
     $('#template_form input').click()
   $('#template_form input').change () ->
-    $('#template_form').submit();
+    if /^text\/.*$/.test(this.files[0].type)
+      $(this).closest('form').submit()
+      $('#add_template').html('Uploading...')
+      $('#add_template').attr('disabled', true)
+    else
+      alert('Please choose html template!')
 
   # Editor
   $('.choose-template').on 'click', (e) ->
@@ -66,7 +76,8 @@ $ ->
       success: (response) ->
         template = response.template.replace( /\{client}/g, $('#case_study_client').val()).replace( /\{title}/g, $('#case_study_title').val()).replace( /\{image_path}/g, $('#image_path').val())
         header_template = header_template.replace( /\{client}/g, $('#case_study_client').val()).replace( /\{title}/g, $('#case_study_title').val()).replace( /\{image_path}/g, $('#image_path').val())
-        template = '<div>' + header_template + template + '</div>' if self.data('editor') == 'case_study_template_content'
+        # for now no header template
+        # template = '<div>' + header_template + template + '</div>' if self.data('editor') == 'case_study_template_content'
         editor.summernote('code', template)
 
     e.preventDefault()
