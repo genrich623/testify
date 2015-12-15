@@ -1,6 +1,11 @@
-.row.backend-list-case-study
-  - resource.decorate.tap do |_resource|
-    .col-xs-12.header
+- resource.decorate.tap do |_resource|
+  .col-xs-3.case-study
+    = link_to case_study_path(_resource) do
+      .content
+        h2 = _resource.client
+        /case_study_path(_resource)
+        h2 = _resource.title
+    .controls
       .buttons-sm.dropdown
         button.btn.btn-default.btn-sm.dropdown-toggle data-toggle="dropdown"
           = t('views.common.actions')
@@ -10,7 +15,6 @@
           li = link_to t('views.common.preview'), public_case_study_path(resource.user.url, resource.url)
           li = link_to t('views.common.edit'), edit_case_study_path(resource)
           li = link_to t('views.common.delete'), case_study_path(resource), method: :delete
-      h2 = link_to _resource.to_s, case_study_path(_resource)
 
     /- if _resource.image.present?
       .col-xs-12

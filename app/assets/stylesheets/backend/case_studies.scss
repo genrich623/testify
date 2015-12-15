@@ -76,3 +76,28 @@
     margin-bottom: 15px;
   }
 }
+
+.backend-list-case-study {
+  .case-study {
+    word-break: break-word;
+    width: 22.4%;
+    margin: 15px;
+    min-height: 200px;
+    background-color: #ecebed;
+    border: 1px solid #d8d8d8;
+
+    a, a:hover, a:active {
+      text-decoration: none;
+    }
+
+    .content {
+      margin-bottom: 50px;
+    }
+
+    .controls {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+    }
+  }
+}
