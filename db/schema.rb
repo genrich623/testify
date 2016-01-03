@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151208140153) do
+ActiveRecord::Schema.define(version: 20160103112902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,23 @@ ActiveRecord::Schema.define(version: 20151208140153) do
 
   add_index "templates", ["type"], name: "index_templates_on_type", using: :btree
 
+  create_table "testimonials", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "role"
+    t.string   "company"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.text     "content"
+    t.text     "template_compiled"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "testimonials", ["user_id"], name: "index_testimonials_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "url"
@@ -88,4 +105,5 @@ ActiveRecord::Schema.define(version: 20151208140153) do
   add_index "users", ["url"], name: "index_users_on_url", using: :btree
 
   add_foreign_key "case_studies", "users"
+  add_foreign_key "testimonials", "users"
 end

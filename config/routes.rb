@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       post :add_image, :add_template
     end
   end
+  resources :testimonials, controller: 'backend/testimonials'
   resources :templates, controller: 'backend/templates'
 
   match '/render_tile/:id' => 'frontend/case_studies#tile', via: [:get, :options]

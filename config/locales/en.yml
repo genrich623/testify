@@ -14,11 +14,20 @@ en:
         title: Title
         template_content: Body
         tile_template_content: Tile
+      testimonial:
+        name: Person's name
+        role: Person's role
+        company: Company
+        content: Testimonial content
     models:
       case_study:
         one: Case study
         many: Case studies
         my: My Case studies
+      testimonial:
+        one: Testimonial
+        many: Testimonials
+        my: My Testimonials
 
   views:
     common:
@@ -38,6 +47,7 @@ en:
       log_out: Log out
       cabinet: Cabinet
       case_studies: Case studies
+      testimonials: Testimonials
 
   users:
     sessions:
@@ -66,6 +76,17 @@ en:
         case_study_template: Case study template
         reset: "Changing template resets all your changes"
         tile_template: "Tile template"
+        customize: "Customize"
+      template_preview:
+        choose: "Choose"
+    testimonials:
+      index:
+        title: Your testimonials
+        new_button: Create new
+      form:
+        image_hint: Chose a large image
+        testimonial_template: Testimonial template
+        reset: "Changing template resets all your changes"
         customize: "Customize"
       template_preview:
         choose: "Choose"

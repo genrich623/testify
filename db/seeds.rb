@@ -17,3 +17,12 @@ end
      template: File.read(File.join('seeds', 'templates', "tile_#{i}.html"))
   )
 end
+
+
+
+txt = "Style 1"
+TestimonialTemplate.create(
+    title: txt,
+    preview: File.open(File.join('seeds', 'templates', "testimonial_preview_1.png")),
+    template: File.read(File.join('seeds', 'templates', "testimonial_1.html"))
+)

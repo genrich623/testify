@@ -1,0 +1,10 @@
+.container.backend-new-case-study
+  = simple_form_for resource, wrapper: :horizontal_form_without_labels,
+                    html: { class: 'form-horizontal case-study-form' } do |f|
+    .row
+      .col-xs-12.header
+        .buttons
+          = f.submit t('views.common.save'), class: 'btn btn-primary'
+        h1.page-header = I18n.t('views.common.new_object', obj: 'testimonial')
+
+    = render 'form', f: f

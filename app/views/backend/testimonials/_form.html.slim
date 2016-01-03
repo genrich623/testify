@@ -1,0 +1,35 @@
+.row
+  .col-xs-12
+    #accordion.panel-group
+      .panel.panel-default
+        .panel-heading
+          h4.panel-title
+            a data-parent="#accordion" data-toggle="collapse" href="#testimonialInfo" = 'Main info'
+        #testimonialInfo.panel-collapse.collapse.in
+          .panel-body
+            .row
+              = f.input :name, placeholder: t('activerecord.attributes.testimonial.name')
+              = f.input :role, placeholder: t('activerecord.attributes.testimonial.role')
+              = f.input :company, placeholder: t('activerecord.attributes.testimonial.company')
+              = f.input :content, placeholder: t('activerecord.attributes.testimonial.content')
+              = f.input :image, wrapper: :horizontal_file_input, label_html: {class: 'col-md-2'},
+                        hint: t('.image_hint'), required: false
+            .clearfix
+              a.btn.btn-primary.btn-block#infoNext(
+                data-parent="#accordion"
+                data-toggle="collapse"
+                href="#testimonialTemplate")
+                | Next
+            //.reset-info = t('.reset')
+      .panel.panel-default
+        .panel-heading
+          h4.panel-title
+            a.collapsed data-parent="#accordion" data-toggle="collapse" href="#testimonialTemplate" = t('.testimonial_template')
+        #testimonialTemplate.panel-collapse.collapse
+          .panel-body
+            .row
+              - TestimonialTemplate.all.each do |t|
+                /= t.type
+                = render 'template_preview', t: t
+            .clearfix
+            /.reset-info = t('.reset')

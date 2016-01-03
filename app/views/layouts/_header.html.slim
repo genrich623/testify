@@ -40,6 +40,8 @@ nav.navbar.navbar-default.navbar-fixed-top
         - if user_signed_in?
           = li controller?(:'backend/case_studies') do
             = link_to t('.case_studies'), case_studies_path
+          = li controller?(:'backend/testimonials') do
+            = link_to t('.testimonials'), testimonials_path
           = li controller?(:'users/registrations') do
             = link_to t('.cabinet'), edit_user_registration_path
 

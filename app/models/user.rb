@@ -40,6 +40,7 @@ class User < ActiveRecord::Base
          :omniauthable, omniauth_providers: [:google_oauth2]
 
   has_many :case_studies
+  has_many :testimonials
 
   validates_presence_of :name, :domain, :url
 end

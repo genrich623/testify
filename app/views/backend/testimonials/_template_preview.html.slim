@@ -1,0 +1,14 @@
+.col-xs-12.col-sm-6.col-md-4
+  .thumbnail
+    = image_tag t.preview.url
+    .caption
+      h3.text-center = t.title
+      p = t.description
+      /a.btn.btn-primary.btn-block.choose-template(
+          href="#{target}"
+          data-toggle="collapse"
+          data-parent="#accordion"
+          data-target="#{target}"
+          data-editor="#{editor}"
+          data-url="#{template_path(t.id, :json)}")
+        = t('.choose')
