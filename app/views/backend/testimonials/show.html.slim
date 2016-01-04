@@ -1,0 +1,23 @@
+.container.backend-case-study
+  .row
+    .col-xs-12.header
+      .buttons
+        /=> link_to t('views.common.preview'), public_case_study_path(resource.user.url, resource.url), class: 'btn btn-primary'
+        = link_to t('views.common.edit'), edit_testimonial_path(resource), class: 'btn btn-primary'
+      /h1.page-header = resource.to_s
+      h1.page-header Testimonial
+
+  .row
+    .col-xs-6
+      .row
+        h2
+          | Testimonial preview
+        .tile-preview
+          == resource.template_with_pic
+    .col-xs-6
+      .row
+        h2
+          | Testimonial code
+        .tile-code
+          /= text_area_tag :tile_code, resource.tile_code(request.base_url)
+          = link_to 'Copy to clipboard', '#', class: 'btn btn-primary', id: 'tileToClipboard'

@@ -35,4 +35,19 @@ class Testimonial < ActiveRecord::Base
   belongs_to :user
 
   validates_presence_of :name, :role, :company, :content
+
+  before_save :prepare_template
+
+  # TODO refactor
+  def template_with_pic
+    template_compiled.gsub!('{image_path}', image(:small))
+  end
+
+  private
+
+  def prepare_template
+    template = TestimonialTemplate.take.template # TODO make choosing templates (now any template)
+    self.template_compiled = template.gsub!('{name}', name).gsub!('{role}', role)
+                              .gsub!('{company}', company).gsub!('{content}', content)
+  end
 end
