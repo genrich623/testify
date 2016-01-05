@@ -43,6 +43,14 @@ class Testimonial < ActiveRecord::Base
     template_compiled.gsub!('{image_path}', image(:small))
   end
 
+  # makes code for embeding tile
+  def code(base_url)
+    "<script src=\"#{base_url}/embed.js\" type=\"text/javascript\">"\
+    '</script><script type="text/javascript" charset="utf-8">testify(document).ready'\
+    "(function() {testify_embed_testimonial(#{id});});"\
+    '</script><div id="testify_embed_hook"></div>'
+  end
+
   private
 
   def prepare_template

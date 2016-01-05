@@ -14,3 +14,14 @@ var testify_embed_tile = function(tile_id) {
     }
   });
 };
+var testify_embed_testimonial = function(testimonial_id) {
+  var tile_url = "http://testify-test.herokuapp.com/render_testimonial/" + testimonial_id;
+  $.ajax({
+    type: "GET",
+    contentType: "application/jsonp; charset=utf-8",
+    url: tile_url,
+    success: function(data) {
+      $('#testify_embed_hook').html(data['html']);
+    }
+  });
+};

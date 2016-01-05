@@ -29,6 +29,16 @@ class Frontend::CaseStudiesController < Frontend::ApplicationController
     end
   end
 
+  # TODO now it's here, but need to think how to structure 'frontend' controllers better
+  def testimonial
+    @testimonial = Testimonial.find(params[:id])
+
+    respond_to do |format|
+      #format.html { render plain: @case_study.tile_code(request.base_url) }
+      format.json { render json: { html: @testimonial.template_with_pic.html_safe } }
+    end
+  end
+
   def code
     html = collection.per(3).pluck(:tile_template_compiled).join
     render layout: false, text: html

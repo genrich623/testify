@@ -19,5 +19,5 @@
         h2
           | Testimonial code
         .tile-code
-          /= text_area_tag :tile_code, resource.tile_code(request.base_url)
+          = text_area_tag :tile_code, resource.code(request.base_url)
           = link_to 'Copy to clipboard', '#', class: 'btn btn-primary', id: 'tileToClipboard'

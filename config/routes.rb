@@ -24,7 +24,10 @@ Rails.application.routes.draw do
   resources :testimonials, controller: 'backend/testimonials'
   resources :templates, controller: 'backend/templates'
 
+  # embedding routes
   match '/render_tile/:id' => 'frontend/case_studies#tile', via: [:get, :options]
+  match '/render_testimonial/:id' => 'frontend/case_studies#testimonial', via: [:get, :options]
+
   get ':user_url' => 'frontend/case_studies#index', as: :public_case_studies
   get ':user_url/code' => 'frontend/case_studies#code', as: :code_case_studies
   get ':user_url/:url' => 'frontend/case_studies#show', as: :public_case_study
