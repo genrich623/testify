@@ -10,7 +10,7 @@ var testify_embed_tile = function(tile_id) {
     contentType: "application/jsonp; charset=utf-8",
     url: tile_url,
     success: function(data) {
-      $('#testify_embed_hook').html(data['html']);
+      $('#testify_embed_hook_tile_' +  + tile_id).html(data['html']);
     }
   });
 };
@@ -21,7 +21,7 @@ var testify_embed_testimonial = function(testimonial_id) {
     contentType: "application/jsonp; charset=utf-8",
     url: tile_url,
     success: function(data) {
-      $('#testify_embed_hook').html(data['html']);
+      $('#testify_embed_hook_testimonial_' + testimonial_id).html(data['html']);
     }
   });
 };

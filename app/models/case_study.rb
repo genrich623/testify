@@ -61,7 +61,7 @@ class CaseStudy < ActiveRecord::Base
     "<script src=\"#{base_url}/embed.js\" type=\"text/javascript\">"\
     '</script><script type="text/javascript" charset="utf-8">testify(document).ready'\
     "(function() {testify_embed_tile(#{id});});"\
-    '</script><div id="testify_embed_hook"></div>'
+    "</script><div id=\"testify_embed_hook_tile_#{id}\"></div>"
   end
 
 private
