@@ -1,0 +1,43 @@
+.container.backend-new-case-study
+  = simple_form_for @request, wrapper: :horizontal_form_without_labels,
+                    html: { class: 'form-horizontal case-study-form' },
+                    url: requests_path do |f|
+    .row
+      .col-xs-12.header
+        .buttons
+          = f.submit 'Send', class: 'btn btn-primary'
+        h1.page-header = I18n.t('views.common.new_object', obj: 'testimonials request')
+
+    .row
+      .col-xs-12
+        .panel-group
+          .panel.panel-default
+            .panel-heading
+              h4.panel-title
+                | Sender info
+            .panel-collapse.collapse.in
+              .panel-body
+                .row
+                  = f.input :sender, placeholder: "Sender's name"
+                  = f.input :reply_to, placeholder: 'Reply to adress'
+                .clearfix
+          .panel.panel-default
+            .panel-heading
+              h4.panel-title
+                | Request info
+            .panel-collapse.collapse.in
+              .panel-body
+                .row
+                  = f.input :subject, placeholder: 'Email subject'
+                  = f.input :message, placeholder: 'Request message'
+                .clearfix
+          .panel.panel-default
+            .panel-heading
+              h4.panel-title
+                | Customer info
+            .panel-collapse.collapse.in
+              .panel-body
+                .row
+                  = f.input :name, placeholder: "Person's Name"
+                  = f.input :email, placeholder: "Person's Email"
+                .clearfix

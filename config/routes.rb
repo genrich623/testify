@@ -21,7 +21,16 @@ Rails.application.routes.draw do
       post :add_image, :add_template
     end
   end
-  resources :testimonials, controller: 'backend/testimonials'
+  resources :testimonials, controller: 'backend/testimonials' do
+    member do
+      get 'publish'
+    end
+  end
+  resources :requests, controller: 'backend/requests'
+  match '/new_testimonial/:token' => 'backend/requests#customers_testimonial',
+        via: :get, as: :customers_testimonial
+  match '/new_testimonial' => 'backend/requests#customer_create', via: :post
+
   resources :templates, controller: 'backend/templates'
 
   # embedding routes

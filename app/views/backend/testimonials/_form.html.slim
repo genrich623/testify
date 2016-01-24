@@ -30,6 +30,6 @@
             .row
               - TestimonialTemplate.all.each do |t|
                 /= t.type
-                = render 'template_preview', t: t
+                = render 'backend/testimonials/template_preview', t: t
             .clearfix
             /.reset-info = t('.reset')

@@ -33,6 +33,7 @@ class Testimonial < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   belongs_to :user
+  has_one :testimonial_request
 
   validates_presence_of :name, :role, :company, :content
 

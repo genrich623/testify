@@ -1,0 +1,24 @@
+.container.backend-case-studies
+  .row
+    .col-xs-12.header
+      .buttons
+        = link_to 'New request', new_request_path, class: 'btn btn-primary'
+      h1.page-header = 'Testimonial Requests'
+
+  .row
+    table.table.table-stripped
+      thead
+        tr
+          th | Id
+          th | Email
+          th | Status
+      tbody
+        - @requests.each do |request|
+          tr
+            td = request.id
+            td = request.email
+            td = request.status || 'Error'
+
+
+
+  /.text-center = paginate @requests

@@ -50,6 +50,9 @@ gem 'liquid'
 # serving cross domain ajax requests
 gem 'rack-cors', :require => 'rack/cors'
 
+# Tests
+gem 'mailcatcher'
+
 # For future
 # gem 'sidekiq'
 # gem 'sinatra'
