@@ -1,8 +1,39 @@
 $ ->
+  AddButton = (context) ->
+    ui = $.summernote.ui
+    # create button
+    button = ui.button(
+        contents: '<i class="fa fa-child"/> Add button'
+        tooltip: 'Add button'
+        click: ->
+            node = document.createElement('div')
+            node.className += "button"
+            context.invoke 'editor.insertNode', node
+            return
+    )
+    button.render()
+
   $('[data-provider="summernote"]').each ->
     $(this).summernote(
         height: 300,
-        minHeight: 300
+        minHeight: 300,
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'italic', 'underline', 'clear']],
+            ['fontname', ['fontname']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['height', ['height']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'hr']],
+            ['view', ['fullscreen', 'codeview']],
+            ['help', ['help']],
+            ['custom', ['add_button']]
+        ],
+
+        buttons: {
+            add_button: AddButton
+        }
     )
 
   # init editors

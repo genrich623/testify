@@ -1,0 +1,157 @@
+.note-editable {
+  a, a:hover, a:active {
+    text-decoration: none;
+    color: red;
+  }
+
+  div, p, h1, h2, h3, h4, h5, h6, li, table, td {
+    border: dashed 1px grey;
+  }
+
+  .case-study-template-1 {
+    font-family: LLCircularWeb, Helvetica Neue, Helvetica, sans-serif;
+
+    h2 {
+      font-size: 19px;
+      color: #205081;
+    }
+
+    h2 {
+      font-size: 19px;
+      color:#205081;
+    }
+
+    li {
+      margin-bottom: 20px;
+    }
+
+    blockquote {
+      border: none;
+      background: none;
+      line-height: 38px;
+      font-family: TisaWeb, Georgia, serif;
+      font-weight: bold;
+      font-size: 38px;
+      font-style: italic;
+      color: white;
+      text-align: center;
+    }
+
+    .header {
+      font-size: 30px;
+      float: none;
+      margin: auto;
+      border: none;
+      background-color: #59afe1;
+      display: block;
+      width: 90%;
+      color: white;
+      padding: 20px;
+
+      td {
+        border-top: none;
+        width: 25%;
+        text-align: center;
+        vertical-align: middle;
+
+        &:first-child {
+          width: 100%;
+          word-break: break-all;
+          border-right: solid 1px white;
+          text-align: left;
+          vertical-align: top;
+        }
+      }
+    }
+
+    .table-40x60 {
+      margin: 40px auto auto auto;
+      font-size: 14px;
+      width: 60%;
+      float: none;
+
+      tr {
+        vertical-align: top;
+      }
+
+      td {
+        border-top: none;
+        width: 60%;
+
+        &:first-child {
+          width: 40%;
+        }
+      }
+    }
+
+    .quote-block {
+      text-align:center;
+      width:100%;
+      background:#f6c342;
+      margin-top:40px;
+      padding: 50px;
+
+      p {
+        text-align: center;
+        font-size:14px;
+        color: white;
+      }
+    }
+
+    .table-100 {
+      width: 80%;
+      margin: 30px auto auto auto;
+
+      td {
+        border-top: none;
+        word-break: break-all;
+        width: 1%;
+
+        &:first-child {
+          width: 99%;
+        }
+      }
+    }
+
+    .bottom-block {
+      width:100%;
+      background:#59afe1;
+      padding-top:50px;
+      padding-bottom:50px;
+      margin: 30px auto auto auto;
+      color: white;
+
+      tr td {
+        text-align: center;
+        padding-bottom: 50px;
+        border-top: none;
+      }
+
+      tr:first-child td {
+        padding-top: 50px;
+        padding-bottom: 0;
+      }
+    }
+
+    .button {
+      margin: auto;
+      border: 1px solid #205081;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 18px;
+      line-height: 1.5;
+      padding: 7px 14px;
+      text-align: center;
+      vertical-align: middle;
+      white-space: nowrap;
+      background-color: #205081;
+      color: #FFF;
+
+      a, a:hover, a:active {
+        text-decoration: none;
+        color: white;
+      }
+    }
+  }
+}
