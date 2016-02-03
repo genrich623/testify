@@ -7,6 +7,7 @@ Rails.application.routes.draw do
                      unlocks: 'users/unlocks',
                      omniauth_callbacks: 'users/omniauth_callbacks'
                    }
+
   # Subdomains are currently not available on heroku
   #constraints(subdomain: /.+/) do
     #get '/:url', to: 'frontend/case_studies#show', by_domain: true

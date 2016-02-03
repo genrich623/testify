@@ -9,6 +9,7 @@ class Frontend::CaseStudiesController < Frontend::ApplicationController
   before_filter :check_referer, only: [:code]
   skip_before_filter :verify_authenticity_token, only: [:tile]
 
+  # usefull in case of subdomains
 =begin
   def show
     @user = if params[:by_domain]
@@ -24,7 +25,6 @@ class Frontend::CaseStudiesController < Frontend::ApplicationController
     @case_study = CaseStudy.find(params[:id])
 
     respond_to do |format|
-      #format.html { render plain: @case_study.tile_code(request.base_url) }
       format.json { render json: { html: @case_study.tile_template_compiled.html_safe } }
     end
   end
@@ -34,7 +34,6 @@ class Frontend::CaseStudiesController < Frontend::ApplicationController
     @testimonial = Testimonial.find(params[:id])
 
     respond_to do |format|
-      #format.html { render plain: @case_study.tile_code(request.base_url) }
       format.json { render json: { html: @testimonial.template_with_pic.html_safe } }
     end
   end

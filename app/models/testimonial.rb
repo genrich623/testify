@@ -39,12 +39,11 @@ class Testimonial < ActiveRecord::Base
 
   before_save :prepare_template
 
-  # TODO refactor
   def template_with_pic
     template_compiled.gsub!('{image_path}', image(:small))
   end
 
-  # makes code for embeding tile
+  # makes code for embedding tile
   def code(base_url)
     "<script src=\"#{base_url}/embed.js\" type=\"text/javascript\">"\
     '</script><script type="text/javascript" charset="utf-8">testify(document).ready'\

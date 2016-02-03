@@ -5,13 +5,8 @@
         = link_to t('.new_button'), new_case_study_path, class: 'btn btn-primary'
       h1.page-header = t('.title')
 
-  /- _collection = collection.to_a
   .row.backend-list-case-study
     - collection.each do |resource|
       = render 'list_case_study', resource: resource
-
-    / Lines between elements
-    /- unless collection[-1] == resource
-    /  hr
 
   .text-center = paginate collection

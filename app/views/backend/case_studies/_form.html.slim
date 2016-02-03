@@ -14,8 +14,6 @@
               .form-buttons
                 .btn.btn-primary#add_image
                   | Add image
-                //= f.input :image, wrapper: :horizontal_file_input, label_html: {class: 'col-md-2'},
-                //          hint: t('.image_hint'), required: false
             .clearfix
               a.btn.btn-primary.btn-block#infoNext(
                 data-parent="#accordion"
@@ -50,12 +48,8 @@
             a.collapsed data-parent="#accordion" data-toggle="collapse" href="#form" = 'Customize case study'
         #form.panel-collapse.collapse(class="#{'in' if resource.template_content.present? && resource.tile_template_content.present?}")
           .panel-body
-            = f.input :template_content, placeholder: t('activerecord.attributes.case_study.template_content'),
-                      as: :summernote
-            //= f.input :template_content, placeholder: t('activerecord.attributes.case_study.template_content'),
-            //          as: :ckeditor, input_html: { ckeditor: {toolbar: 'Full'} }
-            //= f.input :template_content, placeholder: t('activerecord.attributes.case_study.template_content'),
-            //  input_html: {class: 'froala'}
+            = text_area_tag :template_content, resource.new_record? ? '{template}' : '{original}', placeholder: t('activerecord.attributes.case_study.template_content'),
+                      data: {provider: :summernote}, name: 'case_study[template_content]', id: 'case_study_template_content'
             a.btn.btn-primary.btn-block.choose-template(
               href="#tileTemplate"
               data-toggle="collapse"
@@ -89,8 +83,6 @@
             a.collapsed data-parent="#accordion" data-toggle="collapse" href="#form-tile" = 'Customize tile'
         #form-tile.panel-collapse.collapse(class="#{'in' if resource.template_content.present? && resource.tile_template_content.present?}")
           .panel-body
-            = f.input :tile_template_content, placeholder: t('activerecord.attributes.case_study.tile_template_content'),
-                      as: :summernote
-            //= f.input :tile_template_content, placeholder: t('activerecord.attributes.case_study.tile_template_content'),
-            //          input_html: {class: 'froala'}
+            = text_area_tag :tile_template_content, resource.new_record? ? '{template}' : '{original}', placeholder: t('activerecord.attributes.case_study.tile_template_content'),
+                            data: {provider: :summernote}, name: 'case_study[tile_template_content]', id: 'case_study_tile_template_content'
             = f.submit t('views.common.save'), class: 'btn btn-primary btn-block'

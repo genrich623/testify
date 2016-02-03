@@ -1,11 +1,7 @@
 // function
-var loadTemplate = function(editor) {
-    //alert('<%= j render plain: @template %>');
-    //var header_template = '<div style="background-image:url({image_path});height:600px;background-size:cover;background-position:50% 50%;text-align:center;color:#fff;margin-right:auto;margin-left:auto;margin-top:0;"><div style="position:relative"><h1 style="font-size:96px;position:absolute;left:0;right:0;top:174px;z-index:1">{client}</h1><h2 style="font-size:48px;position:absolute;left:0;right:0;top:300px;z-index:1">{title}</h2>    <div style="height:600px;width: 100%;margin: auto;position: absolute;background: rgba(0, 0, 0, 0.5);z-index: 0;"></div></div></div>';
-
+var loadTemplate = function(editor, hidden_storage) {
     var template = '<%= j render plain: @template %>'.replace( /\{client}/g, $('#case_study_client').val()).replace( /\{title}/g, $('#case_study_title').val()).replace( /\{image_path}/g, $('#image_path').val());
-    //header_template = header_template.replace( /\{client}/g, $('#case_study_client').val()).replace( /\{title}/g, $('#case_study_title').val()).replace( /\{image_path}/g, $('#image_path').val());
-    //template = '<div>' + header_template + template + '</div>';
+    hidden_storage.val(template);
     editor.summernote('code', template);
 };
 
@@ -28,12 +24,13 @@ $('#template_form input[type="file"]').change(function() {
 // init editors
 var $editors = $('[data-provider="summernote"]');
 var editor = $editors.eq(<%= @editor_index %>);
+var hidden_storage = $('<%= @editor_index == 0 ? '#hidden_case_study' : '#hidden_tile' %>');
 
 if (!editor.summernote('isEmpty')) {
     if (confirm("<%= I18n.t('js.confirm') %>")) {
-        loadTemplate(editor);
+        loadTemplate(editor, hidden_storage);
     }
 } else {
-    loadTemplate(editor);
+    loadTemplate(editor, hidden_storage);
 }
 

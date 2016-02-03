@@ -56,7 +56,7 @@ class CaseStudy < ActiveRecord::Base
     end
   end
 
-  # makes code for embeding tile
+  # makes code for embedding tile
   def tile_code(base_url)
     "<script src=\"#{base_url}/embed.js\" type=\"text/javascript\">"\
     '</script><script type="text/javascript" charset="utf-8">testify(document).ready'\
@@ -93,7 +93,6 @@ private
   def add_link_to_tile
     # TODO refactor this!!!
     url_compiled = "http://testify-test.herokuapp.com/#{user.url}/#{url}"
-    #url_compiled = "http://#{user.domain}.testify-test.herokuapp.com/#{url}"
     tile_link = "<a style=\"position: absolute; top: 0; left: 0; width: 100%; height: 100%;"\
      " text-indent: -9999px; overflow: hidden;\" href=\"#{url_compiled}\" target=\"_blank\"></a></div>"
     template = tile_template_compiled.chomp('</div>') + tile_link

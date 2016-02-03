@@ -2,9 +2,7 @@
   .row
     .col-xs-12.header
       .buttons
-        /=> link_to t('views.common.preview'), public_case_study_path(resource.user.url, resource.url), class: 'btn btn-primary'
         = link_to t('views.common.edit'), edit_testimonial_path(resource), class: 'btn btn-primary'
-      /h1.page-header = resource.to_s
       h1.page-header Testimonial
 
   .row
