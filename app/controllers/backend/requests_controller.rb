@@ -1,5 +1,5 @@
 class Backend::RequestsController < ApplicationController
-  has_scope :page, default: 1
+  #has_scope :page, default: 1
 
   def new
     @request = TestimonialRequest.new(sender: current_user.name,

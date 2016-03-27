@@ -1,6 +1,6 @@
 class Backend::TestimonialsController < ApplicationController
-  inherit_resources
-  has_scope :page, default: 1
+  #inherit_resources
+  #has_scope :page, default: 1
 
   def publish
     testimonial = Testimonial.find(params[:id])
