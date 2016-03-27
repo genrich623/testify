@@ -33,6 +33,8 @@
 
 class User < ActiveRecord::Base
   include FindableByUrl
+  include Gravtastic
+  gravtastic size: 30
 
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable

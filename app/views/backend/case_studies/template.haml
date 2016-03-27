@@ -1,0 +1,70 @@
+%section.body-campaign
+  .wrap-two
+    .row
+      .col-lg-6.col-md-6.col-sm-6.col-xs-9.pull-left
+        %h1.step1
+          Choose a template to get started
+          %span#campaignName
+            = @case_study.title
+      .col-lg-6.col-md-6.col-sm-6.col-xs-12.pull-right
+        .camp-prog.pull-right
+          %div{:style => "display: block"}
+            = image_tag('campaign.png')
+            #sfIcons.camp-prog-sf1{:style => "display: none"}
+            #coIcons.camp-prog-co1{:style => "display:none"}
+            #trIcons.camp-prog-tr1{:style => "display: none"}
+  / Body section Input
+  %section.body-campaign-input
+    .wrap-three.container-fluid
+      .row
+        .col-lg-2.col-md-4.col-xs-9.col-sm-4
+          .template-sidebar.pull-right
+            .template-sidebar-single
+              %h2 Ready to go
+              %ul
+                %li
+                  %a{:href => ""} Recent Email
+                %li
+                  %a{:href => ""} My Templates
+            .template-sidebar-single
+              %h2 Create new
+              %ul
+                %li
+                  %a{:href => ""} Featured
+                %li
+                  %a{:href => ""} Announcements
+                %li
+                  %a{:href => ""} Newsletters
+                %li
+                  %a{:href => ""} Deals  offers
+                %li
+                  %a{:href => ""} Events
+                %li
+                  %a{:href => ""} Transactional
+            .template-sidebar-single
+              %h2 More options
+              %ul
+                %li
+                  %a{:href => ""} Import HTML
+                %li
+                  %a{:href => ""} Plain text
+        .col-lg-10.col-md-8.col-sm-8.col-xs-12
+          .sidebar-right
+            %ul.nav.navbar-nav
+              - CaseStudyTemplate.all.each do |template|
+                %li.list-item.col-lg-4
+                  %figure
+                    .single-list-item
+                      = link_to '#', class: 'single-link template-link' do
+                        = form_for @case_study do |f|
+                          = hidden_field_tag 'case_study[template_id]', template.id
+                          = hidden_field_tag :step, :template
+                          = f.submit 'Next', class: 'hidden'
+                        .img-thumbnail__status-pill Draft
+                        .single-img
+                          = image_tag template.preview.url, alt: template.title
+                      %figcaption.js-flip-face.c-flip-3d__face.c-flip-3d__face--front.img-thumbnail__link.qa-link-select-previously-sent-A7E60C50E008E9D5
+                        %time.img-thumbnail__date
+                          = template.updated_at.to_date.to_formatted_s(:short)
+                        %abbr.img-thumbnail__name{ title: template.title }
+                          = template.title

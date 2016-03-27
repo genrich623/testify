@@ -17,15 +17,16 @@ Rails.application.routes.draw do
   # For redirect after sign in
   get 'case_studies' => 'backend/case_studies#index', as: :user_root
 
-  resources :case_studies, controller: 'backend/case_studies' do
-    collection do
-      post :add_image, :add_template
-    end
+  resources :case_studies, controller: 'backend/case_studies',
+            path_names: { edit: 'edit(/:step)' } do
+    #collection do
+    #  post :add_image, :add_template
+    #end
   end
   resources :testimonials, controller: 'backend/testimonials' do
-    member do
-      get 'publish'
-    end
+    #member do
+    #  get 'publish'
+    #end
   end
   resources :requests, controller: 'backend/requests'
   match '/new_testimonial/:token' => 'backend/requests#customers_testimonial',
@@ -42,5 +43,5 @@ Rails.application.routes.draw do
   get ':user_url/code' => 'frontend/case_studies#code', as: :code_case_studies
   get ':user_url/:url' => 'frontend/case_studies#show', as: :public_case_study
 
-  root 'frontend/pages#root'
+  root 'backend/home#index'
 end

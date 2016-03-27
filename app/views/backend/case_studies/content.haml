@@ -1,0 +1,47 @@
+%section.body-campaign
+  .wrap-two
+    .row
+      .col-lg-4.col-md-4.col-sm-4.col-xs-12.pull-left
+        %h1.step1
+          Create content of case study
+          %span#campaignName
+            = @case_study.title
+      .col-lg-4.col-md-4.col-sm-4.col-xs-12
+        .tests
+          %ul.campaigns-menu.two.nav.navbar-nav.pull-right
+            %li#regular-tab.current
+              %a.text{:href => ""}
+                %i.fa.fa-envelope-o
+                Regular
+            %li#absplit-tab
+              %a.text{:href => ""}
+                %i.fa.fa-users
+                A/B test
+      .col-lg-4.col-md-4.col-sm-4.col-xs-12
+        .camp-prog.pull-right
+          %div{:style => "display: block"}
+            = image_tag('campaign.png')
+          #sfIcons.camp-prog-sf1{:style => "display: none"}
+          #coIcons.camp-prog-co1{:style => "display:none"}
+          #trIcons.camp-prog-tr1{:style => "display: none"}
+/ Body section Input
+%section.body-campaign-input
+  .wrap-three.container-fluid
+    .row
+      .col-lg-12.col-md-12.col-xs-12.col-sm-12
+        #regular
+          #campaign-editor
+            = form_for @case_study do
+              = hidden_field_tag :step, :content
+              #regular-content{:style => ""}
+                %ul.primary-form{ style: 'width: 80%;'}
+                  %li
+                    .box-wrap
+                      = text_area_tag :template_content, @case_study.template_content,
+                      data: {provider: :summernote}, name: 'case_study[template_content]',
+                      id: 'case_study_template_content'
+              .primary-form.padding-none
+                #submit-wrap.button-cancel.wizard{:style => ""}
+                  %button#submitButton.button.primary.huge.forward
+                    Next
+                    %i.fa.fa-arrow-right

@@ -1,0 +1,58 @@
+%section.body-section
+  .wrap-two.container-fluid
+    .row
+      .col-lg-10.col-md-9.col-sm-12.col-xs-12
+        .table-responsive.leftcol
+          %h1
+            Case studies
+            //%span.extras
+            //  %a{:href => ''} See all saved drafts
+          %table#drafts.tableHeader.margin-btm-50.table-hover{:cellpadding => '0', :cellspacing => '0', :width => '100%'}
+            %tbody
+              %tr.noHighlight
+                %th.headerLeft{:style => 'width: 61%;'} Case study
+                %th{:style => 'width: 18.5%;'} Created
+                %th.cellCenter{:style => 'width: 7%;'} TBD
+                %th.cellCenter{:style => 'width: 7%;'} Published
+                %th.headerRight{:style => 'width: 5.5%;'}
+              - @case_studies.each do |case_study|
+                %tr.hover-toggle
+                  %td
+                    = link_to case_study, case_study_path(case_study), class: 'left'
+                    %br/
+                    .clearit
+                  %td
+                    = case_study.created_at.to_formatted_s(:long)
+                  %td.cellCenter
+                    = image_tag 'minus.png', alt: 'TBD'
+                  %td.cellCenter
+                    // TODO create published state
+                    - if case_study.template_content?
+                      = image_tag 'tick.png', alt: 'Yes'
+                    - else
+                      = image_tag 'minus.png', alt: 'No'
+      .col-lg-2.col-md-3.col-sm-12.col-xs-12
+        #rightcol
+          #options
+            .sidebarbutton
+              .dropdown.user_dropdown
+                %a.button.primary.huge.full.dropdown-toggle{'data-toggle' => 'dropdown', :href => '#'} + New
+                .dropdown-menu.user-menu
+                  %ul.links
+                    %li
+                      = link_to 'Case study', new_case_study_path
+                    %li
+                      %a{:href => '#'} Testimonial
+                    %li.borderdown
+                      %a{:href => '#'} Review
+            .s-sidebar__highlight
+              %h3.s-sidebar__heading You might also want to...
+            %ul.s-sidebar__list
+              %li.s-sidebar__list-item
+                %a#dstest{:href => ''} Do something
+              %li.s-sidebar__list-item.s-sidebar__list-item--subtle
+                Something really interesting
+              %li.s-sidebar__list-item
+                %a#subscribers{:href => ''} Not to do anything
+              %li.s-sidebar__list-item.s-sidebar__list-item--subtle.lastBig
+                If you don't have anything interesting things to do

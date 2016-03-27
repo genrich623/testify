@@ -1,29 +1,3 @@
-# == Schema Information
-#
-# Table name: case_studies
-#
-#  id                     :integer          not null, primary key
-#  user_id                :integer
-#  url                    :string
-#  client                 :string
-#  title                  :string
-#  image_file_name        :string
-#  image_content_type     :string
-#  image_file_size        :integer
-#  image_updated_at       :datetime
-#  template_content       :text
-#  template_compiled      :text
-#  tile_template_content  :text
-#  tile_template_compiled :text
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
-#
-# Indexes
-#
-#  index_case_studies_on_url      (url)
-#  index_case_studies_on_user_id  (user_id)
-#
-
 class CaseStudy < ActiveRecord::Base
   include FindableByUrl
   SITE_URL = "#{ENV['SITE_PROTOCOL']}://#{ENV['SITE_HOST']}#{':' + ENV['SITE_PORT'] if ENV['SITE_PORT']}"
@@ -38,9 +12,11 @@ class CaseStudy < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   belongs_to :user
+  belongs_to :template
 
-  validates_presence_of :client, :title, :template_content, :tile_template_content
-  validates_uniqueness_of :url, scope: :user_id
+  validates_presence_of :client, :title
+  #:template_content, :tile_template_content
+  #validates_uniqueness_of :url, scope: :user_id
 
   before_validation :prepare_url
   after_validation :prepare_url_errors
@@ -64,7 +40,12 @@ class CaseStudy < ActiveRecord::Base
     "</script><div id=\"testify_embed_hook_tile_#{id}\"></div>"
   end
 
-private
+  def to_s
+    persisted? ? "#{client} - #{title}" : 'Case study'
+  end
+
+
+  private
   def prepare_url
     self.url = "#{client} #{title}".parameterize
   end
@@ -98,5 +79,4 @@ private
     template = tile_template_compiled.chomp('</div>') + tile_link
     self.tile_template_compiled = template
   end
-
 end

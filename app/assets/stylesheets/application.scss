@@ -16,24 +16,31 @@
 
 // Variables
 
-$brand-primary: #47c144;
-$brand-primary: #909090;
-$body-padding-top: 50px;
+//$brand-primary: #47c144;
+//$brand-primary: #909090;
+//$body-padding-top: 50px;
 
 @import "bootstrap-sprockets";
-@import "bootswatch/cosmo/variables";
+//@import "bootswatch/cosmo/variables";
 @import "bootstrap";
-body { padding-top: $body-padding-top; }
-@import "bootswatch/cosmo/bootswatch";
+//body { padding-top: $body-padding-top; }
+//@import "bootswatch/cosmo/bootswatch";
 @import "summernote";
 
+// import 3rd-party styles
+@import "cm/animate";
+@import "cm/main";
+@import "cm/responsive";
+@import "cm/adjustments";
+@import "backend/editor";
 
-@import "./**/*";
 
-.flashes {
-  margin-top: $grid-gutter-width / 2;
-}
+//@import "./**/*";
 
-.user-code {
-  max-height: 334px;
-}
+//.flashes {
+//  margin-top: $grid-gutter-width / 2;
+//}
+
+//.user-code {
+//  max-height: 334px;
+//}

@@ -1,0 +1,563 @@
+/*
+
+Theme Name:  ..........
+Theme URI:   ..........
+Description: .......... Multi-Purpose Responsive Template is powerful multipurpose theme that will help   you to build practically any site. Each one can be made unique with just a few clicks.
+Author:      Rahim
+Author URI:  http://www.rahim.codextree.com
+Version:     1.0.0
+Tags:        agency, blog, bootstrap, corporate, deco interior, gym fitness, magazine, parallax, portfolio, restaurant, shop, spa, sports, sticky
+
+*/
+
+
+/* All except Large devices - Desktops (≥1200px) */
+@media (min-width: 1200px) {
+
+}
+
+/* Medium devices - Desktops (≥992px) */
+@media (min-width: 992px) and (max-width: 1200px) {
+.campaigns-menu {
+    margin-right: 0px;
+}
+.header-section {
+    background: #333C4E;
+    height: auto;
+}
+#menu ul li {
+    margin-right: 0px;
+    z-index: 1 !important;
+}
+
+}
+
+/* Only Phones and Tablets (Portrait) */
+@media (max-width: 991px) {
+
+  #right-menu ul li{
+  float: left;
+}
+#right-menu ul li a.upgrade {
+  margin-right: 30px;
+  margin-top: 0px;
+}
+#right-menu ul li a {
+  margin-right: 35px;
+  margin-top: -5px;
+}
+#right-menu ul li a.upgrade {
+  margin-right: 30px;
+  margin-top: 0;
+}
+.dropdown-menu.user-menu ul.links li {
+  float:none !important;
+}
+.logo {
+  margin-right: 74px;
+}
+#right-menu {
+  margin-top: 46px;
+}
+.dropdown.user_dropdown.pull-left {
+  margin-left: 0;
+}
+.dropdown.user_dropdown.pull-left {
+  font-size: 10px;
+  margin-left: 61px;
+}
+   .primary-form {
+  list-style: outside none none;
+  margin: auto;
+  padding: 0;
+  position: relative;
+  width:100%;
+}
+.template-sidebar {
+  margin-right: 68px;
+  margin-top: 26px;
+}
+
+
+
+.s-sidebar__list-item {
+    text-align: center;
+}
+.campaigns-menu {
+  margin-right: 65px;
+  margin-top: 20px;
+}
+.campaigns-menu li {
+  float: left;
+}
+.camp-prog {
+  margin-bottom: 25px;
+  margin-right: 43px;
+  margin-top: 30px;
+}
+
+
+
+} 
+
+/* Only Tablets (Portrait) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .header-section {
+  height: auto;
+}
+
+  .primary-form {
+  list-style: outside none none;
+  margin: auto;
+  padding: 0;
+  position: relative;
+  width:100%;
+}
+.template-sidebar {
+  margin-right: 68px;
+  margin-top: 26px;
+}
+.primary-form .contenteditable.width-full, .primary-form .file-wrap.width-full, .primary-form .input.width-full, .primary-form input.width-full[type="email"], .primary-form input.width-full[type="name"], .primary-form input.width-full[type="password"], .primary-form input.width-full[type="text"], .primary-form input.width-full[type="url"], .primary-form textarea.width-full {
+  width: 100%;
+}
+.primary-form .contenteditable.with-inside-input, .primary-form .file-wrap.with-inside-input, .primary-form .input.with-inside-input, .primary-form input.with-inside-input[type="email"], .primary-form input.with-inside-input[type="name"], .primary-form input.with-inside-input[type="password"], .primary-form input.with-inside-input[type="text"], .primary-form input.with-inside-input[type="url"], .primary-form textarea.with-inside-input {
+  width: 100%;
+}
+.contenteditable, .file-wrap, .input, input[type="email"], input[type="name"], input[type="password"], input[type="text"], input[type="url"], textarea {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.s-sidebar__list-item {
+    text-align: center;
+}
+.campaigns-menu {
+  margin-right: 65px;
+  margin-top: 20px;
+}
+.campaigns-menu li {
+  float: left;
+}
+.camp-prog {
+  margin-bottom: 25px;
+  margin-right: 43px;
+  margin-top: 30px;
+}
+#menu ul li {
+  margin-right: 4px;
+  z-index: 1 !important;
+}
+.avatar {
+  display: inline-flex;
+  margin-top: -5px;
+}
+#right-menu ul li a.upgrade {
+  margin-right: 30px;
+  margin-top: 8px;
+}
+#rightcol {
+  padding-bottom: 48px;
+}
+
+
+
+}
+
+/* Only Tablets (Portrait) and Phones (Landscape) */
+@media (min-width: 480px) and (max-width: 991px) {
+  #right-menu ul li{
+  float: left;
+}
+#right-menu ul li a.upgrade {
+  margin-right: 30px;
+  margin-top: 0px;
+}
+#right-menu ul li a {
+  margin-right: 35px;
+  margin-top: -5px;
+}
+#right-menu ul li a.upgrade {
+  margin-right: 30px;
+  margin-top: 0;
+}
+.dropdown-menu.user-menu ul.links li {
+  float:none !important;
+}
+.logo {
+  margin-right: 74px;
+}
+#right-menu {
+  margin-top: 46px;
+}
+.dropdown.user_dropdown.pull-left {
+  margin-left: 0;
+}
+.dropdown.user_dropdown.pull-left {
+  font-size: 10px;
+  margin-left: 61px;
+}
+  .primary-form {
+  list-style: outside none none;
+  margin: auto;
+  padding: 0;
+  position: relative;
+  width:100%;
+}
+.template-sidebar {
+  margin-right: 68px;
+  margin-top: 26px;
+}
+.primary-form .contenteditable.width-full, .primary-form .file-wrap.width-full, .primary-form .input.width-full, .primary-form input.width-full[type="email"], .primary-form input.width-full[type="name"], .primary-form input.width-full[type="password"], .primary-form input.width-full[type="text"], .primary-form input.width-full[type="url"], .primary-form textarea.width-full {
+  width: 100%;
+}
+.primary-form .contenteditable.with-inside-input, .primary-form .file-wrap.with-inside-input, .primary-form .input.with-inside-input, .primary-form input.with-inside-input[type="email"], .primary-form input.with-inside-input[type="name"], .primary-form input.with-inside-input[type="password"], .primary-form input.with-inside-input[type="text"], .primary-form input.with-inside-input[type="url"], .primary-form textarea.with-inside-input {
+  width: 100%;
+}
+.contenteditable, .file-wrap, .input, input[type="email"], input[type="name"], input[type="password"], input[type="text"], input[type="url"], textarea {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.s-sidebar__list-item {
+    text-align: center;
+}
+
+.campaigns-menu li {
+  float: left;
+}
+.camp-prog {
+  margin-bottom: 25px;
+  margin-right: 43px;
+  margin-top: 30px;
+}
+.campaigns-menu i {
+    font-size: 45px;
+    margin-bottom: 7px;
+}
+.campaigns-menu li a {
+    font-size: 15px;
+}
+.campaigns-menu {
+    margin-right: 35px;
+    margin-top: 3px;
+}
+.step1 {
+  font-size: 14px;
+  line-height: 24px;
+  margin-left: 10px;
+}
+.campaigns-menu {
+  margin-right: 52px;
+  margin-top: 8px;
+}
+.camp-prog {
+    width: 169px;
+}
+
+
+}
+
+/* Only Phones */
+@media (max-width: 767px) {
+#right-menu ul li{
+  float: left;
+}
+#right-menu ul li a.upgrade {
+  margin-right: 30px;
+  margin-top: 0px;
+}
+#right-menu ul li a {
+  margin-right: 35px;
+  margin-top: -5px;
+}
+#right-menu ul li a.upgrade {
+  margin-right: 30px;
+  margin-top: 0;
+}
+.dropdown-menu.user-menu ul.links li {
+  float:none !important;
+}
+.logo {
+  margin-right: 74px;
+}
+#right-menu {
+  margin-top: 46px;
+}
+.dropdown.user_dropdown.pull-left {
+  margin-left: 0;
+}
+.dropdown.user_dropdown.pull-left {
+  font-size: 10px;
+  margin-left: 61px;
+}
+
+  .header-section {
+  height: auto;
+}
+  .primary-form {
+  list-style: outside none none;
+  margin: auto;
+  padding: 0;
+  position: relative;
+  width:100%;
+}
+.template-sidebar {
+  margin-right: 80px;
+  margin-top: 26px;
+}
+.primary-form .contenteditable.width-full, .primary-form .file-wrap.width-full, .primary-form .input.width-full, .primary-form input.width-full[type="email"], .primary-form input.width-full[type="name"], .primary-form input.width-full[type="password"], .primary-form input.width-full[type="text"], .primary-form input.width-full[type="url"], .primary-form textarea.width-full {
+  width: 100%;
+}
+.primary-form .contenteditable.with-inside-input, .primary-form .file-wrap.with-inside-input, .primary-form .input.with-inside-input, .primary-form input.with-inside-input[type="email"], .primary-form input.with-inside-input[type="name"], .primary-form input.with-inside-input[type="password"], .primary-form input.with-inside-input[type="text"], .primary-form input.with-inside-input[type="url"], .primary-form textarea.with-inside-input {
+  width: 100%;
+}
+.contenteditable, .file-wrap, .input, input[type="email"], input[type="name"], input[type="password"], input[type="text"], input[type="url"], textarea {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.s-sidebar__list-item {
+    text-align: center;
+}
+.campaigns-menu {
+  margin-right: 65px;
+  margin-top: 20px;
+}
+.campaigns-menu li {
+  float: left;
+}
+.camp-prog {
+  margin-bottom: 25px;
+  margin-right: 43px;
+  margin-top: 30px;
+}
+#leftcol h1{
+  font-size: 22px;
+  margin-left: 2px;
+}
+#rightcol {
+  padding-bottom: 34px;
+  padding-top: 40px;
+}
+.step1 {
+  margin-left: 10px;
+}
+
+  
+}
+
+/* Only Phones (Landscape) */
+@media (min-width: 480px) and (max-width: 767px) {
+
+  #right-menu ul li{
+  float: left;
+}
+#right-menu ul li a.upgrade {
+  margin-right: 30px;
+  margin-top: 0px;
+}
+#right-menu ul li a {
+  margin-right:120px;
+  margin-top: -5px;
+  color:#fff !important;
+}
+#right-menu ul li a.upgrade {
+  margin-right: -4px;
+  margin-top: 6px;
+}
+.dropdown-menu.user-menu ul.links li {
+  float:none !important;
+}
+.logo {
+  margin-right: 74px;
+}
+#right-menu {
+  margin-top: 46px;
+}
+.dropdown.user_dropdown.pull-left {
+  margin-left: 0;
+}
+.dropdown.user_dropdown.pull-left {
+  font-size: 10px;
+  margin-left: 61px;
+}
+  
+  .header-section {
+  height: auto;
+}
+  .primary-form {
+  list-style: outside none none;
+  margin: auto;
+  padding: 0;
+  position: relative;
+  width:100%;
+}
+.template-sidebar {
+  margin-right: 68px;
+  margin-top: 26px;
+}
+.primary-form .contenteditable.width-full, .primary-form .file-wrap.width-full, .primary-form .input.width-full, .primary-form input.width-full[type="email"], .primary-form input.width-full[type="name"], .primary-form input.width-full[type="password"], .primary-form input.width-full[type="text"], .primary-form input.width-full[type="url"], .primary-form textarea.width-full {
+  width: 100%;
+}
+.primary-form .contenteditable.with-inside-input, .primary-form .file-wrap.with-inside-input, .primary-form .input.with-inside-input, .primary-form input.with-inside-input[type="email"], .primary-form input.with-inside-input[type="name"], .primary-form input.with-inside-input[type="password"], .primary-form input.with-inside-input[type="text"], .primary-form input.with-inside-input[type="url"], .primary-form textarea.with-inside-input {
+  width: 100%;
+}
+.contenteditable, .file-wrap, .input, input[type="email"], input[type="name"], input[type="password"], input[type="text"], input[type="url"], textarea {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.s-sidebar__list-item {
+    text-align: center;
+}
+.campaigns-menu {
+  margin-right: 167px;
+  margin-top: -63px;
+}
+.campaigns-menu i {
+    font-size: 33px;
+    margin-bottom: 7px;
+}
+.camp-prog {
+    margin-bottom: 43px;
+    margin-right: 4px;
+    margin-top: -75px;
+    width: 160px;
+}
+.campaigns-menu li a {
+    font-size: 11px;
+}
+#leftcol h1{
+  font-size: 22px;
+  margin-left: 2px;
+}
+#rightcol {
+  padding-bottom: 34px;
+  padding-top: 40px;
+}
+.step1 {
+  margin-left: 10px;
+}
+
+
+
+
+
+}
+
+/* Only Phones (Portrait) */
+@media (max-width: 479px) {
+  .header-section {
+  height: auto;
+}
+#right-menu ul li{
+  float: left;
+}
+#right-menu ul li a.upgrade {
+  margin-right: 30px;
+  margin-top: 0px;
+}
+#right-menu ul li a {
+  margin-right: 35px;
+  margin-top: -5px;
+}
+#right-menu ul li a.upgrade {
+  margin-right: -21px;
+  margin-top: 0;
+}
+.dropdown-menu.user-menu ul.links li {
+  float:none !important;
+}
+.logo {
+  margin-right: 74px;
+}
+#right-menu {
+  margin-top: 46px;
+}
+.dropdown.user_dropdown.pull-left {
+  margin-left: 0;
+}
+.dropdown.user_dropdown.pull-left {
+  font-size: 10px;
+  margin-left: 61px;
+}
+.avatar p {
+  color: #fff;
+  display: block;
+  font-size: 15px;
+  font-weight: 300;
+  margin-right: 4px;
+  padding-top: 0px;
+}
+.avatar {
+  display: inline-flex;
+  margin-right: -32px;
+  margin-left: 33px;
+}
+#menu{
+  border-color: #333C4E !important;
+}
+#menu ul{
+  background: #333c4e none repeat scroll 0 0;
+}
+.actives {
+  border-bottom: 0px solid #ddd;
+}
+#menu ul li:hover {
+  border-bottom: 0px solid #19a9e5;
+}
+.dropdown-menu.user-menu ul.links li a {
+  color: #fff !important;
+}
+.primary-form {
+  margin: auto;
+  padding: 0;
+  position: relative;
+  width: 100%;
+}
+.template-sidebar {
+  margin-right: 68px;
+  margin-top: 26px;
+}
+.primary-form .contenteditable.width-full, .primary-form .file-wrap.width-full, .primary-form .input.width-full, .primary-form input.width-full[type="email"], .primary-form input.width-full[type="name"], .primary-form input.width-full[type="password"], .primary-form input.width-full[type="text"], .primary-form input.width-full[type="url"], .primary-form textarea.width-full {
+  width: 100%;
+}
+.primary-form .contenteditable.with-inside-input, .primary-form .file-wrap.with-inside-input, .primary-form .input.with-inside-input, .primary-form input.with-inside-input[type="email"], .primary-form input.with-inside-input[type="name"], .primary-form input.with-inside-input[type="password"], .primary-form input.with-inside-input[type="text"], .primary-form input.with-inside-input[type="url"], .primary-form textarea.with-inside-input {
+  width: 100%;
+}
+.contenteditable, .file-wrap, .input, input[type="email"], input[type="name"], input[type="password"], input[type="text"], input[type="url"], textarea {
+  margin-top: 10px;
+  width: 100%;
+}
+
+
+.s-sidebar__list-item {
+    text-align: center;
+}
+.campaigns-menu {
+  margin-right: 65px;
+  margin-top: 20px;
+}
+.campaigns-menu li {
+  float: left;
+}
+.camp-prog {
+  margin-bottom: 25px;
+  margin-right: 43px;
+  margin-top: 30px;
+}
+#leftcol h1{
+  font-size: 22px;
+  margin-left: 2px;
+}
+#rightcol {
+  padding-bottom: 34px;
+  padding-top: 40px;
+}
+.step1 {
+  margin-left: 10px;
+}
+
+}
+
+

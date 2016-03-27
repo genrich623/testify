@@ -15,6 +15,8 @@
 #= require jquery.remotipart
 #= require bootstrap
 #= require summernote
+#= require jquery-migrate-1.2.1.min
+#= require modernizr-2.8.3.min
 
 #= require_tree .
 
