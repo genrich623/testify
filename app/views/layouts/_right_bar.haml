@@ -1,0 +1,24 @@
+#rightcol
+  #options
+    .sidebarbutton
+      .dropdown.user_dropdown
+        %a.button.primary.huge.full.dropdown-toggle{'data-toggle' => 'dropdown', :href => '#'} + New
+        .dropdown-menu.user-menu
+          %ul.links
+            %li
+              = link_to 'Case study', new_case_study_path
+            %li
+              = link_to 'Testimonial', new_testimonial_path
+            %li.borderdown
+              %a{:href => '#'} Review
+    .s-sidebar__highlight
+      %h3.s-sidebar__heading You might also want to...
+    %ul.s-sidebar__list
+      %li.s-sidebar__list-item
+        %a#dstest{:href => ''} Do something
+      %li.s-sidebar__list-item.s-sidebar__list-item--subtle
+        Something really interesting
+      %li.s-sidebar__list-item
+        %a#subscribers{:href => ''} Not to do anything
+      %li.s-sidebar__list-item.s-sidebar__list-item--subtle.lastBig
+        If you don't have anything interesting things to do

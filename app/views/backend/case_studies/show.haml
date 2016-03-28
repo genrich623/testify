@@ -29,7 +29,8 @@
               %ul.primary-form{style: 'width: auto;'}
                 %li
                   %label Tile preview
-                  .helper-text TBD
+                  = link_to public_case_study_path(@case_study.user.url, @case_study.url) do
+                    = render html: @case_study.tile_template_content.html_safe
       .col-lg-6.col-md-6.col-xs-6.col-sm-6
         #regular
           #campaign-editor
