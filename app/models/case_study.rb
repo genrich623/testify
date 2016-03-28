@@ -1,5 +1,6 @@
 class CaseStudy < ActiveRecord::Base
   include FindableByUrl
+  include Publishable
   SITE_URL = "#{ENV['SITE_PROTOCOL']}://#{ENV['SITE_HOST']}#{':' + ENV['SITE_PORT'] if ENV['SITE_PORT']}"
 
   paginates_per 10
@@ -21,6 +22,9 @@ class CaseStudy < ActiveRecord::Base
   before_validation :prepare_url
   after_validation :prepare_url_errors
   before_save :prepare_templates, :add_link_to_tile
+  before_create { self.step = :new }
+
+  progress_steps :new, :logo, :template, :content
 
   def image_url
     SITE_URL + image.url(:tile)
@@ -42,6 +46,15 @@ class CaseStudy < ActiveRecord::Base
 
   def to_s
     persisted? ? "#{client} - #{title}" : 'Case study'
+  end
+
+  def insert_template(template)
+    update(
+        template:
+            template.gsub('{client}', @case_study.client)
+              .gsub('{title}', @case_study.title)
+              .gsub('{image_path}', @case_study.image.url)
+    )
   end
 
 

@@ -22,12 +22,8 @@ class Backend::CaseStudiesController < Backend::ApplicationController
 
   def template
     if case_study_params[:template_id]
-      template_content = CaseStudyTemplate.find(case_study_params[:template_id]).template
-      template_content.gsub!('{client}', @case_study.client)
-          .gsub!('{title}', @case_study.title)
-          .gsub!('{image_path}', @case_study.image.url)
-      puts template_content
-      @case_study.update(template_content: template_content)
+      @case_study.insert_template CaseStudyTemplate
+                                      .find(case_study_params[:template_id]).template
     end
     wizard_save(:validate_template, next: :content, back: :template)
   end
@@ -35,6 +31,7 @@ class Backend::CaseStudiesController < Backend::ApplicationController
   def content
     @case_study.update(case_study_params) if case_study_params
     #wizard_save(:validate_template, next: :tile_template, back: :content)
+    @case_study.next_step
     redirect_to case_study_path(@case_study), notice: 'Case study created!'
   end
 
@@ -52,10 +49,11 @@ class Backend::CaseStudiesController < Backend::ApplicationController
   end
 
   def show
+    redirect_to case_studies_path, alert: 'Case study is not finished' unless @case_study.ready?
   end
 
   def edit
-    params[:step] ||= :new
+    params[:step] ||= @case_study.ready? ? :new : @case_study.step
     render params[:step]
   end
 
@@ -89,6 +87,7 @@ class Backend::CaseStudiesController < Backend::ApplicationController
 
   def wizard_save(validation, args = {})
     if (validation ? send(validation, @case_study) : true) && @case_study.save
+      @case_study.next_step
       redirect_to edit_case_study_path(@case_study, step: args[:next])
     else
       render args[:back]

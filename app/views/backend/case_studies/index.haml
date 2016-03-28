@@ -12,22 +12,28 @@
               %tr.noHighlight
                 %th.headerLeft{:style => 'width: 61%;'} Case study
                 %th{:style => 'width: 18.5%;'} Created
-                %th.cellCenter{:style => 'width: 7%;'} TBD
+                %th.cellCenter{:style => 'width: 7%;'} Ready
                 %th.cellCenter{:style => 'width: 7%;'} Published
                 %th.headerRight{:style => 'width: 5.5%;'}
               - @case_studies.each do |case_study|
                 %tr.hover-toggle
                   %td
-                    = link_to case_study, case_study_path(case_study), class: 'left'
+                    - if case_study.ready?
+                      = link_to case_study, case_study_path(case_study), class: 'left'
+                    - else
+                      = link_to case_study, edit_case_study_path(case_study), class: 'left'
                     %br/
                     .clearit
                   %td
                     = case_study.created_at.to_formatted_s(:long)
                   %td.cellCenter
-                    = image_tag 'minus.png', alt: 'TBD'
+                    - if case_study.ready?
+                      = image_tag 'tick.png', alt: 'Yes'
+                    - else
+                      = image_tag 'minus.png', alt: 'No'
                   %td.cellCenter
                     // TODO create published state
-                    - if case_study.template_content?
+                    - if case_study.published?
                       = image_tag 'tick.png', alt: 'Yes'
                     - else
                       = image_tag 'minus.png', alt: 'No'
