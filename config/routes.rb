@@ -29,6 +29,8 @@ Rails.application.routes.draw do
     #end
   end
   resources :requests, controller: 'backend/requests'
+
+
   match '/new_testimonial/:token' => 'backend/requests#customers_testimonial',
         via: :get, as: :customers_testimonial
   match '/new_testimonial' => 'backend/requests#customer_create', via: :post

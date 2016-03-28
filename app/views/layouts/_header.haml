@@ -23,9 +23,9 @@
                   %li{class: ('actives' if controller? 'backend/testimonials') }
                     = link_to 'Testimonials', testimonials_path
                   %li
-                    %a{:href => '#'} Reviews
-                  %li
-                    %a{:href => '#'} Automation
+                    %a{:href => '#' ,style: 'color: grey; cursor: not-allowed'} Reviews
+                  %li{class: ('actives' if controller? 'backend/requests') }
+                    = link_to 'Automation', requests_path
       .col-lg-4.col-md-5.col-sm-10.col-xs-12
         #right-menu.nav.navbar-nav.pull-right
           - if user_signed_in?
