@@ -32,6 +32,7 @@ class Backend::CaseStudiesController < Backend::ApplicationController
     @case_study.update(case_study_params) if case_study_params
     #wizard_save(:validate_template, next: :tile_template, back: :content)
     @case_study.next_step
+    @case_study.insert_tile TileTemplate.take.template # temp we have one tile template
     redirect_to case_study_path(@case_study), notice: 'Case study created!'
   end
 
@@ -53,7 +54,7 @@ class Backend::CaseStudiesController < Backend::ApplicationController
   end
 
   def edit
-    params[:step] ||= @case_study.ready? ? :new : @case_study.step
+    params[:step] ||= @case_study.ready? ? :content : @case_study.step
     render params[:step]
   end
 

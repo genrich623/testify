@@ -21,7 +21,7 @@ class CaseStudy < ActiveRecord::Base
 
   before_validation :prepare_url
   after_validation :prepare_url_errors
-  before_save :prepare_templates, :add_link_to_tile
+  before_save :prepare_templates
   before_create { self.step = :new }
 
   progress_steps :new, :logo, :template, :content
@@ -49,16 +49,24 @@ class CaseStudy < ActiveRecord::Base
   end
 
   def insert_template(template)
+    insert(:template_content, template)
+  end
+
+  def insert_tile(template)
+    insert(:tile_template_content, template)
+  end
+
+  private
+
+  def insert(object, template)
     update(
-        template:
-            template.gsub('{client}', @case_study.client)
-              .gsub('{title}', @case_study.title)
-              .gsub('{image_path}', @case_study.image.url)
+        object =>
+            template.gsub('{client}', client)
+                .gsub('{title}', title)
+                .gsub('{image_path}', image.url)
     )
   end
 
-
-  private
   def prepare_url
     self.url = "#{client} #{title}".parameterize
   end

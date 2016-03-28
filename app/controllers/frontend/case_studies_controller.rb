@@ -15,7 +15,8 @@ class Frontend::CaseStudiesController < Frontend::ApplicationController
   end
 
   def index
-    # TBD
+    @user = User.find_by_url!(params[:user_url])
+    @case_studies = @user.case_studies.where(step: 'published')
   end
 
   # usefull in case of subdomains

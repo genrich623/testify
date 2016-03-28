@@ -1,0 +1,11 @@
+.container.backend-case-studies
+  .row
+    .col-xs-12.header
+      %h1.page-header
+        = "#{@user.name.humanize.possessive} case studies"
+
+  - @case_studies.each do |case_study|
+    .col-xs-12.col-sm-4
+      = link_to public_case_study_path(case_study.user.url, case_study.url) do
+        = render html: case_study.tile_template_content.html_safe
+    /= render 'list_case_study', resource: resource
