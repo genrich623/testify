@@ -17,6 +17,10 @@ class TestimonialRequest < ActiveRecord::Base
     update_attribute(:status, 'failed to send')
   end
 
+  def ready?
+    status == 'Filled by customer'
+  end
+
   private
 
   def generate_token

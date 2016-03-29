@@ -4,7 +4,7 @@
       .col-lg-4.col-md-4.col-sm-4.col-xs-12.pull-left
         %h1.step1
           New testimonial
-          %span#campaignName Select template and fill necessary fields
+          %span#campaignName Please fill necessary fields
       .col-lg-4.col-md-4.col-sm-4.col-xs-12
         .tests
           %ul.campaigns-menu.two.nav.navbar-nav.pull-right
@@ -27,28 +27,27 @@
 %section.body-campaign-input
   .wrap-three.container-fluid
     .row
-      .col-lg-3.col-sm-4.col-xs-12
-        .scrollable-templates
-          TEMPLATES TBD
-      .col-lg-9.col-xs-12.col-sm-8
+      .col-lg-12.col-xs-12.col-sm-12
         #regular
           #campaign-editor
-            = form_for @testimonial do |f|
+            = form_for @testimonial, url: url_for(controller: 'backend/requests',
+                       action: 'customer_create') do |f|
+              = hidden_field_tag :request_id, @request.id
               #regular-content{:style => ""}
                 %ul.primary-form
                   %li
-                    %label Write testimonial by myself
+                    %label Thank you for writing testimonial
                     .helper-text
-                      You can write testimonial, also you can request it from your client
+                      Your feedback very valuable for us!
                     .box-wrap
-                      = f.text_field :name, autofocus: 'autofocus', placeholder: "Client's name",
+                      = f.text_field :name, placeholder: "Your name",
                                        class: 'title-field width-full first'
                     .box-wrap
                       = f.file_field :image
                       .image{style: 'width: 200px;'}
                         = image_tag(@testimonial.image.url) if @testimonial.image?
                     .box-wrap
-                      = f.text_field :role, placeholder: "Client's role in company",
+                      = f.text_field :role, autofocus: 'autofocus', placeholder: "Your role in company",
                                        class: 'title-field width-full first'
                     .box-wrap
                       = f.text_field :company, placeholder: "Company",
