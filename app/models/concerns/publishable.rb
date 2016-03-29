@@ -33,5 +33,9 @@ module Publishable
     def ready?
       published? || draft?
     end
+
+    def toggle_published
+      update(step: published? ? :draft : :published)
+    end
   end
 end

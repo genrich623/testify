@@ -17,17 +17,19 @@ Rails.application.routes.draw do
   # For redirect after sign in
   get 'case_studies' => 'backend/case_studies#index', as: :user_root
 
+  concern :publishable do
+    post :publish, on: :member
+  end
+
   resources :case_studies, controller: 'backend/case_studies',
-            path_names: { edit: 'edit(/:step)' } do
+            path_names: { edit: 'edit(/:step)' },
+            concerns: :publishable do
     #collection do
     #  post :add_image, :add_template
     #end
   end
-  resources :testimonials, controller: 'backend/testimonials' do
-    #member do
-    #  get 'publish'
-    #end
-  end
+  resources :testimonials, controller: 'backend/testimonials',
+            concerns: :publishable
   resources :requests, controller: 'backend/requests'
 
 

@@ -73,6 +73,12 @@ class Backend::CaseStudiesController < Backend::ApplicationController
   #  respond_to :js
   #end
 
+  def publish
+    @case_study.toggle_published
+    redirect_to case_studies_path,
+                notice: "Case study was #{'un' unless @case_study.published? }published"
+  end
+
   protected
 
   def set_case_study

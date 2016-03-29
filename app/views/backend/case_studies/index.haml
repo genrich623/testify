@@ -32,8 +32,13 @@
                     - else
                       = image_tag 'minus.png', alt: 'No'
                   %td.cellCenter
-                    - if case_study.published?
-                      = image_tag 'tick.png', alt: 'Yes'
+                    - if case_study.ready?
+                      = link_to publish_case_study_path(case_study), method: :post,
+                                data: {confirm: "Do you want to #{'un' if case_study.published?}publish case study?" } do
+                        - if case_study.published?
+                          = image_tag 'tick.png', alt: 'Yes'
+                        - else
+                          = image_tag 'minus.png', alt: 'No'
                     - else
                       = image_tag 'minus.png', alt: 'No'
       .col-lg-2.col-md-3.col-sm-12.col-xs-12

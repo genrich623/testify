@@ -18,23 +18,19 @@
               - @testimonials.each do |testimonial|
                 %tr.hover-toggle
                   %td
-                    /- if case_study.ready?
-                    /  /= link_to case_study, case_study_path(case_study), class: 'left'
-                    /- else
                     = link_to testimonial, testimonial_path(testimonial), class: 'left'
                     %br/
                     .clearit
                   %td
                     = testimonial.created_at.to_formatted_s(:long)
                   %td.cellCenter
-                    /- if case_study.ready?
-                    /  = image_tag 'tick.png', alt: 'Yes'
-                    /- else
-                    = image_tag 'minus.png', alt: 'No'
+                    = image_tag 'tick.png', alt: 'Yes'
                   %td.cellCenter
-                    /- if case_study.published?
-                    /  = image_tag 'tick.png', alt: 'Yes'
-                    /- else
-                    = image_tag 'minus.png', alt: 'No'
+                    = link_to publish_testimonial_path(testimonial), method: :post,
+                              data: {confirm: "Do you want to #{'un' if testimonial.published?}publish testimonial?" } do
+                      - if testimonial.published?
+                        = image_tag 'tick.png', alt: 'Yes'
+                      - else
+                        = image_tag 'minus.png', alt: 'No'
       .col-lg-2.col-md-3.col-sm-12.col-xs-12
         = render 'layouts/right_bar'

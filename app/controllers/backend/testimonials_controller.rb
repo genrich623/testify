@@ -34,12 +34,12 @@ class Backend::TestimonialsController < ApplicationController
   end
 
   def publish
-    testimonial = Testimonial.find(params[:id])
-    testimonial.toggle(:published).save
-    if testimonial.testimonial_request && testimonial.published?
-      testimonial.testimonial_request.destroy
+    @testimonial.toggle(:published).save
+    if @testimonial.testimonial_request && @testimonial.published?
+      @testimonial.testimonial_request.destroy
     end
-    redirect_to testimonials_path
+    redirect_to testimonials_path,
+                notice: "Tesimonial was #{'un' unless @testimonial.published? }published"
   end
 
   protected
