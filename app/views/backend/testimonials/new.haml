@@ -45,6 +45,10 @@
                       = f.text_field :name, autofocus: 'autofocus', placeholder: "Client's name",
                                        class: 'title-field width-full first'
                     .box-wrap
+                      = f.file_field :image
+                      .image{style: 'width: 200px;'}
+                        = image_tag(@testimonial.image.url) if @testimonial.image?
+                    .box-wrap
                       = f.text_field :role, placeholder: "Client's role in company",
                                        class: 'title-field width-full first'
                     .box-wrap

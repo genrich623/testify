@@ -39,7 +39,7 @@ class Backend::TestimonialsController < ApplicationController
       @testimonial.testimonial_request.destroy
     end
     redirect_to testimonials_path,
-                notice: "Tesimonial was #{'un' unless @testimonial.published? }published"
+                notice: "Testimonial was #{'un' unless @testimonial.published? }published"
   end
 
   protected

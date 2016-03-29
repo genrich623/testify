@@ -63,6 +63,7 @@ class Backend::CaseStudiesController < Backend::ApplicationController
   end
 
   def destroy
+    redirect_to case_studies_path, notice: 'Case study destroyed' if @case_study.destroy
   end
 
   #def add_template
