@@ -3,7 +3,7 @@
     .row
       .col-lg-4.col-md-4.col-sm-4.col-xs-12.pull-left
         %h1.step1
-          Write testimonial by myself
+          New testimonial
           %span#campaignName Select template and fill necessary fields
       .col-lg-4.col-md-4.col-sm-4.col-xs-12
         .tests
@@ -38,30 +38,21 @@
               #regular-content{:style => ""}
                 %ul.primary-form
                   %li
-                    %label Client
-                    .helper-text Write client's full name
+                    %label Write testimonial by myslef
+                    .helper-text
+                      You can write testimonial, also you can request it from your client
                     .box-wrap
-                      = f.text_field :name, autofocus: 'autofocus',
+                      = f.text_field :name, autofocus: 'autofocus', placeholder: "Client's name",
                                        class: 'title-field width-full first'
-                  %li#regSubject{:style => ""}
-                    %label Role
-                    .helper-text
-                      Write client's role in company
                     .box-wrap
-                      = f.text_field :role, class: 'clientname-field width-full first'
-                  %li#regSubject{:style => ""}
-                    %label Company
-                    .helper-text
-                      Write client's company name
+                      = f.text_field :role, placeholder: "Client's role in company",
+                                       class: 'title-field width-full first'
                     .box-wrap
-                      = f.text_field :company, class: 'clientname-field width-full first'
-                  %li#regSubject{:style => ""}
-                    %label Testimonial
-                    .helper-text
-                      This is testimonial's content
+                      = f.text_field :company, placeholder: "Company",
+                                       class: 'title-field width-full first'
                     .box-wrap
                       = f.text_area :content, class: 'clientname-field width-full first',
-                                    style: 'resize: none; height: 150px;'
+                                    style: 'resize: none; height: 150px;', placeholder: 'Testimonial'
                     = f.submit 'Next', class: 'hidden'
               .primary-form.padding-none
                 #submit-wrap.button-cancel.wizard{:style => ""}

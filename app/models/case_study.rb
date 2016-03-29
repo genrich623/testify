@@ -1,9 +1,7 @@
 class CaseStudy < ActiveRecord::Base
   include FindableByUrl
   include Publishable
-  SITE_URL = "#{ENV['SITE_PROTOCOL']}://#{ENV['SITE_HOST']}#{':' + ENV['SITE_PORT'] if ENV['SITE_PORT']}"
-
-  paginates_per 10
+  include Embeddable
 
   has_attached_file :image,
                     styles: { tile: '320x240#', huge: '1920x1080#' }
@@ -25,10 +23,7 @@ class CaseStudy < ActiveRecord::Base
   before_create { self.step = :new }
 
   progress_steps :new, :logo, :template, :content
-
-  def image_url
-    SITE_URL + image.url(:tile)
-  end
+  embed_as :tile
 
   class << self
     def find_by_user_url!(url)
@@ -37,12 +32,12 @@ class CaseStudy < ActiveRecord::Base
   end
 
   # makes code for embedding tile
-  def tile_code(base_url)
-    "<script src=\"#{base_url}/embed.js\" type=\"text/javascript\">"\
-    '</script><script type="text/javascript" charset="utf-8">testify(document).ready'\
-    "(function() {testify_embed_tile(#{id});});"\
-    "</script><div id=\"testify_embed_hook_tile_#{id}\"></div>"
-  end
+  #def tile_code(base_url)
+  #  "<script src=\"#{base_url}/embed.js\" type=\"text/javascript\">"\
+  #  '</script><script type="text/javascript" charset="utf-8">testify(document).ready'\
+  #  "(function() {testify_embed_tile(#{id});});"\
+  #  "</script><div id=\"testify_embed_hook_tile_#{id}\"></div>"
+  #end
 
   def to_s
     persisted? ? "#{client} - #{title}" : 'Case study'

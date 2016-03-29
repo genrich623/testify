@@ -9,8 +9,20 @@
               = link_to 'Case study', new_case_study_path
             %li
               = link_to 'Testimonial', new_testimonial_path
-            %li.borderdown
-              %a{:href => '#'} Review
+            /%li.borderdown
+            /  %a{:href => '#'} Review
+    %br
+    .sidebarbutton
+      .dropdown.user_dropdown
+        %a.button.primary.huge.full.dropdown-toggle{'data-toggle' => 'dropdown', :href => '#'} + Request
+        .dropdown-menu.user-menu
+          %ul.links
+            /%li
+            /  %a{:href => '#', style: 'color: light-grey; cursor: not-allowed'} Case study
+            %li
+              = link_to 'Testimonial', '#'
+            /%li.borderdown
+            /  %a{:href => '#', style: 'color: light-grey; cursor: not-allowed'} Review
     .s-sidebar__highlight
       %h3.s-sidebar__heading You might also want to...
     %ul.s-sidebar__list

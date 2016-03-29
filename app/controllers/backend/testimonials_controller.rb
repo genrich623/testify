@@ -1,7 +1,5 @@
 class Backend::TestimonialsController < ApplicationController
-  #inherit_resources
-  #has_scope :page, default: 1
-
+  before_action :set_testimonial, except: [:index, :new, :create]
 
   def index
     @testimonials = current_user.testimonials
@@ -12,6 +10,7 @@ class Backend::TestimonialsController < ApplicationController
   end
 
   def create
+    @testimonial = current_user.testimonials.new(testimonial_params)
     if @testimonial.save
       redirect_to testimonials_path, notice: 'Testimonial created'
     else

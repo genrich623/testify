@@ -3,16 +3,13 @@
     .row
       .col-lg-4.col-md-4.col-sm-4.col-xs-12.pull-left
         %h1.step1
-          = @case_study.client
+          = @testimonial.name
           %span#campaignName
-            = @case_study.title
+            = @testimonial.company
       .col-lg-4.col-md-4.col-sm-4.col-xs-12
       .col-lg-4.col-md-4.col-sm-4.col-xs-12
         .buttons.pull-right{style: 'margin: 10px;'}
-          = link_to 'preview', public_case_study_path(@case_study.user.url, @case_study.url),
-                  class: 'btn btn-primary', style: 'margin-top: 10px;'
-          %br
-          = link_to 'edit', edit_case_study_path(@case_study), class: 'btn btn-primary',
+          = link_to 'edit', edit_testimonial_path(@testimonial), class: 'btn btn-primary',
                     style: 'margin-top: 10px;'
         .camp-prog.pull-right
           #sfIcons.camp-prog-sf1{:style => "display: none"}
@@ -28,19 +25,19 @@
             #regular-content{:style => ""}
               %ul.primary-form{style: 'width: auto;'}
                 %li
-                  %label Tile preview
-                  = link_to public_case_study_path(@case_study.user.url, @case_study.url) do
-                    = render html: @case_study.tile_template_content.html_safe
+                  %label Testimonial preview
+                  /= link_to public_case_study_path(@case_study.user.url, @case_study.url) do
+                  = render html: @testimonial.template_compiled.html_safe
       .col-lg-6.col-md-6.col-xs-6.col-sm-6
         #regular
           #campaign-editor
             #regular-content{:style => ""}
               %ul.primary-form{style: 'width: auto;'}
                 %li
-                  %label Tile code
-                  .helper-text Copy this code to your page to embed case stidy tile
+                  %label Testimonial code
+                  .helper-text Copy this code to your page to embed testimonial
                   .box-wrap.tile-code
-                    = text_area_tag :tile_code, @case_study.tile_code,
+                    = text_area_tag :tile_code, @testimonial.testimonial_code,
                                     style: 'width: 100%; height: 120px;'
                     = link_to 'Copy to clipboard', '#', class: 'btn btn-primary',
                               id: 'tileToClipboard', style: 'margin: 5px;'
