@@ -41,5 +41,9 @@
                           = image_tag 'minus.png', alt: 'No'
                     - else
                       = image_tag 'minus.png', alt: 'No'
+                  %td.cellCenter
+                    = link_to case_study, method: :delete,
+                              data: { confirm: 'Do you want to delete case study?' } do
+                      %span.glyphicon.glyphicon-remove
       .col-lg-2.col-md-3.col-sm-12.col-xs-12
         = render 'layouts/right_bar'

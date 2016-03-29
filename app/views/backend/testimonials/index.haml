@@ -32,5 +32,9 @@
                         = image_tag 'tick.png', alt: 'Yes'
                       - else
                         = image_tag 'minus.png', alt: 'No'
+                  %td.cellCenter
+                    = link_to testimonial, method: :delete,
+                              data: { confirm: 'Do you want to delete testimonial?' } do
+                      %span.glyphicon.glyphicon-remove
       .col-lg-2.col-md-3.col-sm-12.col-xs-12
         = render 'layouts/right_bar'
