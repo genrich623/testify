@@ -44,3 +44,28 @@
 //.user-code {
 //  max-height: 334px;
 //}
+
+.scrollable-templates{
+  overflow: auto;
+  height: 90vh;
+
+  background: #f4f4f4 none repeat scroll 0 0;
+  border: 1px solid #e2e2e2;
+  border-radius: 6px;
+
+  .template {
+    margin: 10px 10%;
+    width: 80%;
+    cursor: pointer;
+
+    &.selected {
+      img {
+        border: solid 5px #19a9e5;
+      }
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+}
