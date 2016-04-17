@@ -30,38 +30,38 @@
       .col-lg-12.col-md-12.col-xs-12.col-sm-12
         #regular
           #campaign-editor
-            = form_for @request, url: requests_path do |f|
+            = simple_form_for @request, url: requests_path do |f|
               #regular-content{:style => ""}
                 %ul.primary-form
                   %li
                     %label Sender info
                     .helper-text This is your details as sender
                     .box-wrap
-                      = f.text_field :sender, placeholder: "Sender's name",
-                                       class: 'title-field width-full first'
+                      = f.input :sender, placeholder: "Sender's name",
+                                       class: 'title-field width-full first', wrapper: 'testify'
                     .box-wrap
-                      = f.text_field :reply_to, placeholder: 'reply to address',
-                                       class: 'title-field width-full first'
+                      = f.input :reply_to, placeholder: 'reply to address',
+                                       class: 'title-field width-full first', wrapper: 'testify'
                   %li#regSubject{:style => ""}
                     %label Recipient info
                     .helper-text
                       This is your customer's details
                     .box-wrap
-                      = f.text_field :name, autofocus: 'autofocus', placeholder: "Recipient's name",
-                                     class: 'clientname-field width-full first'
+                      = f.input :name, autofocus: 'autofocus', placeholder: "Recipient's name",
+                                     class: 'clientname-field width-full first', wrapper: 'testify'
                     .box-wrap
-                      = f.text_area :email, placeholder: "Recipient's email",
-                                     class: 'clientname-field width-full first'
+                      = f.input :email, placeholder: "Recipient's email",
+                                     class: 'clientname-field width-full first', wrapper: 'testify'
                   %li#regSubject{:style => ""}
                     %label Request info
                     .helper-text
                       This is your request for testimonial details
                     .box-wrap
-                      = f.text_field :subject, placeholder: 'Email subject',
-                                     class: 'clientname-field width-full first'
+                      = f.input :subject, placeholder: 'Email subject',
+                                     class: 'clientname-field width-full first', wrapper: 'testify'
                     .box-wrap
-                      = f.text_area :message, placeholder: 'Request message',
-                                     class: 'clientname-field width-full first'
+                      = f.input :message, placeholder: 'Request message',
+                                     class: 'clientname-field width-full first', wrapper: 'testify'
                     = f.submit 'Next', class: 'hidden'
               .primary-form.padding-none
                 #submit-wrap.button-cancel.wizard{:style => ""}

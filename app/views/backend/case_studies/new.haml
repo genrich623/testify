@@ -30,7 +30,7 @@
       .col-lg-12.col-md-12.col-xs-12.col-sm-12
         #regular
           #campaign-editor
-            = form_for @case_study do |f|
+            = simple_form_for @case_study do |f|
               = hidden_field_tag :step, :main
               #regular-content{:style => ""}
                 %ul.primary-form
@@ -38,14 +38,14 @@
                     %label Name this case study
                     .helper-text This is a case study title
                     .box-wrap
-                      = f.text_field :title, autofocus: 'autofocus',
+                      = f.input :title, autofocus: 'autofocus', wrapper: 'testify',
                                        class: 'title-field width-full first'
                   %li#regSubject{:style => ""}
                     %label Write a client's name
                     .helper-text
                       This will be used in case study construction
                     .box-wrap
-                      = f.text_field :client, class: 'clientname-field width-full first'
+                      = f.input :client, class: 'clientname-field width-full first', wrapper: 'testify'
                     = f.submit 'Next', class: 'hidden'
               .primary-form.padding-none
                 #submit-wrap.button-cancel.wizard{:style => ""}
