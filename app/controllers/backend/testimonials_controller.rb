@@ -7,10 +7,12 @@ class Backend::TestimonialsController < ApplicationController
 
   def new
     @testimonial = Testimonial.new
+    @templates = TestimonialTemplate.all
   end
 
   def create
     @testimonial = current_user.testimonials.new(testimonial_params)
+
     if @testimonial.save
       redirect_to testimonials_path, notice: 'Testimonial created'
     else
@@ -49,6 +51,6 @@ class Backend::TestimonialsController < ApplicationController
   end
 
   def testimonial_params
-    params.require(:testimonial).permit(:image, :name, :role, :company, :content)
+    params.require(:testimonial).permit(:image, :name, :role, :company, :content, :template_id)
   end
 end
