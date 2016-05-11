@@ -25,7 +25,7 @@ class Template < ActiveRecord::Base
                     # we will not use hashes for now, later will plane file structure
                     #url: '/system/:class/:attachment/:hash.:extension',
                     #hash_secret: ENV['PAPERCLIP_HASH_SECRET']
-  validates_attachment_content_type :preview, content_type: /\Aimage\/.*\Z/
+  # validates_attachment_content_type :preview, content_type: /\Aimage\/.*\Z/
 
-  validates_presence_of :title, :template, :preview
+  validates_presence_of :title, :template
 end

@@ -28,8 +28,8 @@ class Testimonial < ActiveRecord::Base
   private
 
   def prepare_template
-    template = TestimonialTemplate.take.template # TODO make choosing templates (now any template)
-    self.template_compiled = template.gsub!('{name}', name).gsub!('{role}', role)
-                              .gsub!('{company}', company).gsub!('{content}', content)
+    template = TestimonialTemplate.last.template # TODO make choosing templates (now any template)
+    self.template_compiled = template.gsub!('{name}', name.upcase).gsub!('{role}', role.upcase)
+                              .gsub!('{company}', company.upcase).gsub!('{content}', content)
   end
 end
