@@ -1,0 +1,42 @@
+%main.c-site-main-content-area.l-container.l-container--narrowest
+
+  = simple_form_for(resource, :url => user_session_path, :wrapper => :horizontal_form_without_labels, :html => {:class => 'js-login-form'}) do |f|
+    %fieldset
+      %legend.form-heading Log In
+      .c-box.u-s-mb-huge
+
+        #form-errors.c-feedback.c-feedback--error.u-s-mb-base.u-toggle-visibility.u-hide-if-js-is-off.js-login-form-error-msg
+
+        .c-form-field
+          %label.c-form-field__label{:for => "user-email"} Email
+
+          = f.email_field :email,
+            :required => false,
+            :autofocus => true,
+            :id => 'user-email',
+            :class => 'text-input js-login-form-input js-login-form-username qa-login-form-input-email'
+
+        .c-form-field
+          %label.c-form-field__label{:for => "user-password"} Password
+
+          = f.password_field :password,
+            :required => false,
+            :id => 'user-password',
+            :class => 'text-input js-login-form-input js-login-form-password qa-login-form-input-password'
+
+        .c-form-field.c-form-field--submit
+
+          = f.button :submit, 'Login',
+            :class => 'c-button c-button--full-bleed js-login-form-submit qa-login-form-button-submit'
+
+
+        / //Submit
+        %p.u-text-align-center.u-s-mt-large
+          = link_to t('users.sessions.common.forgot_password'),new_user_password_path, :class => 'js-login-link-forgot'
+
+  / //Login form
+  / Create a free account CTA
+  %a.c-box.c-box--invert.c-box--block-link.c-box--compact.u-text-align-center{:href => "#{new_user_registration_path}"}
+    %h2.c-box--block-link__title Create a free account
+
+  / //Create a free account CTA

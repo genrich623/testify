@@ -56,9 +56,13 @@
                       %a{:href => '#'} Account members
                     %li
                       %a{:href => '#'} Account members
+                    %li.borderdown
+                      = link_to 'Sign Out', destroy_user_session_path,
+                        :method => :delete
+
           - else
             %ul.nav.navbar-nav.users_profiles
               %li
                 = link_to 'Log in', new_user_session_path
               %li
-                = link_to 'Sing up', new_user_registration_path, class: 'upgrade'
+                = link_to 'Sign up', new_user_registration_path, class: 'upgrade'
