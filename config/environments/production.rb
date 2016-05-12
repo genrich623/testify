@@ -102,4 +102,7 @@ Rails.application.configure do
           :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
       }
   }
+
+  config.logger = Logger.new(STDOUT)
+  config.logger.level = Logger.const_get((ENV["LOG_LEVEL"] || "INFO").upcase)
 end
