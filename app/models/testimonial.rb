@@ -20,7 +20,10 @@ class Testimonial < ActiveRecord::Base
   embed_as_self
 
   def template_with_pic
-    image_path = self.image.file? ? image(:small) : '/assets/default.jpg'
+    image_path =
+      self.image.file? ?
+        image(:small) :
+        ActionController::Base.helpers.image_path('default.jpg')
 
     template_compiled.gsub!('{image_path}', image_path)
   end
