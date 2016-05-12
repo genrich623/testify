@@ -15,3 +15,5 @@
 /public/system
 /config/database.yml
 .env
+
+*.DS_Store
