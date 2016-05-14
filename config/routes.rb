@@ -21,6 +21,10 @@ Rails.application.routes.draw do
     post :publish, on: :member
   end
 
+  concern :approvable do
+    post :approve, on: :member
+  end
+
   resources :case_studies, controller: 'backend/case_studies',
             path_names: { edit: 'edit(/:step)' },
             concerns: :publishable do
@@ -28,8 +32,10 @@ Rails.application.routes.draw do
     #  post :add_image, :add_template
     #end
   end
+
   resources :testimonials, controller: 'backend/testimonials',
-            concerns: :publishable
+            :concerns => [:publishable, :approvable]
+
   resources :requests, controller: 'backend/requests'
 
 

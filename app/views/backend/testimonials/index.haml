@@ -13,7 +13,7 @@
                 %th.headerLeft{:style => 'width: 61%;'} Testimonial
                 %th{:style => 'width: 18.5%;'} Created
                 %th.cellCenter{:style => 'width: 7%;'} Ready
-                %th.cellCenter{:style => 'width: 7%;'} Published
+                %th.cellCenter{:style => 'width: 7%;'} Approved
                 %th.headerRight{:style => 'width: 5.5%;'}
               - @testimonials.each do |testimonial|
                 %tr.hover-toggle
@@ -26,12 +26,12 @@
                   %td.cellCenter
                     = image_tag 'tick.png', alt: 'Yes'
                   %td.cellCenter
-                    = link_to publish_testimonial_path(testimonial), method: :post,
-                              data: {confirm: "Do you want to #{'un' if testimonial.published?}publish testimonial?" } do
-                      - if testimonial.published?
-                        = image_tag 'tick.png', alt: 'Yes'
-                      - else
-                        = image_tag 'minus.png', alt: 'No'
+                    / = link_to publish_testimonial_path(testimonial), method: :post,
+                    /           data: {confirm: "Do you want to #{'un' if testimonial.published?}publish testimonial?" } do
+                    - if testimonial.approved?
+                      = image_tag 'tick.png', alt: 'Yes'
+                    - else
+                      = image_tag 'minus.png', alt: 'No'
                   %td.cellCenter
                     = link_to testimonial, method: :delete,
                               data: { confirm: 'Do you want to delete testimonial?' } do
