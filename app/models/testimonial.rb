@@ -35,6 +35,8 @@ class Testimonial < ActiveRecord::Base
   private
 
   def prepare_template
+    return unless self.template_id
+
     template = TestimonialTemplate.find(self.template_id).template # TODO make choosing templates (now any template)
     self.template_compiled = template.gsub!('{name}', name.upcase).gsub!('{role}', role.upcase)
                               .gsub!('{company}', company.upcase).gsub!('{content}', content)

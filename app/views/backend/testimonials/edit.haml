@@ -1,0 +1,82 @@
+%section.body-campaign
+  .wrap-two
+    .row
+      .col-lg-4.col-md-4.col-sm-4.col-xs-12.pull-left
+        %h1.step1
+          Edit testimonial
+          %span#campaignName Select template and fill necessary fields
+      .col-lg-4.col-md-4.col-sm-4.col-xs-12
+        .tests
+          %ul.campaigns-menu.two.nav.navbar-nav.pull-right
+            %li#regular-tab.current
+              %a.text{:href => ""}
+                %i.fa.fa-envelope-o
+                Regular
+            %li#absplit-tab
+              %a.text{:href => ""}
+                %i.fa.fa-users
+                A/B test
+      .col-lg-4.col-md-4.col-sm-4.col-xs-12
+        .camp-prog.pull-right
+          %div{:style => "display: block"}
+            = image_tag('campaign.png')
+          #sfIcons.camp-prog-sf1{:style => "display: none"}
+          #coIcons.camp-prog-co1{:style => "display:none"}
+          #trIcons.camp-prog-tr1{:style => "display: none"}
+/ Body section Input
+%section.body-campaign-input
+  .wrap-three.container-fluid
+    .row
+      .col-lg-3.col-sm-4.col-xs-12
+        .scrollable-templates
+          - @templates.each do |template|
+            .template.col-sm-12
+              - if template.preview.file?
+                = image_tag template.preview.url, :class => 'testimonial-template-thumbs', :data => {:template_id => template.id}
+              - else
+                = image_tag 'nav-img.png', :class => 'testimonial-template-thumbs', :data => {:template_id => template.id}
+      .col-lg-9.col-xs-12.col-sm-8
+        #regular
+          #campaign-editor
+            = simple_form_for @testimonial do |f|
+              #regular-content{:style => ""}
+                %ul.primary-form
+                  %li
+                    %label Write testimonial by myself
+                    .helper-text
+                      You can write testimonial, also you can request it from your client
+                    .box-wrap
+                      = f.input :name, autofocus: 'autofocus', placeholder: "Client's name",
+                                       class: 'title-field width-full first', wrapper: 'testify'
+                    .box-wrap
+                      = f.input :image, wrapper: 'testify'
+                      .image{style: 'width: 200px;'}
+                        = image_tag(@testimonial.image.url) if @testimonial.image?
+                    .box-wrap
+                      = f.input :role, placeholder: "Client's role in company",
+                                       class: 'title-field width-full first', wrapper: 'testify'
+                    .box-wrap
+                      = f.input :company, placeholder: "Company",
+                                       class: 'title-field width-full first', wrapper: 'testify'
+                    .box-wrap
+                      = f.input :content, class: 'clientname-field width-full first', wrapper: 'testify',
+                                    style: 'resize: none; height: 150px;', placeholder: 'Testimonial'
+                      = f.input :template_id, :as => :hidden, :input_html => {:class => 'testimonial-template-field'}
+                    = f.submit 'Next', class: 'hidden'
+              .primary-form.padding-none
+                #submit-wrap.button-cancel.wizard{:style => ""}
+                  %button#submitButton.button.primary.huge.forward
+                    Update
+
+      .col-lg-9.col-xs-12.col-sm-8
+        #regular
+          #campaign-editor
+            #regular-content{:style => ""}
+              %ul.primary-form
+                %li
+                  %label Or, Request from Customer
+              = link_to new_request_path do
+                .primary-form.padding-none
+                  #submit-wrap.button-cancel.wizard{:style => ""}
+                    %button#submitButton.button.primary.huge.forward
+                      Request Testimonial

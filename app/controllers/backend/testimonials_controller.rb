@@ -2,7 +2,7 @@ class Backend::TestimonialsController < ApplicationController
   before_action :set_testimonial, except: [:index, :new, :create]
 
   def index
-    @testimonials = current_user.testimonials
+    @testimonials = current_user.testimonials.order('created_at DESC')
   end
 
   def new
@@ -21,6 +21,8 @@ class Backend::TestimonialsController < ApplicationController
   end
 
   def edit
+    @testimonial = Testimonial.find params[:id]
+    @templates = TestimonialTemplate.all
   end
 
   def update
@@ -42,6 +44,12 @@ class Backend::TestimonialsController < ApplicationController
     end
     redirect_to testimonials_path,
                 notice: "Testimonial was #{'un' unless @testimonial.published? }published"
+  end
+
+  def approve
+    @testimonial.update_attributes :approved => true
+
+    redirect_to testimonials_path, :notice => "Testimonial was approved"
   end
 
   protected
