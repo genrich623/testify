@@ -1,5 +1,5 @@
 class Backend::ReviewsController < ApplicationController
-  before_action :set_reviews, except: [:index, :new, :create]
+  before_action :set_review, except: [:index, :new, :create]
 
   def index
     @reviews = current_user.reviews.order('created_at DESC')
@@ -32,9 +32,11 @@ class Backend::ReviewsController < ApplicationController
   #   end
   # end
 
-  # def destroy
-  #   redirect_to testimonials_path, notice: 'Testimonial destroyed' if @testimonial.destroy
-  # end
+  def destroy
+    if @review.destroy
+      redirect_to reviews_path, :notice => 'Review destroyed'
+    end
+  end
 
   # def publish
   #   @testimonial.toggle(:published).save
@@ -53,9 +55,9 @@ class Backend::ReviewsController < ApplicationController
 
   protected
 
-  # def set_reviews
-  #   @testimonial = current_user.testimonials.find(params[:id])
-  # end
+  def set_review
+    @review = current_user.reviews.find(params[:id])
+  end
 
   def review_params
     params.require(:review).permit(:image, :name, :role, :company, :content, :title, :rating)
