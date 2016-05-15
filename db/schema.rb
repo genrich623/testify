@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160514143333) do
+ActiveRecord::Schema.define(version: 20160515141721) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,26 @@ ActiveRecord::Schema.define(version: 20160514143333) do
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "role"
+    t.string   "company"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.text     "title"
+    t.text     "content"
+    t.integer  "rating"
+    t.boolean  "published",          default: false
+    t.boolean  "approved",           default: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "templates", force: :cascade do |t|
     t.string   "type"
@@ -127,6 +147,7 @@ ActiveRecord::Schema.define(version: 20160514143333) do
   add_index "users", ["url"], name: "index_users_on_url", using: :btree
 
   add_foreign_key "case_studies", "users"
+  add_foreign_key "reviews", "users"
   add_foreign_key "testimonial_requests", "testimonials"
   add_foreign_key "testimonial_requests", "users"
   add_foreign_key "testimonials", "users"

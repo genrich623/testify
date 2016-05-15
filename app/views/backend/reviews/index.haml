@@ -1,0 +1,41 @@
+%section.body-section
+  .wrap-two.container-fluid
+    .row
+      .col-lg-10.col-md-9.col-sm-12.col-xs-12
+        .table-responsive.leftcol
+          %h1
+            Reviews
+          %table#drafts.tableHeader.margin-btm-50.table-hover{:cellpadding => '0', :cellspacing => '0', :width => '100%'}
+            %tbody
+              %tr.noHighlight
+                %th.headerLeft{:style => 'width: 61%;'} Review
+                %th.cellCenter{:style => 'width: 18.5%;'} Rating
+                %th{:style => 'width: 18.5%;'} Created
+                %th.cellCenter{:style => 'width: 7%;'} Ready
+                %th.cellCenter{:style => 'width: 7%;'} Approved
+                %th.headerRight{:style => 'width: 5.5%;'}
+              - @reviews.each do |review|
+                %tr.hover-toggle
+                  %td
+                    = link_to review, review_path(review), class: 'left'
+                    %br/
+                    .clearit
+                  %td.cellCenter
+                    = review.rating
+                  %td
+                    = review.created_at.to_formatted_s(:long)
+                  %td.cellCenter
+                    = image_tag 'tick.png', alt: 'Yes'
+                  %td.cellCenter
+                    / = link_to publish_review_path(review), method: :post,
+                    /           data: {confirm: "Do you want to #{'un' if review.published?}publish review?" } do
+                    - if review.approved?
+                      = image_tag 'tick.png', alt: 'Yes'
+                    - else
+                      = image_tag 'minus.png', alt: 'No'
+                  %td.cellCenter
+                    = link_to review, method: :delete,
+                              data: { confirm: 'Do you want to delete review?' } do
+                      %span.glyphicon.glyphicon-remove
+      .col-lg-2.col-md-3.col-sm-12.col-xs-12
+        = render 'layouts/right_bar'

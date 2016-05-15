@@ -5,12 +5,12 @@
         %a.button.primary.huge.full.dropdown-toggle{'data-toggle' => 'dropdown', :href => '#'} + New
         .dropdown-menu.user-menu
           %ul.links
-            %li
-              = link_to 'Case study', new_case_study_path
-            %li
-              = link_to 'Testimonial', new_testimonial_path
-            /%li.borderdown
-            /  %a{:href => '#'} Review
+            = link_to new_case_study_path do
+              %Li Case Study
+            = link_to new_testimonial_path do
+              %li Testimonial
+            = link_to new_review_path do
+              %li Review
     %br
     .sidebarbutton
       .dropdown.user_dropdown

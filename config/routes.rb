@@ -36,6 +36,9 @@ Rails.application.routes.draw do
   resources :testimonials, controller: 'backend/testimonials',
             :concerns => [:publishable, :approvable]
 
+  resources :reviews, controller: 'backend/reviews',
+            :concerns => [:publishable, :approvable]
+
   resources :requests, controller: 'backend/requests'
 
 

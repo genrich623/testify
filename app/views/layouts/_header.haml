@@ -22,8 +22,8 @@
                     = link_to 'Case studies', case_studies_path
                   %li{class: ('actives' if controller? 'backend/testimonials') }
                     = link_to 'Testimonials', testimonials_path
-                  %li
-                    %a{:href => '#' , style: 'color: grey; cursor: not-allowed'} Reviews
+                  %li{class: ('actives' if controller? 'backend/reviews') }
+                    = link_to 'Reviews', reviews_path
                   %li{class: ('actives' if controller? 'backend/requests') }
                     = link_to 'Automation', requests_path
       .col-lg-4.col-md-5.col-sm-10.col-xs-12
