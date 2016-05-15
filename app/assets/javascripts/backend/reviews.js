@@ -1,4 +1,9 @@
 $(document).ready(function() {
+  for (var i = 0; i < $('#review-rating').val(); i++) {
+    var $currentElement = $('.review-rating-stars-show').eq(i);
+    $currentElement.addClass('fa-star').removeClass('fa-star-o');
+  }
+
   $('.review-rating-field').val(0);
 
   $('.review-rating-stars').click(function() {

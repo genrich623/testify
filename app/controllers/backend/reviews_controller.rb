@@ -47,11 +47,11 @@ class Backend::ReviewsController < ApplicationController
   #               notice: "Testimonial was #{'un' unless @testimonial.published? }published"
   # end
 
-  # def approve
-  #   @testimonial.update_attributes :approved => true
+  def approve
+    @review.update_attributes :approved => true
 
-  #   redirect_to testimonials_path, :notice => "Testimonial was approved"
-  # end
+    redirect_to reviews_path, :notice => "Review was approved"
+  end
 
   protected
 
