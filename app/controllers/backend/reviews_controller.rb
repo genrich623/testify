@@ -13,24 +13,23 @@ class Backend::ReviewsController < ApplicationController
     @review = current_user.reviews.new(review_params)
 
     if @review.save
-      redirect_to reviews_path, notice: 'Review created'
+      redirect_to reviews_path, :notice => 'Review created'
     else
       render :new
     end
   end
 
-  # def edit
-  #   @testimonial = Testimonial.find params[:id]
-  #   @templates = TestimonialTemplate.all
-  # end
+  def edit
+    @review = Review.find params[:id]
+  end
 
-  # def update
-  #   if @testimonial.update(testimonial_params)
-  #     redirect_to testimonials_path, notice: 'Testimonial updated'
-  #   else
-  #     render :edit
-  #   end
-  # end
+  def update
+    if @review.update(review_params)
+      redirect_to reviews_path, :notice => 'Review updated'
+    else
+      render :edit
+    end
+  end
 
   def destroy
     if @review.destroy
