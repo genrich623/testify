@@ -56,7 +56,7 @@ class Backend::RequestsController < ApplicationController
     @testimonial = @user.testimonials.new(testimonial_params)
 
     if @testimonial.save
-      @request.testimonial = @testimonial
+      # @request.testimonial = @testimonial
       @request.update_attributes :status => 'Filled by customer'
       redirect_to root_path, :notice => 'Thank you for your feedback!' # later thanks page
     else
