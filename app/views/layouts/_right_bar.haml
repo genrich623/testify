@@ -17,12 +17,10 @@
         %a.button.primary.huge.full.dropdown-toggle{'data-toggle' => 'dropdown', :href => '#'} + Request
         .dropdown-menu.user-menu
           %ul.links
-            /%li
-            /  %a{:href => '#', style: 'color: light-grey; cursor: not-allowed'} Case study
-            %li
-              = link_to 'Testimonial', new_request_path
-            /%li.borderdown
-            /  %a{:href => '#', style: 'color: light-grey; cursor: not-allowed'} Review
+            = link_to new_testimonial_request_path do
+              %li Testimonial
+            = link_to new_review_request_path do
+              %li Review
     .s-sidebar__highlight
       %h3.s-sidebar__heading You might also want to...
     %ul.s-sidebar__list

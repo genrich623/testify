@@ -45,6 +45,7 @@ class User < ActiveRecord::Base
   has_many :testimonials
   has_many :reviews
   has_many :testimonial_requests
+  has_many :requests
 
   validates_presence_of :name, :domain, :url
 end

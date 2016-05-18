@@ -29,7 +29,7 @@
                   %td
                     = request.created_at.to_formatted_s(:long)
                   %td.cellCenter
-                    Testimonial
+                    = request.request_type.titleize
                   %td.cellCenter
                     = request.status
                   %td.cellCenter

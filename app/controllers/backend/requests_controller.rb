@@ -1,13 +1,15 @@
 class Backend::RequestsController < ApplicationController
   #has_scope :page, default: 1
 
-  def new
-    @request = TestimonialRequest.new(sender: current_user.name,
-                                      reply_to: current_user.email)
+  def new_testimonial
+    @request =
+      Request.new :sender => current_user.name, :reply_to => current_user.email
   end
 
-  def create
-    @request = current_user.testimonial_requests.new(request_params)
+  def create_testimonial
+    @request = current_user.requests.new(request_params)
+    @request.request_type = :testimonial
+
     if @request.save
       @request.send_mail
       redirect_to requests_path
@@ -17,7 +19,7 @@ class Backend::RequestsController < ApplicationController
   end
 
   def index
-    @requests = current_user.testimonial_requests
+    @requests = current_user.requests
   end
 
   def customers_testimonial
@@ -49,8 +51,10 @@ class Backend::RequestsController < ApplicationController
   end
 
   def request_params
-    params.require(:testimonial_request).permit(:name, :email, :sender,
-                                                :reply_to, :subject, :message)
+    # params.require(:testimonial_request).permit(:name, :email, :sender,
+    #                                             :reply_to, :subject, :message)
+    params.require(:request).
+      permit(:name, :email, :sender, :reply_to, :subject, :message)
   end
 
 end
