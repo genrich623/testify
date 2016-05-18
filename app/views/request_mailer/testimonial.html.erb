@@ -1,4 +1,4 @@
 <%= @request.message %>
 <br>
 <%= link_to 'Please follow the link, and fill testimonial',
-            "http://#{@host}/new_testimonial/#{@request.token}" %>
+            "http://#{@host}/testimonials/request#{@request.token}/new" %>
