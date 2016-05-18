@@ -36,6 +36,7 @@ class Backend::RequestsController < ApplicationController
     @request = Request.find_by_token params[:token]
     if @request && @request.status == 'sent'
       @testimonial = Testimonial.new :name => @request.name
+      @templates = TestimonialTemplate.all
     else
       redirect_to root_path
     end
