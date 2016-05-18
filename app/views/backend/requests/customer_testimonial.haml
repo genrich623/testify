@@ -31,7 +31,7 @@
         #regular
           #campaign-editor
             = form_for @testimonial, url: url_for(controller: 'backend/requests',
-                       action: 'customer_create') do |f|
+                       action: 'create_customer_testimonial') do |f|
               = hidden_field_tag :request_id, @request.id
               #regular-content{:style => ""}
                 %ul.primary-form

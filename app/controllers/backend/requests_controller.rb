@@ -32,25 +32,49 @@ class Backend::RequestsController < ApplicationController
     @requests = current_user.requests
   end
 
-  def customers_testimonial
-    @request = TestimonialRequest.find_by_token(params[:token])
+  def new_customer_testimonial
+    @request = Request.find_by_token params[:token]
     if @request && @request.status == 'sent'
-      @testimonial = Testimonial.new(name: @request.name)
+      @testimonial = Testimonial.new :name => @request.name
     else
       redirect_to root_path
     end
   end
 
-  def customer_create
-    request = TestimonialRequest.find(params[:request_id])
-    user = request.user
-    @testimonial = user.testimonials.new(testimonial_params)
-    if @testimonial.save
-      request.testimonial = @testimonial
-      request.update_attribute(:status, 'Filled by customer')
-      redirect_to root_path, notice: 'Thank you for your feedback!' # later thanks page
+  def new_customer_review
+    @request = Request.find_by_token params[:token]
+    if @request && @request.status == 'sent'
+      @testimonial = Review.new :name => @request.name
     else
-      render :customers_testimonial
+      redirect_to root_path
+    end
+  end
+
+  def create_customer_testimonial
+    @request = Request.find(params[:request_id])
+    @user = @request.user
+    @testimonial = @user.testimonials.new(testimonial_params)
+
+    if @testimonial.save
+      @request.testimonial = @testimonial
+      @request.update_attributes :status => 'Filled by customer'
+      redirect_to root_path, :notice => 'Thank you for your feedback!' # later thanks page
+    else
+      render :new_customer_testimonial
+    end
+  end
+
+  def create_customer_review
+    @request = Request.find(params[:request_id])
+    @user = @request.user
+    @review = @user.reviews.new(review_params)
+
+    if @review.save
+      @request.review = @review
+      @request.update_attributes :status => 'Filled by customer'
+      redirect_to root_path, :notice => 'Thank you for your feedback!' # later thanks page
+    else
+      render :new_customer_review
     end
   end
 
