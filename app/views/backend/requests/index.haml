@@ -20,12 +20,13 @@
               - @requests.each do |request|
                 %tr.hover-toggle
                   %td
-                    - if request.ready?
-                      = link_to request.email, testimonial_path(request.testimonial)
-                    - else
-                      = request.email
-                    %br/
-                    .clearit
+                    / - if request.ready?
+                    /   = link_to request.email, testimonial_path(request.testimonial)
+                    / - else
+                    /   = request.email
+                    / %br/
+                    / .clearit
+                    = request.email
                   %td
                     = request.created_at.to_formatted_s(:long)
                   %td.cellCenter
