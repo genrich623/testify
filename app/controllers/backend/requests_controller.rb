@@ -1,14 +1,24 @@
 class Backend::RequestsController < ApplicationController
   #has_scope :page, default: 1
+  before_action :init_request, :only => [:new_testimonial, :new_review]
 
-  def new_testimonial
-    @request =
-      Request.new :sender => current_user.name, :reply_to => current_user.email
-  end
+
 
   def create_testimonial
     @request = current_user.requests.new(request_params)
     @request.request_type = :testimonial
+
+    if @request.save
+      @request.send_mail
+      redirect_to requests_path
+    else
+      render :new
+    end
+  end
+
+  def create_review
+    @request = current_user.requests.new(request_params)
+    @request.request_type = :review
 
     if @request.save
       @request.send_mail
@@ -45,6 +55,11 @@ class Backend::RequestsController < ApplicationController
   end
 
   private
+
+  def init_request
+    @request =
+      Request.new :sender => current_user.name, :reply_to => current_user.email
+  end
 
   def testimonial_params
     params.require(:testimonial).permit(:image, :name, :role, :company, :content)

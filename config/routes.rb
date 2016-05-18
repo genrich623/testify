@@ -43,11 +43,13 @@ Rails.application.routes.draw do
 
   match '/requests/new_testimonial' => 'backend/requests#new_testimonial',
     :via => :get, :as => :new_testimonial_request
-   match '/requests/create_testimonial' => 'backend/requests#create_testimonial',
+  match '/requests/create_testimonial' => 'backend/requests#create_testimonial',
     :via => :post, :as => :create_testimonial_request
 
   match '/requests/new_review' => 'backend/requests#new_review',
     :via => :get, :as => :new_review_request
+  match '/requests/create_review' => 'backend/requests#create_review',
+    :via => :post, :as => :create_review_request
 
 
   match '/new_testimonial/:token' => 'backend/requests#customers_testimonial',
