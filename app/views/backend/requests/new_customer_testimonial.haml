@@ -27,12 +27,20 @@
 %section.body-campaign-input
   .wrap-three.container-fluid
     .row
-      .col-lg-12.col-xs-12.col-sm-12
+      .col-lg-3.col-sm-4.col-xs-12
+        .scrollable-templates
+          - @templates.each do |template|
+            .template.col-sm-12
+              - if template.preview.file?
+                = image_tag template.preview.url, :class => 'testimonial-template-thumbs', :data => {:template_id => template.id}
+              - else
+                = image_tag 'nav-img.png', :class => 'testimonial-template-thumbs', :data => {:template_id => template.id}
+      .col-lg-9.col-xs-12.col-sm-8
         #regular
           #campaign-editor
-            = form_for @testimonial, url: url_for(controller: 'backend/requests',
-                       action: 'create_customer_testimonial') do |f|
-              = hidden_field_tag :request_id, @request.id
+            = simple_form_for @testimonial,
+              :url => create_customer_testimonial_path do |f|
+
               #regular-content{:style => ""}
                 %ul.primary-form
                   %li
@@ -40,21 +48,22 @@
                     .helper-text
                       Your feedback very valuable for us!
                     .box-wrap
-                      = f.text_field :name, placeholder: "Your name",
-                                       class: 'title-field width-full first'
+                      = f.input :name, autofocus: 'autofocus', placeholder: "Your name",
+                                       class: 'title-field width-full first', wrapper: 'testify'
                     .box-wrap
-                      = f.file_field :image
+                      = f.input :image, wrapper: 'testify'
                       .image{style: 'width: 200px;'}
                         = image_tag(@testimonial.image.url) if @testimonial.image?
                     .box-wrap
-                      = f.text_field :role, autofocus: 'autofocus', placeholder: "Your role in company",
-                                       class: 'title-field width-full first'
+                      = f.input :role, placeholder: "Your role in your company",
+                                       class: 'title-field width-full first', wrapper: 'testify'
                     .box-wrap
-                      = f.text_field :company, placeholder: "Company",
-                                       class: 'title-field width-full first'
+                      = f.input :company, placeholder: "Company",
+                                       class: 'title-field width-full first', wrapper: 'testify'
                     .box-wrap
-                      = f.text_area :content, class: 'clientname-field width-full first',
+                      = f.input :content, class: 'clientname-field width-full first', wrapper: 'testify',
                                     style: 'resize: none; height: 150px;', placeholder: 'Testimonial'
+                      = f.input :template_id, :as => :hidden, :input_html => {:class => 'testimonial-template-field'}
                     = f.submit 'Next', class: 'hidden'
               .primary-form.padding-none
                 #submit-wrap.button-cancel.wizard{:style => ""}
