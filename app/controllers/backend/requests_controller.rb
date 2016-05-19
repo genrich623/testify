@@ -38,16 +38,16 @@ class Backend::RequestsController < ApplicationController
       @testimonial = Testimonial.new :name => @request.name
       @templates = TestimonialTemplate.all
     else
-      redirect_to root_path
+      redirect_to testimonials_path, :notice => 'Testimonial created'
     end
   end
 
   def new_customer_review
     @request = Request.find_by_token params[:token]
     if @request && @request.status == 'sent'
-      @testimonial = Review.new :name => @request.name
+      @review = Review.new :name => @request.name
     else
-      redirect_to root_path
+      redirect_to reviews_path, :notice => 'Review created'
     end
   end
 
