@@ -52,7 +52,7 @@ class Backend::RequestsController < ApplicationController
   end
 
   def create_customer_testimonial
-    @request = Request.find(params[:request_id])
+    @request = Request.find_by_token params[:token]
     @user = @request.user
     @testimonial = @user.testimonials.new(testimonial_params)
 
