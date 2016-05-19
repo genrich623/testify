@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   resources :reviews, controller: 'backend/reviews',
             :concerns => [:publishable, :approvable]
 
-  resources :requests, controller: 'backend/requests', :only => [:index]
+  resources :requests, controller: 'backend/requests', :only => [:index, :destroy]
 
   match '/requests/new_testimonial' => 'backend/requests#new_testimonial',
     :via => :get, :as => :new_testimonial_request

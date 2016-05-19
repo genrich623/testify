@@ -32,6 +32,11 @@ class Backend::RequestsController < ApplicationController
     @requests = current_user.requests
   end
 
+  def destroy
+    @request = current_user.requests.find params[:id]
+    redirect_to requests_path, notice: 'Request destroyed' if @request.destroy
+  end
+
   def new_customer_testimonial
     @request = Request.find_by_token params[:token]
     if @request && @request.status == 'sent'
