@@ -2,6 +2,7 @@ class Testimonial < ActiveRecord::Base
   include Embeddable
 
   attr_accessor :template_id
+  attr_accessor :request_token
 
   has_attached_file :image,
                     styles: { small: '60x60#', tile: '320x240#' }

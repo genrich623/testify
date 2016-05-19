@@ -1,6 +1,8 @@
 class Review < ActiveRecord::Base
   include Embeddable
 
+  attr_accessor :request_token
+
   has_attached_file :image,
                     styles: { small: '60x60#', tile: '320x240#' }
   # we will not use hashes for now, later will plane file structure

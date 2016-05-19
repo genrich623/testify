@@ -35,7 +35,8 @@ class Backend::RequestsController < ApplicationController
   def new_customer_testimonial
     @request = Request.find_by_token params[:token]
     if @request && @request.status == 'sent'
-      @testimonial = Testimonial.new :name => @request.name
+      @testimonial =
+        Testimonial.new :name => @request.name, :request_token => params[:token]
       @templates = TestimonialTemplate.all
     else
       redirect_to testimonials_path, :notice => 'Testimonial created'
@@ -45,35 +46,36 @@ class Backend::RequestsController < ApplicationController
   def new_customer_review
     @request = Request.find_by_token params[:token]
     if @request && @request.status == 'sent'
-      @review = Review.new :name => @request.name
+      @review =
+        Review.new :name => @request.name, :request_token => params[:token]
     else
       redirect_to reviews_path, :notice => 'Review created'
     end
   end
 
   def create_customer_testimonial
-    @request = Request.find_by_token params[:token]
+    @request = Request.find_by_token params[:testimonial][:request_token]
     @user = @request.user
     @testimonial = @user.testimonials.new(testimonial_params)
 
     if @testimonial.save
       # @request.testimonial = @testimonial
       @request.update_attributes :status => 'Filled by customer'
-      redirect_to root_path, :notice => 'Thank you for your feedback!' # later thanks page
+      redirect_to testimonials_path, :notice => 'Thank you for your feedback!' # later thanks page
     else
       render :new_customer_testimonial
     end
   end
 
   def create_customer_review
-    @request = Request.find(params[:request_id])
+    @request = Request.find_by_token params[:review][:request_token]
     @user = @request.user
     @review = @user.reviews.new(review_params)
 
     if @review.save
-      @request.review = @review
+      # @request.review = @review
       @request.update_attributes :status => 'Filled by customer'
-      redirect_to root_path, :notice => 'Thank you for your feedback!' # later thanks page
+      redirect_to reviews_path, :notice => 'Thank you for your feedback!' # later thanks page
     else
       render :new_customer_review
     end
@@ -87,12 +89,14 @@ class Backend::RequestsController < ApplicationController
   end
 
   def testimonial_params
-    params.require(:testimonial).permit(:image, :name, :role, :company, :content)
+    params.require(:testimonial).permit(:image, :name, :role, :company, :content, :template_id)
+  end
+
+  def review_params
+    params.require(:review).permit(:image, :name, :role, :company, :content, :title, :rating)
   end
 
   def request_params
-    # params.require(:testimonial_request).permit(:name, :email, :sender,
-    #                                             :reply_to, :subject, :message)
     params.require(:request).
       permit(:name, :email, :sender, :reply_to, :subject, :message)
   end
