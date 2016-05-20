@@ -3,7 +3,7 @@
     .row
       .col-lg-4.col-md-4.col-sm-4.col-xs-12.pull-left
         %h1.step1
-          Ask your customers to write testimonials themselves
+          Ask your customers to write reviews themselves
           %span#campaignName
       .col-lg-4.col-md-4.col-sm-4.col-xs-12
         .tests
@@ -30,7 +30,7 @@
       .col-lg-12.col-md-12.col-xs-12.col-sm-12
         #regular
           #campaign-editor
-            = simple_form_for @request, url: requests_path do |f|
+            = simple_form_for @request, :url => create_review_request_path do |f|
               #regular-content{:style => ""}
                 %ul.primary-form
                   %li
@@ -55,7 +55,7 @@
                   %li#regSubject{:style => ""}
                     %label Request info
                     .helper-text
-                      This is your request for testimonial details
+                      This is your request for review details
                     .box-wrap
                       = f.input :subject, placeholder: 'Email subject',
                                      class: 'clientname-field width-full first', wrapper: 'testify'

@@ -36,12 +36,30 @@ Rails.application.routes.draw do
   resources :testimonials, controller: 'backend/testimonials',
             :concerns => [:publishable, :approvable]
 
-  resources :requests, controller: 'backend/requests'
+  resources :reviews, controller: 'backend/reviews',
+            :concerns => [:publishable, :approvable]
 
+  resources :requests, controller: 'backend/requests', :only => [:index, :destroy]
 
-  match '/new_testimonial/:token' => 'backend/requests#customers_testimonial',
-        via: :get, as: :customers_testimonial
-  match '/new_testimonial' => 'backend/requests#customer_create', via: :post
+  match '/requests/new_testimonial' => 'backend/requests#new_testimonial',
+    :via => :get, :as => :new_testimonial_request
+  match '/requests/create_testimonial' => 'backend/requests#create_testimonial',
+    :via => :post, :as => :create_testimonial_request
+
+  match '/requests/new_review' => 'backend/requests#new_review',
+    :via => :get, :as => :new_review_request
+  match '/requests/create_review' => 'backend/requests#create_review',
+    :via => :post, :as => :create_review_request
+
+  match '/testimonial/request/:token' => 'backend/requests#new_customer_testimonial',
+    :via => :get, :as => :new_customer_testimonial
+  match '/testimonial/request' => 'backend/requests#create_customer_testimonial',
+    :via => :post, :as => :create_customer_testimonial
+
+  match '/review/request/:token' => 'backend/requests#new_customer_review',
+    :via => :get, :as => :new_customer_review
+  match '/review/request' => 'backend/requests#create_customer_review',
+    :via => :post, :as => :create_customer_review
 
   resources :templates, controller: 'backend/templates'
 
