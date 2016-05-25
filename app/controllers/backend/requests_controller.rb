@@ -62,7 +62,7 @@ class Backend::RequestsController < ApplicationController
   end
 
   def create_customer_testimonial
-    @request = Request.find_by_token params[:testimonial][:request_token]
+    @request = Request.find_by_token params[:token]
     @user = @request.user
     @testimonial = @user.testimonials.new(testimonial_params)
 
@@ -71,12 +71,13 @@ class Backend::RequestsController < ApplicationController
       @request.update_attributes :status => 'Filled by customer'
       redirect_to testimonials_path, :notice => 'Thank you for your feedback!' # later thanks page
     else
+      @templates = TestimonialTemplate.all
       render :new_customer_testimonial
     end
   end
 
   def create_customer_review
-    @request = Request.find_by_token params[:review][:request_token]
+    @request = Request.find_by_token params[:token]
     @user = @request.user
     @review = @user.reviews.new(review_params)
 
