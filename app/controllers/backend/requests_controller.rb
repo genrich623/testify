@@ -32,7 +32,7 @@ class Backend::RequestsController < ApplicationController
   end
 
   def index
-    @requests = current_user.requests
+    @requests = current_user.requests.order('created_at DESC')
   end
 
   def destroy
