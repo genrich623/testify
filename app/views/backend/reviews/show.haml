@@ -10,7 +10,7 @@
       .col-lg-4.col-md-4.col-sm-4.col-xs-12
         .buttons.pull-right{style: 'margin: 10px; padding-top: 20px;'}
           = link_to 'Approve', approve_review_path(@review), :method => :post, :class => 'btn btn-primary'
-          = link_to 'Edit', edit_review_path(@review), :class => 'btn btn-primary'
+          / = link_to 'Edit', edit_review_path(@review), :class => 'btn btn-primary'
           = link_to 'Delete', @review, :method => :delete,
             :data => { :confirm => 'Do you want to delete Review?' },
             :class => 'btn btn-danger'

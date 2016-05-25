@@ -10,9 +10,11 @@ class Backend::RequestsController < ApplicationController
 
     if @request.save
       @request.send_mail
-      redirect_to requests_path
+      redirect_to requests_path, :notice => 'Request for Testimonial sent'
     else
-      render :new
+      @testimonial = Testimonial.new
+      @templates = TestimonialTemplate.all
+      render 'backend/testimonials/new'
     end
   end
 
@@ -22,9 +24,10 @@ class Backend::RequestsController < ApplicationController
 
     if @request.save
       @request.send_mail
-      redirect_to requests_path
+      redirect_to requests_path, :notice => 'Request for Review sent'
     else
-      render :new
+      @review = Review.new
+      render 'backend/reviews/new'
     end
   end
 

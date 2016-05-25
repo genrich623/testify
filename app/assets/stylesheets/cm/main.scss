@@ -1,5 +1,5 @@
 /* -----------------------------------------------------------
-  General Styles  
+  General Styles
  ------------------------------------------------------------- */
 
 
@@ -32,7 +32,7 @@ html{
 }
 .row_bg{
   background: #f9fafc none repeat scroll 0 0;
-  padding-bottom: 48px; 
+  padding-bottom: 48px;
 }
 img {
   height:auto;
@@ -50,7 +50,7 @@ ul {
   margin: 0;
 }
 li {
-  
+
 }
 audio,
 canvas,
@@ -90,7 +90,7 @@ textarea {
     text-shadow: none;
 }
 /* -----------------------------------------------------------
-  Main Styles  
+  Main Styles
  ------------------------------------------------------------- */
 
   /* Home page CSS */
@@ -114,7 +114,7 @@ textarea {
   margin-top: 26px;
 }
 #menu{
-  
+
 }
 .actives{
   border-bottom: 4px solid #19A9E5;
@@ -247,7 +247,7 @@ min-width: 192px;
   padding: 0;
 }
 .dropdown-menu.user-menu ul.links li {
-  
+
   margin-bottom: 10px;
   padding: 10px;
 }
@@ -276,10 +276,16 @@ min-width: 192px;
 
 /*start body css*/
 .body-section {
+  padding: 0 38.5px;
   background: #fff none repeat scroll 0 0;
   box-shadow: 0 3px 5px 0 #efefef;
   padding-bottom: 100px;
 }
+
+.body-section .row div {
+  padding: 0;
+}
+
 .wrap-two{
   margin: auto;
   max-width: 1600px;
@@ -352,6 +358,8 @@ table.tableHeader th, table.tableHeader tr.w_dropdown th {
   text-shadow: 1px 1px 0 #fff !important;
   text-transform: uppercase;
   z-index: 1;
+  border-top-right-radius: 50% !important;
+  border-top-left-radius: 50% !important;
 }
 table.tableHeader th {
   background: #d3e9f7 url("../img/dash_sending_for_grey.png") repeat-x scroll left top;
@@ -393,7 +401,7 @@ table.tableHeader td:last-child{
   padding: 8px;
   font-size: 17px;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 3.5px;
   font-weight: 600;
 }
 .sidebarbutton a.button.primary.huge.full:hover{
@@ -402,9 +410,12 @@ table.tableHeader td:last-child{
 .s-sidebar__highlight h3.s-sidebar__heading {
   background: #e7ecf3 none repeat scroll 0 0;
   border-radius: 5px;
-  font-size: 15px;
-  padding: 7px;
-  text-align: center;
+  height: 28px;
+  font-size: 12px;
+  padding: 4px 10px;
+  font-weight: bold;
+  margin-top: 30px;
+  box-sizing: border-box;
 }
 .s-sidebar__list-item {
   color: #828282;
@@ -685,10 +696,10 @@ select option {
   padding-top: 50px;
 }
 .template-sidebar{
-  
+
 }
 .template-sidebar-single{
-  
+
 }
 .template-sidebar-single h2 {
   color: #9ca6af;
@@ -704,7 +715,7 @@ select option {
   list-style-type: none;
 }
 .template-sidebar-single ul li{
-  
+
 }
 .template-sidebar-single ul li a {
   font-size: 18px;
@@ -750,7 +761,7 @@ select option {
   text-align: center;
 }
 .img-thumbnail__caption time{
-  
+
 }
 .img-thumbnail__caption abbr{
 color: #8D9095 !important;
@@ -783,4 +794,9 @@ color: #8D9095 !important;
 .single-img:hover{
   border: 3px solid #19a9e5;
   border-radius: 5px;
+}
+
+
+#drafts {
+  margin-right: 20px;
 }
