@@ -331,11 +331,18 @@ min-width: 192px;
 }
 
 .wrap-two{
-  margin: auto;
+  height: 100%;
+  width: 100%;
+  padding: 0 3%;
   max-width: 1600px;
-  position: relative;
-
+  margin: 0;
+  box-sizing: border-box;
 }
+
+.wrap-two .row {
+  height: 100%;
+}
+
 .wrap-three{
   max-width: 1600px;
 }
@@ -459,9 +466,9 @@ table.tableHeader td:last-child{
 .sidebarbutton a.button.primary.huge.full {
   display: block;
   padding: 8px;
-  font-size: 17px;
+  font-size: 16px;
   text-align: center;
-  border-radius: 3.5px;
+  border-radius: 3px;
   font-weight: 600;
 }
 .sidebarbutton a.button.primary.huge.full:hover{
@@ -503,18 +510,25 @@ table.tableHeader td:last-child{
 /* campaigns css */
 .body-campaign{
   background: #fff none repeat scroll 0 0;
-border-bottom: 1px solid #eaeaea;
-box-shadow: 0 1px 3px 0 #efefef;
-height: 110px;
-margin-bottom: 50px;
-padding: 0 !important;
+  border-bottom: 1px solid #eaeaea;
+  box-shadow: 0 1px 3px 0 #efefef;
+  height: 110px;
+  margin-bottom: 50px;
+  padding: 0 !important;
 }
+
 .step1 {
   color: #444444;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 30px;
-  font-weight: 400;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  padding-top: 36px !important;
+  float: left;
+  overflow: hidden;
+  margin: 0;
 }
+
 #campaignName{
   clear: both;
   color: #888;
@@ -552,7 +566,7 @@ padding: 0 !important;
   background: none !important;
 }
 .camp-prog {
-  margin-top: 30px;
+  margin-top: 40px;
 }
 
 
@@ -659,9 +673,13 @@ input[type="text"], input[type="password"], input[type="email"], textarea {
   background-color: #6aae53;
   background-image: linear-gradient(rgba(71, 148, 56, 0), #428f33);
   border-color: #579f4a #4e9340 #327527;
-  box-shadow: 0 1px 2px 0 rgba(255, 255, 255, 0.15) inset, 0 1px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 2px 0 rgba(255,255,255,.15),0 1px 1px rgba(0,0,0,.1);
   color: #fff;
   text-shadow: 0 1px 1px #488739, 0 0 5px rgba(255, 255, 255, 0);
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Open Sans', sans-serif;
+  border-style: solid;
+  border-width: 1px;
 }
 .input-group-btn .btn select, .selector select {
   cursor: pointer;
