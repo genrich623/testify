@@ -8,25 +8,19 @@
           %span.extras
             Request testimonials/reviews from customers
             //  %a{:href => ''} See all saved drafts
-          %table#drafts.tableHeader.margin-btm-50.table-hover{:cellpadding => '0', :cellspacing => '0', :width => '100%'}
+          %table#drafts.table-hover{:cellpadding => '0', :cellspacing => '0'}
             %tbody
               %tr.noHighlight
-                %th.headerLeft{:style => 'width: 39%;'} Email
+                %th.headerLeft{:style => 'width: 45%;'} Email
                 %th{:style => 'width: 18.5%;'} Created
                 %th.cellCenter{:style => 'width: 15%;'} Type
                 %th.cellCenter{:style => 'width: 15%;'} Status
-                %th.cellCenter{:style => 'width: 7%;'} Ready
-                %th.headerRight{:style => 'width: 5.5%;'}
+                %th.cellCenter{:style => 'width: 10%;'} Ready
+                %th.headerRight{:style => 'width: 20%;'}
               - @requests.each do |request|
                 %tr.hover-toggle
                   %td
-                    / - if request.ready?
-                    /   = link_to request.email, testimonial_path(request.testimonial)
-                    / - else
-                    /   = request.email
-                    / %br/
-                    / .clearit
-                    = request.email
+                    .row-left= request.email
                   %td
                     = request.created_at.to_formatted_s(:long)
                   %td.cellCenter
