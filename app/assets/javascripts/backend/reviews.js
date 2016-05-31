@@ -12,12 +12,16 @@ $(document).ready(function() {
   }
 
   $('#new-review-button').click(function(){
+    $('#request-review-button *').fadeTo(1, 0.5);
     $('#request-review-form').hide();
+    $('#new-review-button *').fadeTo(1, 1);
     $('#new-review-form').show();
   });
 
   $('#request-review-button').click(function(){
+    $('#new-review-button *').fadeTo(1, 0.5);
     $('#new-review-form').hide();
+    $('#request-review-button *').fadeTo(1, 1);
     $('#request-review-form').show();
   });
 

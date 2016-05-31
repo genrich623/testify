@@ -12,12 +12,16 @@ $(document).ready(function() {
   }
 
   $('#new-testimonial-button').click(function(){
+    $('#request-testimonial-button *').fadeTo(1, 0.5);
     $('#request-testimonial-form').hide();
+    $('#new-testimonial-button *').fadeTo(1, 1);
     $('#new-testimonial-form').show();
   });
 
   $('#request-testimonial-button').click(function(){
+    $('#new-testimonial-button *').fadeTo(1, 0.5);
     $('#new-testimonial-form').hide();
+    $('#request-testimonial-button *').fadeTo(1, 1);
     $('#request-testimonial-form').show();
   });
 });

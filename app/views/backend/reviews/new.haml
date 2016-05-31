@@ -4,15 +4,14 @@
       .col-lg-4.col-md-4.col-sm-4.col-xs-12.pull-left
         %h1.step1 New review
         %span#campaignName Fill necessary fields
-      .col-lg-4.col-md-4.col-sm-4.col-xs-12
+      .col-lg-4.col-md-4.col-sm-4.col-xs-12.tests-container
         .tests
-          %ul.campaigns-menu.two.nav.navbar-nav.pull-right
-            %li#request-review-button.current
-              %i.fa.fa-envelope-o
-              Review
-            %li#new-review-button
-              %i.fa.fa-users
-              Write Myself
+          #request-review-button.request-write-button
+            %i.fa.fa-envelope-o
+            %span Review
+          #new-review-button.request-write-button
+            %i.fa.fa-users
+            %span Write Myself
       .col-lg-4.col-md-4.col-sm-4.col-xs-12
         .camp-prog.pull-right
           %div{:style => "display: block"}
