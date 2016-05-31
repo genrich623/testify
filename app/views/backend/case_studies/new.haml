@@ -2,20 +2,16 @@
   .wrap-two
     .row
       .col-lg-4.col-md-4.col-sm-4.col-xs-12.pull-left
-        %h1.step1
-          Define the case study and client details
-          %span#campaignName Choose from two campaign types
-      .col-lg-4.col-md-4.col-sm-4.col-xs-12
+        %h1.step1 Define the case study and client details
+        %span#campaignName Choose from two campaign types
+      .col-lg-4.col-md-4.col-sm-4.col-xs-12.tests-container
         .tests
-          %ul.campaigns-menu.two.nav.navbar-nav.pull-right
-            %li#regular-tab.current
-              %a.text{:href => ""}
-                %i.fa.fa-envelope-o
-                Regular
-            %li#absplit-tab
-              %a.text{:href => ""}
-                %i.fa.fa-users
-                A/B test
+          #request-review-button.request-write-button
+            %i.fa.fa-envelope-o
+            %span General
+          #new-review-button.request-write-button
+            %i.fa.fa-users
+            %span White Label
       .col-lg-4.col-md-4.col-sm-4.col-xs-12
         .camp-prog.pull-right
           %div{:style => "display: block"}

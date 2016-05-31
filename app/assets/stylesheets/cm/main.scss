@@ -477,11 +477,10 @@ table.tableHeader td:last-child{
 .s-sidebar__highlight h3.s-sidebar__heading {
   background: #e7ecf3 none repeat scroll 0 0;
   border-radius: 5px;
-  height: 28px;
   font-size: 12px;
   padding: 4px 10px;
   font-weight: bold;
-  margin-top: 30px;
+  margin: 10px 0;
   box-sizing: border-box;
 }
 .s-sidebar__list-item {
@@ -1049,3 +1048,7 @@ color: #8D9095 !important;
   opacity: .5;
 }
 
+#options {
+  display: flex;
+  flex-direction: column;
+}
