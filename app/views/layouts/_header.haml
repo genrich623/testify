@@ -4,7 +4,7 @@
       .col-lg-1.col-md-1.col-sm-2.col-xs-6
         = link_to root_path, class: 'logo pull-right' do
           = image_tag 'logo.png', alt: 'Testify', class: 'home-logo'
-      .col-lg-7.col-md-6.col-sm-10.col-xs-6
+      .col-lg-6.col-md-6.col-sm-10.col-xs-6
         %nav.navbar.top_nav.pull-left
           .container-fluid
             .navbar-header
@@ -26,18 +26,18 @@
                     = link_to 'Reviews', reviews_path
                   %li{class: ('actives' if controller? 'backend/requests') }
                     = link_to 'Automation', requests_path
-      .col-lg-4.col-md-5.col-sm-10.col-xs-12
+      .col-lg-5.col-md-5.col-sm-10.col-xs-12
         #right-menu.nav.navbar-nav.pull-right
           - if user_signed_in?
             %ul.nav.navbar-nav.users_profiles
               %li
                 %a.upgrade{:href => ''} Upgrade
               %li.dropdown.user_dropdown.pull-left
-                %a.dropdown-toggle{'data-toggle' => 'dropdown', :href => '#'}
+                %a#nav-dropdown-toggle.dropdown-toggle{'data-toggle' => 'dropdown', :href => '#'}
                   .avatar
-                    %p
-                      = current_user.name
-                    = image_tag current_user.gravatar_url, class: 'avatar-img'
+                    %p= current_user.name
+                    #avatar-container
+                      = image_tag current_user.gravatar_url, class: 'avatar-img'
                     /%img.avatar-img{:alt => 'Tiny e5d5e384e4f1e6bca3dfe17cd16ddbca', :src => 'https://secure.gravatar.com/avatar/e5d5e384e4f1e6bca3dfe17cd16ddbca?d=https%3A%2F%2Fimg.createsend.com%2Fimg%2F_new-setup%2Favatars%2Favatar-30x30-2x.png&s=60'}/
                   %i.fa.fa-caret-down.carets
                 .dropdown-menu.user-menu

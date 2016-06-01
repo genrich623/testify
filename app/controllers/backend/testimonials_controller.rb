@@ -8,6 +8,8 @@ class Backend::TestimonialsController < ApplicationController
   def new
     @testimonial = Testimonial.new
     @templates = TestimonialTemplate.all
+    @request =
+      Request.new :sender => current_user.name, :reply_to => current_user.email
   end
 
   def create
@@ -16,6 +18,9 @@ class Backend::TestimonialsController < ApplicationController
     if @testimonial.save
       redirect_to testimonials_path, notice: 'Testimonial created'
     else
+      @templates = TestimonialTemplate.all
+      @request =
+        Request.new :sender => current_user.name, :reply_to => current_user.email
       render :new
     end
   end

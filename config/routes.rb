@@ -51,14 +51,14 @@ Rails.application.routes.draw do
   match '/requests/create_review' => 'backend/requests#create_review',
     :via => :post, :as => :create_review_request
 
-  match '/testimonial/request/:token' => 'backend/requests#new_customer_testimonial',
+  match '/testimonial/request/new/:token' => 'backend/requests#new_customer_testimonial',
     :via => :get, :as => :new_customer_testimonial
-  match '/testimonial/request' => 'backend/requests#create_customer_testimonial',
+  match '/testimonial/request/:token' => 'backend/requests#create_customer_testimonial',
     :via => :post, :as => :create_customer_testimonial
 
-  match '/review/request/:token' => 'backend/requests#new_customer_review',
+  match '/review/request/new/:token' => 'backend/requests#new_customer_review',
     :via => :get, :as => :new_customer_review
-  match '/review/request' => 'backend/requests#create_customer_review',
+  match '/review/request/:token' => 'backend/requests#create_customer_review',
     :via => :post, :as => :create_customer_review
 
   resources :templates, controller: 'backend/templates'

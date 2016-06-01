@@ -7,6 +7,8 @@ class Backend::ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    @request =
+      Request.new :sender => current_user.name, :reply_to => current_user.email
   end
 
   def create
@@ -15,6 +17,8 @@ class Backend::ReviewsController < ApplicationController
     if @review.save
       redirect_to reviews_path, :notice => 'Review created'
     else
+      @request =
+        Request.new :sender => current_user.name, :reply_to => current_user.email
       render :new
     end
   end
