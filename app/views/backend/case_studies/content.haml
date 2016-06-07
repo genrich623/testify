@@ -37,8 +37,8 @@
                 %ul.primary-form{ style: 'width: 80%;'}
                   %li
                     .box-wrap
-                      = text_area_tag :template_content, @case_study.template_content,
-                      data: {provider: :summernote}, name: 'case_study[template_content]',
+                      = cktext_area :template_content, @case_study.template_content, :value => @case_study.template_content,
+                      data: {provider: :ckeditor}, name: 'case_study[template_content]',
                       id: 'case_study_template_content'
               .primary-form.padding-none
                 #submit-wrap.button-cancel.wizard{:style => ""}

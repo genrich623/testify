@@ -30,6 +30,7 @@ gem 'nokogiri'
 
 # templates editor
 gem 'summernote-rails'
+gem 'ckeditor'
 
 gem 'jquery-rails'
 gem 'bootstrap-sass'
@@ -82,5 +83,5 @@ group :development do
 end
 
 group :production do
-
+  gem 'rails_12factor'
 end

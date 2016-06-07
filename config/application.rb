@@ -34,6 +34,8 @@ module Testify
 
     # autoload CKEditor's models
     config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
+    config.assets.precompile += Ckeditor.assets
+    config.assets.precompile += %w(ckeditor/*)
 
     # Rules for serving cross domain ajax requests
     config.middleware.insert_before 0, "Rack::Cors" do
